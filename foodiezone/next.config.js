@@ -21,5 +21,11 @@ module.exports = withPWA({
     }
     return config
   },
-  turbopack: {}
+  turbopack: {},
+  // Railway specific configuration
+  output: 'standalone',
+  // Ensure proper port binding for Railway
+  serverRuntimeConfig: {
+    port: process.env.PORT || 3000
+  }
 })
