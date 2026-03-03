@@ -9,4 +9,17 @@ const withPWA = require('next-pwa')({
 
 module.exports = withPWA({
   reactStrictMode: true,
+  experimental: {
+    webpackBuildWorker: true
+  },
+  webpack: (config) => {
+    // Disable webpack 5 features that conflict with PWA
+    config.experiments = {
+      ...config.experiments,
+      topLevelAwait: false,
+      layers: false
+    }
+    return config
+  },
+  turbopack: {}
 })
