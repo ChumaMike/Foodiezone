@@ -507,6 +507,17 @@ const CATEGORY_LABELS: Record<string, string> = {
   'Chicken':       'Chicken',
 }
 
+const CATEGORY_META: Record<string, { hero: string; accent: string; sub: string }> = {
+  'Burgers':       { hero: '/images/catalogue/burgers/burger-1.png',             accent: '#CC0000', sub: '100% Beef & Chicken' },
+  'Smash Burgers': { hero: '/images/catalogue/smash-burgers/smash-1.png',        accent: '#CC0000', sub: '200g Hand-Pressed Patties' },
+  'Dagwoods':      { hero: '/images/catalogue/dagwoods/dagwood-1.png',           accent: '#1D4ED8', sub: 'Loaded & Toasted' },
+  'Wingzz':        { hero: '/images/catalogue/wings/wings-1.png',                accent: '#FF6B00', sub: 'Fried · Dunked · Grilled' },
+  'Loaded Chips':  { hero: '/images/catalogue/loaded-chips/loaded-1.png',        accent: '#FF6B00', sub: 'Loaded with the Good Stuff' },
+  'Prego Rolls':   { hero: '/images/catalogue/prego-roll/prego-1.png',           accent: '#1D4ED8', sub: 'Soft Rolls, Big Flavour' },
+  'Wraps & Salads':{ hero: '/images/catalogue/wraps/wrap-1.png',                 accent: '#1D4ED8', sub: 'Fresh & Flavourful' },
+  'Chicken':       { hero: '/images/catalogue/grilled-chicken/chicken-1.png',    accent: '#CC0000', sub: 'Pick Your Flavour' },
+}
+
 const PROMO_BANNERS = [
   {
     image: '/images/smash/smash-double.png',
@@ -530,6 +541,7 @@ export default function MenuPage() {
   const { role } = useAuth()
   const { hasProfile } = useProfile()
   const [activeCategory, setActiveCategory] = useState('Burgers')
+  const [heroKey, setHeroKey] = useState(0)
   const [searchQuery, setSearchQuery] = useState('')
   const [variantItem, setVariantItem] = useState<MenuItem | null>(null)
   const [showCheckout, setShowCheckout] = useState(false)
@@ -539,6 +551,11 @@ export default function MenuPage() {
     setToast(name)
     setTimeout(() => setToast(null), 2800)
   }, [])
+
+  const handleCategoryChange = (cat: string) => {
+    setActiveCategory(cat)
+    setHeroKey((k) => k + 1)
+  }
 
   const handleItemAdd = (item: MenuItem) => {
     if (item.hasVariant || item.hasFlavour) {
@@ -576,9 +593,10 @@ export default function MenuPage() {
     : MENU_ITEMS.filter((i) => i.category === activeCategory)
 
   const popularItems = MENU_ITEMS.filter((i) => i.popular)
+  const meta = CATEGORY_META[activeCategory]
 
   return (
-    <div className="min-h-screen pb-32" style={{ background: '#FFFFFF' }}>
+    <div className="min-h-screen pb-32" style={{ background: '#111111' }}>
       {/* Customer profile setup overlay */}
       {role === 'customer' && !hasProfile && <CustomerSetupScreen />}
 
@@ -586,7 +604,7 @@ export default function MenuPage() {
       {toast && (
         <div className="fixed top-5 left-1/2 z-[100] pointer-events-none animate-toast">
           <div
-            className="text-white text-sm font-heading font-black px-4 py-2.5 flex items-center gap-2 whitespace-nowrap uppercase tracking-wide shadow-lg"
+            className="text-white text-sm font-heading font-bold px-4 py-2.5 flex items-center gap-2 whitespace-nowrap uppercase tracking-wide shadow-lg"
             style={{ background: '#0A0A0A', borderLeft: '3px solid #CC0000' }}
           >
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#CC0000" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
@@ -595,14 +613,13 @@ export default function MenuPage() {
         </div>
       )}
 
-      {/* ── Header ── */}
+      {/* ── Sticky Header ── */}
       <header className="sticky top-0 z-20" style={{ background: '#0A0A0A', borderBottom: '3px solid #CC0000' }}>
-        <div className="max-w-md mx-auto px-4 pt-10 pb-3">
-
-          {/* Location + rating row */}
+        <div className="max-w-6xl mx-auto px-4 pt-10 pb-3">
+          {/* Location + rating */}
           <div className="flex items-center justify-between mb-2">
             <div className="flex items-center gap-1.5">
-              <svg width="11" height="13" viewBox="0 0 11 13" fill="#888" xmlns="http://www.w3.org/2000/svg">
+              <svg width="11" height="13" viewBox="0 0 11 13" fill="#888">
                 <path d="M5.5 0C2.46 0 0 2.46 0 5.5c0 4.125 5.5 7.5 5.5 7.5S11 9.625 11 5.5C11 2.46 8.54 0 5.5 0z"/>
                 <circle cx="5.5" cy="5.5" r="2" fill="white"/>
               </svg>
@@ -619,23 +636,23 @@ export default function MenuPage() {
             </div>
           </div>
 
-          {/* Brand */}
+          {/* Brand + title */}
           <div className="brand-label mb-1">FOODIE ZONE</div>
-          <h1 className="font-heading font-black text-white text-[30px] uppercase leading-none tracking-tight">
+          <h1 className="font-display text-white uppercase leading-none" style={{ fontSize: 34 }}>
             The Menu
           </h1>
-          <p className="text-[11px] font-body mt-0.5" style={{ color: '#666' }}>
+          <p className="font-body text-xs mt-1" style={{ color: '#666', fontWeight: 400 }}>
             Burgers · Wings · Dagwoods · Chicken
           </p>
 
           {/* Search */}
           <div className="relative mt-3">
             <span className="absolute left-3.5 top-1/2 -translate-y-1/2" style={{ color: '#555' }}>
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
-                  <circle cx="11" cy="11" r="8"/>
-                  <path d="m21 21-4.35-4.35"/>
-                </svg>
-              </span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+                <circle cx="11" cy="11" r="8"/>
+                <path d="m21 21-4.35-4.35"/>
+              </svg>
+            </span>
             <input
               type="search"
               value={searchQuery}
@@ -651,22 +668,22 @@ export default function MenuPage() {
         </div>
       </header>
 
-      {/* ── Category tabs ── */}
+      {/* ── Category Pills ── */}
       {!searchQuery && (
         <div
-          className="sticky top-[160px] z-10 px-4 py-2"
-          style={{ background: '#FFFFFF', borderBottom: '2px solid #0A0A0A' }}
+          className="sticky top-[172px] z-10 py-2.5"
+          style={{ background: '#0A0A0A', borderBottom: '1px solid rgba(255,255,255,0.07)' }}
         >
-          <div className="flex gap-2 overflow-x-auto scrollbar-hide max-w-md mx-auto">
+          <div className="flex gap-2 overflow-x-auto scrollbar-hide px-4 max-w-6xl mx-auto">
             {ORDERED_CATEGORIES.map((cat) => (
               <button
                 key={cat}
-                onClick={() => setActiveCategory(cat)}
-                className="shrink-0 px-3.5 py-1.5 text-[12px] font-heading font-black uppercase tracking-wide transition-all duration-150"
+                onClick={() => handleCategoryChange(cat)}
+                className="shrink-0 px-3.5 py-1.5 text-[11px] font-heading font-semibold uppercase transition-all duration-150"
                 style={
                   activeCategory === cat
-                    ? { background: '#CC0000', color: '#fff' }
-                    : { background: '#F5F5F5', color: '#888', border: '1px solid #E5E5E5' }
+                    ? { background: '#CC0000', color: '#fff', letterSpacing: '0.1em' }
+                    : { background: 'rgba(255,255,255,0.06)', color: 'rgba(255,255,255,0.45)', letterSpacing: '0.1em' }
                 }
               >
                 {CATEGORY_LABELS[cat]}
@@ -676,144 +693,165 @@ export default function MenuPage() {
         </div>
       )}
 
-      <div className="max-w-md mx-auto px-4">
+      {/* ── Main Content ── */}
+      <div className="max-w-6xl mx-auto px-4">
 
-        {/* ── Promo banners ── */}
-        {!searchQuery && activeCategory === 'Burgers' && (
-          <div className="flex gap-3 overflow-x-auto scrollbar-hide pt-4 pb-1 -mx-4 px-4">
-            {PROMO_BANNERS.map((b) => (
-              <div
-                key={b.title}
-                className="shrink-0 w-52 overflow-hidden relative"
-                style={{ height: 88 }}
-              >
-                {b.image ? (
-                  <Image src={b.image} alt={b.title} fill className="object-cover brightness-50" />
-                ) : (
-                  <div className="absolute inset-0" style={{ background: b.gradient }} />
-                )}
-                <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-transparent" />
-                <div className="absolute inset-0 p-3 flex flex-col justify-center">
-                  <p className="font-heading font-black text-white text-[13px] leading-tight uppercase tracking-tight">{b.title}</p>
-                  <p className="text-[11px] font-body mt-0.5 leading-tight" style={{ color: '#FF6B00' }}>{b.sub}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        )}
-
-        {/* ── Most Ordered ── */}
-        {!searchQuery && activeCategory === 'Burgers' && (
+        {/* ── Search results ── */}
+        {searchQuery ? (
           <div className="mt-5">
-            <h2
-              className="font-heading font-black text-[12px] uppercase tracking-[0.15em] mb-2.5"
-              style={{ color: '#0A0A0A' }}
-            >
-              <span className="inline-flex items-center gap-2">
-                <span className="w-2.5 h-2.5 inline-block" style={{ background: '#CC0000' }} />
-                Most Ordered
-              </span>
-            </h2>
-            <div className="flex gap-2.5 overflow-x-auto scrollbar-hide -mx-4 px-4 pb-1">
-              {popularItems.map((item) => (
-                <button
-                  key={item.id}
-                  onClick={() => handleItemAdd(item)}
-                  className="shrink-0 w-28 overflow-hidden text-left active:scale-95 transition-all duration-150"
-                  style={{ background: '#FFFFFF', border: '1px solid #E5E5E5', borderTop: '3px solid #CC0000' }}
-                >
-                  <div className="relative h-20">
-                    {item.image ? (
-                      <Image src={item.image} alt={item.name} fill className="object-cover" />
-                    ) : (
-                      <div className="absolute inset-0" style={{ background: 'linear-gradient(145deg, #CC0000, #0A0A0A)' }} />
-                    )}
-                  </div>
-                  <div className="p-2">
-                    <p className="font-heading font-black text-[10px] leading-tight line-clamp-2 uppercase" style={{ color: '#0A0A0A' }}>{item.name}</p>
-                    <p className="font-heading font-black text-[11px] mt-1" style={{ color: '#FF6B00' }}>R{item.price}</p>
-                  </div>
-                </button>
-              ))}
-            </div>
-          </div>
-        )}
-
-        {/* ── Menu items list ── */}
-        <div className="mt-4">
-          {searchQuery ? (
-            <>
-              <p className="text-[11px] font-body mb-3" style={{ color: '#888' }}>
-                {filtered.length} result{filtered.length !== 1 ? 's' : ''} for &ldquo;{searchQuery}&rdquo;
-              </p>
-              {filtered.length === 0 ? (
-                <div className="py-16 text-center">
-                  <div className="flex justify-center mb-3" style={{ color: '#CCC' }}>
-                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
-                      <circle cx="11" cy="11" r="8"/>
-                      <path d="m21 21-4.35-4.35"/>
-                    </svg>
-                  </div>
-                  <p className="font-heading font-black uppercase tracking-wide text-sm" style={{ color: '#0A0A0A' }}>Nothing found</p>
-                  <p className="text-xs font-body mt-1" style={{ color: '#888' }}>Try a different search</p>
+            <p className="text-[11px] font-body mb-4" style={{ color: '#888' }}>
+              {filtered.length} result{filtered.length !== 1 ? 's' : ''} for &ldquo;{searchQuery}&rdquo;
+            </p>
+            {filtered.length === 0 ? (
+              <div className="py-16 text-center">
+                <div className="flex justify-center mb-3" style={{ color: '#555' }}>
+                  <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
+                    <circle cx="11" cy="11" r="8"/>
+                    <path d="m21 21-4.35-4.35"/>
+                  </svg>
                 </div>
-              ) : (
-                <div className="space-y-2">
-                  {filtered.map((item) => (
-                    <MenuItemCard key={item.id} item={item} onAdd={handleItemAdd} />
-                  ))}
-                </div>
-              )}
-            </>
-          ) : (
-            <>
-              {/* Section heading */}
-              <div className="mb-3 flex items-end justify-between">
-                <div>
-                  <h2
-                    className="font-heading font-black text-[24px] uppercase leading-none tracking-tight"
-                    style={{ color: '#0A0A0A' }}
-                  >
-                    {activeCategory}
-                  </h2>
-                  {activeCategory === 'Burgers' && (
-                    <p className="text-[10px] font-heading font-black uppercase tracking-widest mt-0.5" style={{ color: '#CC0000' }}>
-                      100% Beef &amp; Chicken
-                    </p>
-                  )}
-                  {activeCategory === 'Smash Burgers' && (
-                    <p className="text-[10px] font-heading font-black uppercase tracking-widest mt-0.5" style={{ color: '#CC0000' }}>
-                      200g Hand-Pressed Patties
-                    </p>
-                  )}
-                  {activeCategory === 'Wingzz' && (
-                    <p className="text-[10px] font-heading font-black uppercase tracking-widest mt-0.5" style={{ color: '#1D4ED8' }}>
-                      Fried · Dunked · Grilled
-                    </p>
-                  )}
-                  {activeCategory === 'Chicken' && (
-                    <p className="text-[10px] font-heading font-black uppercase tracking-widest mt-0.5" style={{ color: '#1D4ED8' }}>
-                      Pick Your Flavour
-                    </p>
-                  )}
-                </div>
-                <span
-                  className="text-[11px] font-heading font-black px-2 py-0.5 uppercase tracking-wide"
-                  style={{ background: '#F5F5F5', color: '#888' }}
-                >
-                  {filtered.length} items
-                </span>
+                <p className="font-heading font-bold uppercase tracking-wide text-sm" style={{ color: 'rgba(255,255,255,0.6)' }}>Nothing found</p>
+                <p className="text-xs font-body mt-1" style={{ color: '#666' }}>Try a different search</p>
               </div>
-              <div className="space-y-2">
-                {filtered.map((item) => (
-                  <MenuItemCard key={item.id} item={item} onAdd={handleItemAdd} />
+            ) : (
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                {filtered.map((item, i) => (
+                  <div
+                    key={item.id}
+                    className="animate-card-in"
+                    style={{ animationDelay: `${i * 40}ms` }}
+                  >
+                    <MenuItemCard item={item} onAdd={handleItemAdd} />
+                  </div>
                 ))}
               </div>
-            </>
-          )}
-        </div>
+            )}
+          </div>
+        ) : (
+          <>
+            {/* ── Category Hero ── */}
+            {meta && (
+              <div
+                key={heroKey}
+                className="relative overflow-hidden -mx-4 animate-hero-in"
+                style={{ height: 'clamp(160px, 30vw, 260px)' }}
+              >
+                <Image
+                  src={meta.hero}
+                  alt={activeCategory}
+                  fill
+                  className="object-cover"
+                  style={{ filter: 'brightness(0.45)' }}
+                  sizes="100vw"
+                  priority
+                />
+                {/* Left-to-right gradient overlay */}
+                <div
+                  className="absolute inset-0"
+                  style={{ background: 'linear-gradient(to right, rgba(10,10,10,0.92) 0%, rgba(10,10,10,0.5) 50%, transparent 100%)' }}
+                />
+                {/* Bottom fade */}
+                <div
+                  className="absolute inset-0"
+                  style={{ background: 'linear-gradient(to top, rgba(17,17,17,0.8) 0%, transparent 60%)' }}
+                />
+                {/* Text */}
+                <div className="absolute inset-0 flex items-end px-4 pb-5">
+                  <div>
+                    <p
+                      className="font-heading font-bold uppercase text-[10px] tracking-[0.2em] mb-1"
+                      style={{ color: meta.accent }}
+                    >
+                      {meta.sub}
+                    </p>
+                    <h2 className="font-display uppercase leading-none text-white" style={{ fontSize: 'clamp(36px, 8vw, 56px)' }}>
+                      {activeCategory}
+                    </h2>
+                    <p className="font-heading font-bold text-[11px] uppercase tracking-[0.15em] mt-1" style={{ color: 'rgba(255,255,255,0.4)' }}>
+                      {filtered.length} items
+                    </p>
+                  </div>
+                </div>
+              </div>
+            )}
 
-        <div className="h-4" />
+            {/* ── Promo banners (Burgers only) ── */}
+            {activeCategory === 'Burgers' && (
+              <div className="flex gap-3 overflow-x-auto scrollbar-hide pt-4 pb-1 -mx-4 px-4">
+                {PROMO_BANNERS.map((b) => (
+                  <div
+                    key={b.title}
+                    className="shrink-0 w-52 overflow-hidden relative"
+                    style={{ height: 88 }}
+                  >
+                    {b.image ? (
+                      <Image src={b.image} alt={b.title} fill className="object-cover brightness-50" />
+                    ) : (
+                      <div className="absolute inset-0" style={{ background: b.gradient }} />
+                    )}
+                    <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-transparent" />
+                    <div className="absolute inset-0 p-3 flex flex-col justify-center">
+                      <p className="font-heading font-bold text-white text-[13px] leading-tight uppercase tracking-tight">{b.title}</p>
+                      <p className="text-[11px] font-body mt-0.5 leading-tight" style={{ color: '#FF6B00' }}>{b.sub}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+
+            {/* ── Most Ordered (Burgers only) ── */}
+            {activeCategory === 'Burgers' && (
+              <div className="mt-5">
+                <h2
+                  className="font-heading font-semibold text-[11px] uppercase mb-2.5"
+                  style={{ color: 'rgba(255,255,255,0.5)', letterSpacing: '0.18em' }}
+                >
+                  <span className="inline-flex items-center gap-2">
+                    <span className="w-2.5 h-2.5 inline-block" style={{ background: '#CC0000' }} />
+                    Most Ordered
+                  </span>
+                </h2>
+                <div className="flex gap-2.5 overflow-x-auto scrollbar-hide -mx-4 px-4 pb-1">
+                  {popularItems.map((item) => (
+                    <button
+                      key={item.id}
+                      onClick={() => handleItemAdd(item)}
+                      className="shrink-0 w-28 overflow-hidden text-left active:scale-95 transition-all duration-150"
+                      style={{ background: '#1A1A1A', border: '1px solid rgba(255,255,255,0.08)', borderTop: '2px solid #CC0000' }}
+                    >
+                      <div className="relative h-20">
+                        {item.image ? (
+                          <Image src={item.image} alt={item.name} fill className="object-cover" />
+                        ) : (
+                          <div className="absolute inset-0" style={{ background: 'linear-gradient(145deg, #CC0000, #0A0A0A)' }} />
+                        )}
+                      </div>
+                      <div className="p-2">
+                        <p className="font-heading font-semibold text-[10px] leading-tight line-clamp-2 uppercase" style={{ color: 'rgba(255,255,255,0.85)', letterSpacing: '0.05em' }}>{item.name}</p>
+                        <p className="font-display text-[13px] mt-1 leading-none" style={{ color: '#FF6B00' }}>R{item.price}</p>
+                      </div>
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* ── Items Grid ── */}
+            <div className="mt-5 grid grid-cols-2 sm:grid-cols-3 gap-3">
+              {filtered.map((item, i) => (
+                <div
+                  key={`${activeCategory}-${item.id}`}
+                  className="animate-card-in"
+                  style={{ animationDelay: `${i * 45}ms` }}
+                >
+                  <MenuItemCard item={item} onAdd={handleItemAdd} />
+                </div>
+              ))}
+            </div>
+          </>
+        )}
+
+        <div className="h-8" />
       </div>
 
       {/* ── Variant / Flavour modal ── */}

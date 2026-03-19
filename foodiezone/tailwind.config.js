@@ -8,23 +8,27 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        // Street culture palette
-        crimson:     '#CC0000',   // primary red
-        'fz-blue':   '#1D4ED8',   // street blue
-        'fz-navy':   '#0A1628',   // deep navy
-        'fz-orange': '#FF6B00',   // price / highlight orange
-        'fz-surface':'#F5F5F5',   // light card bg
-        'fz-card':   '#FFFFFF',   // card white
-        'fz-border': '#E5E5E5',   // subtle border
-        ink:         '#0A0A0A',   // near-black text
+        crimson:     '#CC0000',
+        'fz-blue':   '#1D4ED8',
+        'fz-navy':   '#0A1628',
+        'fz-orange': '#FF6B00',
+        'fz-surface':'#F5F5F5',
+        'fz-card':   '#FFFFFF',
+        'fz-border': '#E5E5E5',
+        ink:         '#0A0A0A',
       },
       fontFamily: {
-        heading: ['var(--font-syne)',    'sans-serif'],
-        body:    ['var(--font-dm-sans)', 'sans-serif'],
+        display: ['var(--font-anton)',  'Impact', 'sans-serif'],
+        heading: ['var(--font-barlow)', 'sans-serif'],
+        body:    ['var(--font-nunito)', 'sans-serif'],
       },
       boxShadow: {
         'card':       '0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04)',
         'card-hover': '0 4px 12px rgba(0,0,0,0.10), 0 2px 4px rgba(0,0,0,0.06)',
+        'glow-red':   '0 0 24px rgba(204,0,0,0.35)',
+      },
+      maxWidth: {
+        container: '72rem', // 1152px — consistent throughout
       },
     },
   },

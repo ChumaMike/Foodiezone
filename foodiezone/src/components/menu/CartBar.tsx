@@ -22,12 +22,12 @@ export default function CartBar({ onViewCart }: CartBarProps) {
           {/* Left: count + label */}
           <div className="flex items-center gap-2.5">
             <span
-              className="text-[11px] font-black min-w-[22px] h-[22px] flex items-center justify-center px-1"
-              style={{ background: '#FFFFFF', color: '#CC0000', borderRadius: 0 }}
+              className="text-[11px] font-heading font-bold min-w-[22px] h-[22px] flex items-center justify-center px-1"
+              style={{ background: 'rgba(0,0,0,0.3)', color: '#fff', borderRadius: 0 }}
             >
               {count}
             </span>
-            <span className="font-heading font-black text-[13px] uppercase tracking-wide">View Cart</span>
+            <span className="font-heading font-bold text-[13px] uppercase tracking-wide">View Cart</span>
           </div>
 
           {/* Right: total */}

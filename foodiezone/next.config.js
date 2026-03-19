@@ -12,20 +12,5 @@ module.exports = withPWA({
   experimental: {
     webpackBuildWorker: true
   },
-  webpack: (config) => {
-    // Disable webpack 5 features that conflict with PWA
-    config.experiments = {
-      ...config.experiments,
-      topLevelAwait: false,
-      layers: false
-    }
-    return config
-  },
-  turbopack: {},
-  // Railway specific configuration
   output: 'standalone',
-  // Ensure proper port binding for Railway
-  serverRuntimeConfig: {
-    port: process.env.PORT || 3000
-  }
 })

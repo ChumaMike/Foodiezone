@@ -56,7 +56,17 @@ function UserIcon() {
   )
 }
 
+function HomeIcon() {
+  return (
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+      <polyline points="9 22 9 12 15 12 15 22"/>
+    </svg>
+  )
+}
+
 const ALL_NAV_ITEMS = [
+  { href: '/',         label: 'Home',    icon: <HomeIcon />,      roles: ['customer'] as string[] },
   { href: '/menu',     label: 'Menu',    icon: <ForkKnifeIcon />, roles: ['customer'] as string[] },
   { href: '/tracking', label: 'Track',   icon: <MapPinIcon />,    roles: ['customer'] as string[] },
   { href: '/profile',  label: 'Profile', icon: <UserIcon />,      roles: ['customer'] as string[] },
@@ -77,8 +87,8 @@ export default function BottomNav() {
     <nav
       className="fixed bottom-0 left-0 right-0 z-40"
       style={{
-        background: '#FFFFFF',
-        borderTop: '2px solid #0A0A0A',
+        background: '#111111',
+        borderTop: '1px solid rgba(255,255,255,0.08)',
       }}
     >
       <div className="flex items-center h-16 max-w-md mx-auto">
@@ -90,7 +100,6 @@ export default function BottomNav() {
               href={href}
               className="flex flex-col items-center justify-center gap-1 flex-1 h-full relative transition-opacity duration-150"
             >
-              {/* Active top bar */}
               {active && (
                 <span
                   className="absolute top-0 left-0 right-0 h-0.5"
@@ -98,12 +107,11 @@ export default function BottomNav() {
                 />
               )}
 
-              {/* Icon */}
-              <div className="relative" style={{ color: active ? '#CC0000' : '#888' }}>
+              <div className="relative" style={{ color: active ? '#CC0000' : 'rgba(255,255,255,0.35)' }}>
                 {icon}
                 {href === '/menu' && count > 0 && (
                   <span
-                    className="absolute -top-1.5 -right-2 text-white text-[10px] font-black min-w-[16px] h-4 flex items-center justify-center px-0.5 animate-badge-pop"
+                    className="absolute -top-1.5 -right-2 text-white text-[10px] font-heading font-bold min-w-[16px] h-4 flex items-center justify-center px-0.5 animate-badge-pop"
                     style={{ background: '#CC0000' }}
                   >
                     {count > 9 ? '9+' : count}
@@ -111,7 +119,7 @@ export default function BottomNav() {
                 )}
                 {href === '/profile' && tier && (
                   <span
-                    className="absolute -top-1 -right-2.5 text-white text-[8px] font-black px-1 py-0.5 leading-none"
+                    className="absolute -top-1 -right-2.5 text-white text-[8px] font-heading font-bold px-1 py-0.5 leading-none"
                     style={{ background: tier.color }}
                   >
                     {tier.label.toUpperCase().slice(0, 3)}
@@ -119,10 +127,9 @@ export default function BottomNav() {
                 )}
               </div>
 
-              {/* Label */}
               <span
-                className="text-[11px] font-heading font-black uppercase tracking-wide leading-none"
-                style={{ color: active ? '#CC0000' : '#AAA' }}
+                className="text-[10px] font-heading font-semibold uppercase leading-none"
+                style={{ color: active ? '#CC0000' : 'rgba(255,255,255,0.3)', letterSpacing: '0.1em' }}
               >
                 {label}
               </span>
