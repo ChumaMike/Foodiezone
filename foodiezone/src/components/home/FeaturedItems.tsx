@@ -2,6 +2,8 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
+import { motion } from 'framer-motion'
+import { staggerContainer, fadeUp } from '@/lib/motion'
 
 const FEATURED = [
   {
@@ -38,12 +40,20 @@ const FEATURED = [
   },
 ]
 
+const VIEWPORT = { once: true, margin: '-80px' }
+
 export default function FeaturedItems() {
   return (
     <section className="py-20 px-5" style={{ background: '#111111' }}>
       <div className="max-w-container mx-auto">
         {/* Header */}
-        <div className="flex items-end justify-between mb-10">
+        <motion.div
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="show"
+          viewport={VIEWPORT}
+          className="flex items-end justify-between mb-10"
+        >
           <div>
             <p className="font-heading font-bold text-xs uppercase tracking-[0.3em] mb-2" style={{ color: '#FF6B00' }}>
               Most ordered
@@ -59,62 +69,79 @@ export default function FeaturedItems() {
           >
             Full Menu →
           </Link>
-        </div>
+        </motion.div>
 
         {/* Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="show"
+          viewport={VIEWPORT}
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4"
+        >
           {FEATURED.map((item) => (
-            <Link
-              href="/menu"
+            <motion.div
               key={item.name}
-              className="group flex flex-col overflow-hidden transition-all duration-200 hover:-translate-y-1"
-              style={{ background: '#1A1A1A', border: '1px solid rgba(255,255,255,0.06)' }}
+              variants={fadeUp}
+              whileHover={{ y: -6, boxShadow: '0 12px 32px rgba(204,0,0,0.15)' }}
+              transition={{ type: 'spring', stiffness: 300, damping: 25 }}
             >
-              {/* Image */}
-              <div className="relative overflow-hidden" style={{ height: 200 }}>
-                <Image
-                  src={item.image}
-                  alt={item.name}
-                  fill
-                  className="object-cover transition-transform duration-500 group-hover:scale-105"
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                />
-                <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(26,26,26,0.6) 0%, transparent 60%)' }} />
-                {/* Badge */}
-                <span
-                  className="absolute top-3 left-3 text-[10px] font-heading font-bold uppercase tracking-wide px-2.5 py-1"
-                  style={{ background: item.badgeColor, color: '#fff' }}
-                >
-                  {item.badge}
-                </span>
-              </div>
-
-              {/* Info */}
-              <div className="p-4 flex flex-col flex-1">
-                <h3 className="font-heading font-bold text-white uppercase text-sm leading-snug tracking-tight mb-1">
-                  {item.name}
-                </h3>
-                <p className="font-body text-xs leading-relaxed flex-1" style={{ color: 'rgba(255,255,255,0.4)' }}>
-                  {item.desc}
-                </p>
-                <div className="flex items-center justify-between mt-4">
-                  <span className="font-heading font-bold text-lg" style={{ color: '#FF6B00' }}>
-                    R{item.price}
-                  </span>
+              <Link
+                href="/menu"
+                className="group flex flex-col overflow-hidden h-full"
+                style={{ background: '#1A1A1A', border: '1px solid rgba(255,255,255,0.06)' }}
+              >
+                {/* Image */}
+                <div className="relative overflow-hidden" style={{ height: 200 }}>
+                  <Image
+                    src={item.image}
+                    alt={item.name}
+                    fill
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                  />
+                  <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(26,26,26,0.6) 0%, transparent 60%)' }} />
                   <span
-                    className="text-xs font-heading font-bold uppercase tracking-widest px-3 py-1.5 transition-colors"
-                    style={{ background: '#CC0000', color: '#fff' }}
+                    className="absolute top-3 left-3 text-[10px] font-heading font-bold uppercase tracking-wide px-2.5 py-1"
+                    style={{ background: item.badgeColor, color: '#fff' }}
                   >
-                    + Add
+                    {item.badge}
                   </span>
                 </div>
-              </div>
-            </Link>
+
+                {/* Info */}
+                <div className="p-4 flex flex-col flex-1">
+                  <h3 className="font-heading font-bold text-white uppercase text-sm leading-snug tracking-tight mb-1">
+                    {item.name}
+                  </h3>
+                  <p className="font-body text-xs leading-relaxed flex-1" style={{ color: 'rgba(255,255,255,0.4)' }}>
+                    {item.desc}
+                  </p>
+                  <div className="flex items-center justify-between mt-4">
+                    <span className="font-heading font-bold text-lg" style={{ color: '#FF6B00' }}>
+                      R{item.price}
+                    </span>
+                    <span
+                      className="text-xs font-heading font-bold uppercase tracking-widest px-3 py-1.5"
+                      style={{ background: '#CC0000', color: '#fff' }}
+                    >
+                      + Add
+                    </span>
+                  </div>
+                </div>
+              </Link>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
 
         {/* Mobile full menu link */}
-        <div className="mt-6 text-center sm:hidden">
+        <motion.div
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="show"
+          viewport={VIEWPORT}
+          className="mt-6 text-center sm:hidden"
+        >
           <Link
             href="/menu"
             className="inline-block text-sm font-heading font-bold uppercase tracking-widest px-8 py-3"
@@ -122,7 +149,7 @@ export default function FeaturedItems() {
           >
             Full Menu →
           </Link>
-        </div>
+        </motion.div>
       </div>
     </section>
   )

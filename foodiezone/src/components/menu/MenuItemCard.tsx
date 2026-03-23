@@ -1,6 +1,8 @@
 'use client'
 
+import { useState } from 'react'
 import Image from 'next/image'
+import { motion } from 'framer-motion'
 
 export interface MenuItem {
   id: string
@@ -41,13 +43,26 @@ const BADGE_STYLES: Record<string, { bg: string; color: string }> = {
 }
 
 export default function MenuItemCard({ item, onAdd }: MenuItemCardProps) {
+  const [added, setAdded] = useState(false)
   const gradient = CATEGORY_GRADIENT[item.category] ?? 'linear-gradient(145deg,#1a1a1a,#333)'
   const badge = item.badge ? BADGE_STYLES[item.badge] : null
   const isSpecial = item.hasVariant || item.hasFlavour
 
+  const handleAdd = (e: React.MouseEvent) => {
+    e.stopPropagation()
+    if (!isSpecial) {
+      setAdded(true)
+      setTimeout(() => setAdded(false), 550)
+    }
+    onAdd(item)
+  }
+
   return (
-    <div
-      className="group flex flex-col overflow-hidden cursor-pointer transition-transform duration-200 active:scale-[0.97]"
+    <motion.div
+      whileHover={{ y: -3 }}
+      whileTap={{ scale: 0.97 }}
+      transition={{ type: 'spring', stiffness: 400, damping: 25 }}
+      className="group flex flex-col overflow-hidden cursor-pointer"
       style={{ background: '#1C1C1C', border: '1px solid rgba(255,255,255,0.07)' }}
       onClick={() => onAdd(item)}
     >
@@ -115,19 +130,20 @@ export default function MenuItemCard({ item, onAdd }: MenuItemCardProps) {
               </span>
             )}
           </div>
-          <button
-            onClick={(e) => { e.stopPropagation(); onAdd(item) }}
-            className="font-heading font-semibold text-[11px] uppercase px-3.5 py-2 transition-all active:scale-95"
-            style={
-              isSpecial
-                ? { background: '#1D4ED8', color: '#fff', letterSpacing: '0.1em' }
-                : { background: '#CC0000', color: '#fff', letterSpacing: '0.1em' }
-            }
+          <motion.button
+            whileTap={{ scale: 0.92 }}
+            onClick={handleAdd}
+            className="font-heading font-semibold text-[11px] uppercase px-3.5 py-2"
+            animate={{
+              background: added ? '#15803d' : isSpecial ? '#1D4ED8' : '#CC0000',
+            }}
+            transition={{ duration: 0.15 }}
+            style={{ color: '#fff', letterSpacing: '0.1em' }}
           >
-            {isSpecial ? 'Build →' : '+ Add'}
-          </button>
+            {added ? '✓ Added' : isSpecial ? 'Build →' : '+ Add'}
+          </motion.button>
         </div>
       </div>
-    </div>
+    </motion.div>
   )
 }

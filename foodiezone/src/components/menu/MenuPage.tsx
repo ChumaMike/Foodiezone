@@ -2,15 +2,18 @@
 
 import { useState, useCallback } from 'react'
 import Image from 'next/image'
+import { AnimatePresence, motion } from 'framer-motion'
 import { useCart } from '@/context/CartContext'
 import { useAuth } from '@/context/AuthContext'
 import { useProfile } from '@/context/ProfileContext'
+import { useToast } from '@/context/ToastContext'
 import BottomNav from '@/components/BottomNav'
 import MenuItemCard, { MenuItem } from './MenuItemCard'
 import VariantModal from './VariantModal'
 import CartBar from './CartBar'
 import CheckoutScreen from './CheckoutScreen'
 import CustomerSetupScreen from '@/components/auth/CustomerSetupScreen'
+import { staggerContainer, fadeUp, slideInRight } from '@/lib/motion'
 
 const MENU_ITEMS: MenuItem[] = [
   // ── Traditional Burgers ────────────────────────────────────────────
@@ -537,27 +540,20 @@ const PROMO_BANNERS = [
 ]
 
 export default function MenuPage() {
-  const { addItem } = useCart()
+  const { addItem, count } = useCart()
   const { role } = useAuth()
   const { hasProfile } = useProfile()
+  const { show: showToast } = useToast()
   const [activeCategory, setActiveCategory] = useState('Burgers')
-  const [heroKey, setHeroKey] = useState(0)
   const [searchQuery, setSearchQuery] = useState('')
   const [variantItem, setVariantItem] = useState<MenuItem | null>(null)
   const [showCheckout, setShowCheckout] = useState(false)
-  const [toast, setToast] = useState<string | null>(null)
 
-  const showToastMessage = useCallback((name: string) => {
-    setToast(name)
-    setTimeout(() => setToast(null), 2800)
+  const handleCategoryChange = useCallback((cat: string) => {
+    setActiveCategory(cat)
   }, [])
 
-  const handleCategoryChange = (cat: string) => {
-    setActiveCategory(cat)
-    setHeroKey((k) => k + 1)
-  }
-
-  const handleItemAdd = (item: MenuItem) => {
+  const handleItemAdd = useCallback((item: MenuItem) => {
     if (item.hasVariant || item.hasFlavour) {
       setVariantItem(item)
     } else {
@@ -568,11 +564,11 @@ export default function MenuPage() {
         addons: [],
         total: item.price,
       })
-      showToastMessage(item.name)
+      showToast(`${item.name} added`)
     }
-  }
+  }, [addItem, showToast])
 
-  const handleVariantAdd = (displayName: string, _variant: string, _flavour: string, total: number) => {
+  const handleVariantAdd = useCallback((displayName: string, _variant: string, _flavour: string, total: number) => {
     addItem({
       id: `${variantItem!.id}-${Date.now()}`,
       name: displayName,
@@ -580,9 +576,9 @@ export default function MenuPage() {
       addons: [],
       total,
     })
-    showToastMessage(displayName)
+    showToast(`${displayName} added`)
     setVariantItem(null)
-  }
+  }, [addItem, showToast, variantItem])
 
   const filtered = searchQuery
     ? MENU_ITEMS.filter(
@@ -599,19 +595,6 @@ export default function MenuPage() {
     <div className="min-h-screen pb-32" style={{ background: '#111111' }}>
       {/* Customer profile setup overlay */}
       {role === 'customer' && !hasProfile && <CustomerSetupScreen />}
-
-      {/* ── Toast ── */}
-      {toast && (
-        <div className="fixed top-5 left-1/2 z-[100] pointer-events-none animate-toast">
-          <div
-            className="text-white text-sm font-heading font-bold px-4 py-2.5 flex items-center gap-2 whitespace-nowrap uppercase tracking-wide shadow-lg"
-            style={{ background: '#0A0A0A', borderLeft: '3px solid #CC0000' }}
-          >
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#CC0000" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-            <span>{toast} added</span>
-          </div>
-        </div>
-      )}
 
       {/* ── Sticky Header ── */}
       <header className="sticky top-0 z-20" style={{ background: '#0A0A0A', borderBottom: '3px solid #CC0000' }}>
@@ -676,18 +659,34 @@ export default function MenuPage() {
         >
           <div className="flex gap-2 overflow-x-auto scrollbar-hide px-4 max-w-6xl mx-auto">
             {ORDERED_CATEGORIES.map((cat) => (
-              <button
+              <motion.button
                 key={cat}
+                whileTap={{ scale: 0.93 }}
                 onClick={() => handleCategoryChange(cat)}
-                className="shrink-0 px-3.5 py-1.5 text-[11px] font-heading font-semibold uppercase transition-all duration-150"
-                style={
-                  activeCategory === cat
-                    ? { background: '#CC0000', color: '#fff', letterSpacing: '0.1em' }
-                    : { background: 'rgba(255,255,255,0.06)', color: 'rgba(255,255,255,0.45)', letterSpacing: '0.1em' }
-                }
+                className="relative shrink-0 px-3.5 py-1.5 text-[11px] font-heading font-semibold uppercase"
+                style={{
+                  color: activeCategory === cat ? '#fff' : 'rgba(255,255,255,0.45)',
+                  letterSpacing: '0.1em',
+                  background: 'transparent',
+                  transition: 'color 0.15s',
+                }}
               >
-                {CATEGORY_LABELS[cat]}
-              </button>
+                {activeCategory === cat && (
+                  <motion.span
+                    layoutId="cat-active-pill"
+                    className="absolute inset-0"
+                    style={{ background: '#CC0000' }}
+                    transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                  />
+                )}
+                {activeCategory !== cat && (
+                  <span
+                    className="absolute inset-0"
+                    style={{ background: 'rgba(255,255,255,0.06)' }}
+                  />
+                )}
+                <span className="relative z-10">{CATEGORY_LABELS[cat]}</span>
+              </motion.button>
             ))}
           </div>
         </div>
@@ -714,26 +713,32 @@ export default function MenuPage() {
                 <p className="text-xs font-body mt-1" style={{ color: '#666' }}>Try a different search</p>
               </div>
             ) : (
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-                {filtered.map((item, i) => (
-                  <div
-                    key={item.id}
-                    className="animate-card-in"
-                    style={{ animationDelay: `${i * 40}ms` }}
-                  >
+              <motion.div
+                variants={staggerContainer}
+                initial="hidden"
+                animate="show"
+                className="grid grid-cols-2 sm:grid-cols-3 gap-3"
+              >
+                {filtered.map((item) => (
+                  <motion.div key={item.id} variants={fadeUp}>
                     <MenuItemCard item={item} onAdd={handleItemAdd} />
-                  </div>
+                  </motion.div>
                 ))}
-              </div>
+              </motion.div>
             )}
           </div>
         ) : (
           <>
             {/* ── Category Hero ── */}
+            <AnimatePresence mode="wait">
             {meta && (
-              <div
-                key={heroKey}
-                className="relative overflow-hidden -mx-4 animate-hero-in"
+              <motion.div
+                key={activeCategory}
+                variants={slideInRight}
+                initial="hidden"
+                animate="show"
+                exit="exit"
+                className="relative overflow-hidden -mx-4"
                 style={{ height: 'clamp(160px, 30vw, 260px)' }}
               >
                 <Image
@@ -772,8 +777,9 @@ export default function MenuPage() {
                     </p>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             )}
+            </AnimatePresence>
 
             {/* ── Promo banners (Burgers only) ── */}
             {activeCategory === 'Burgers' && (
@@ -837,17 +843,25 @@ export default function MenuPage() {
             )}
 
             {/* ── Items Grid ── */}
-            <div className="mt-5 grid grid-cols-2 sm:grid-cols-3 gap-3">
-              {filtered.map((item, i) => (
-                <div
-                  key={`${activeCategory}-${item.id}`}
-                  className="animate-card-in"
-                  style={{ animationDelay: `${i * 45}ms` }}
-                >
-                  <MenuItemCard item={item} onAdd={handleItemAdd} />
-                </div>
-              ))}
-            </div>
+            <motion.div
+              key={activeCategory}
+              variants={staggerContainer}
+              initial="hidden"
+              animate="show"
+              className="mt-5 grid grid-cols-2 sm:grid-cols-3 gap-3"
+            >
+              <AnimatePresence mode="popLayout">
+                {filtered.map((item) => (
+                  <motion.div
+                    key={item.id}
+                    variants={fadeUp}
+                    layout
+                  >
+                    <MenuItemCard item={item} onAdd={handleItemAdd} />
+                  </motion.div>
+                ))}
+              </AnimatePresence>
+            </motion.div>
           </>
         )}
 
@@ -855,16 +869,20 @@ export default function MenuPage() {
       </div>
 
       {/* ── Variant / Flavour modal ── */}
-      {variantItem && (
-        <VariantModal
-          item={variantItem}
-          onClose={() => setVariantItem(null)}
-          onAddToCart={handleVariantAdd}
-        />
-      )}
+      <AnimatePresence>
+        {variantItem && (
+          <VariantModal
+            item={variantItem}
+            onClose={() => setVariantItem(null)}
+            onAddToCart={handleVariantAdd}
+          />
+        )}
+      </AnimatePresence>
 
       {/* ── Cart bar ── */}
-      <CartBar onViewCart={() => setShowCheckout(true)} />
+      <AnimatePresence>
+        {count > 0 && <CartBar onViewCart={() => setShowCheckout(true)} />}
+      </AnimatePresence>
 
       {/* ── Checkout ── */}
       <CheckoutScreen show={showCheckout} onClose={() => setShowCheckout(false)} />

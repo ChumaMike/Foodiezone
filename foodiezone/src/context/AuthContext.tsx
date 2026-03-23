@@ -12,8 +12,8 @@ interface AuthContextType {
   isDriver: boolean
 }
 
-const KITCHEN_PASSWORD = 'staff123'
-const DRIVER_PASSWORD  = 'drive123'
+const KITCHEN_PASSWORD = process.env.NEXT_PUBLIC_KITCHEN_PW ?? 'staff123'
+const DRIVER_PASSWORD  = process.env.NEXT_PUBLIC_DRIVER_PW  ?? 'drive123'
 
 const AuthContext = createContext<AuthContextType | null>(null)
 

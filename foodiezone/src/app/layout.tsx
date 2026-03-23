@@ -5,6 +5,7 @@ import { CartProvider } from '@/context/CartContext'
 import { AuthProvider } from '@/context/AuthContext'
 import { OrderProvider } from '@/context/OrderContext'
 import { ProfileProvider } from '@/context/ProfileContext'
+import { ToastProvider } from '@/context/ToastContext'
 
 const anton = Anton({
   weight: '400',
@@ -59,13 +60,50 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel="manifest" href="/manifest.json" />
         <meta name="theme-color" content="#0A0A0A" />
         <link rel="apple-touch-icon" href="/icons/icon-192.png" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'Restaurant',
+              name: 'Foodie Zone',
+              description: 'Premium burgers, wings, dagwoods, grilled chicken & more. Delivered hot and fast in Orlando East, Soweto.',
+              address: {
+                '@type': 'PostalAddress',
+                streetAddress: 'Orlando East',
+                addressLocality: 'Soweto',
+                addressRegion: 'Gauteng',
+                postalCode: '1804',
+                addressCountry: 'ZA',
+              },
+              servesCuisine: ['Burgers', 'Chicken', 'Wings', 'Fast Food'],
+              priceRange: 'R30–R185',
+              openingHoursSpecification: [
+                {
+                  '@type': 'OpeningHoursSpecification',
+                  dayOfWeek: ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'],
+                  opens: '10:00',
+                  closes: '22:00',
+                },
+              ],
+              url: 'https://foodiezone.co.za',
+              aggregateRating: {
+                '@type': 'AggregateRating',
+                ratingValue: '4.8',
+                reviewCount: '200',
+              },
+            }),
+          }}
+        />
       </head>
       <body className="font-body min-h-screen" style={{ background: '#0A0A0A', color: '#FFFFFF' }}>
         <AuthProvider>
           <ProfileProvider>
             <OrderProvider>
               <CartProvider>
-                {children}
+                <ToastProvider>
+                  {children}
+                </ToastProvider>
               </CartProvider>
             </OrderProvider>
           </ProfileProvider>

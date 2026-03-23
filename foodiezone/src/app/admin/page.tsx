@@ -132,7 +132,7 @@ function AdminLogin({ onUnlock }: { onUnlock: () => void }) {
   const [shake, setShake] = useState(false)
 
   function attempt() {
-    if (pw === 'admin123') {
+    if (pw === (process.env.NEXT_PUBLIC_ADMIN_PW ?? 'admin123')) {
       onUnlock()
     } else {
       setError(true)

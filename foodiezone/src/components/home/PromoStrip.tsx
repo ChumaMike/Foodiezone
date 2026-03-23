@@ -1,6 +1,8 @@
 'use client'
 
 import Link from 'next/link'
+import { motion } from 'framer-motion'
+import { staggerContainer, fadeUp } from '@/lib/motion'
 
 const PERKS = [
   {
@@ -32,6 +34,8 @@ const PERKS = [
   },
 ]
 
+const VIEWPORT = { once: true, margin: '-80px' }
+
 export default function PromoStrip() {
   return (
     <>
@@ -45,28 +49,47 @@ export default function PromoStrip() {
       {/* Why Foodie Zone */}
       <section className="py-20 px-5" style={{ background: '#0A0A0A' }}>
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-14">
+          <motion.div
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+            className="text-center mb-14"
+          >
             <p className="font-heading font-black text-xs uppercase tracking-[0.3em] mb-2" style={{ color: '#CC0000' }}>Why us</p>
             <h2 className="font-heading font-black text-white uppercase text-4xl md:text-5xl leading-none tracking-tight">
               WHY FOODIE ZONE
             </h2>
-          </div>
+          </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <motion.div
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="show"
+            viewport={VIEWPORT}
+            className="grid grid-cols-1 md:grid-cols-3 gap-8"
+          >
             {PERKS.map((perk) => (
-              <div
+              <motion.div
                 key={perk.title}
+                variants={fadeUp}
                 className="p-8 flex flex-col items-start gap-4"
                 style={{ border: '1px solid rgba(255,255,255,0.06)', background: 'rgba(255,255,255,0.02)' }}
               >
-                <div style={{ color: '#CC0000' }}>{perk.icon}</div>
+                <motion.div
+                  whileHover={{ scale: 1.2, rotate: -5 }}
+                  transition={{ type: 'spring', stiffness: 400, damping: 18 }}
+                  style={{ color: '#CC0000' }}
+                >
+                  {perk.icon}
+                </motion.div>
                 <div>
                   <h3 className="font-heading font-black text-white uppercase text-lg tracking-tight mb-2">{perk.title}</h3>
                   <p className="font-body text-sm leading-relaxed" style={{ color: 'rgba(255,255,255,0.4)' }}>{perk.desc}</p>
                 </div>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
 
@@ -85,21 +108,30 @@ export default function PromoStrip() {
         <div className="absolute inset-0" style={{ background: 'linear-gradient(to right, rgba(10,10,10,0.8) 0%, rgba(10,10,10,0.2) 60%)' }} />
         <div className="relative z-10 h-full flex items-center px-5">
           <div className="max-w-7xl mx-auto">
-            <p className="font-heading font-black text-xs uppercase tracking-[0.3em] mb-4" style={{ color: '#FF6B00' }}>
-              Fresh every day
-            </p>
-            <h2 className="font-heading font-black text-white uppercase leading-none tracking-tight mb-6"
-              style={{ fontSize: 'clamp(2rem, 6vw, 4rem)' }}>
-              HAND-PRESSED.<br />
-              <span style={{ color: '#CC0000' }}>FLAME HOT.</span>
-            </h2>
-            <Link
-              href="/menu"
-              className="inline-block font-heading font-black uppercase tracking-widest px-8 py-3 text-sm transition-all hover:brightness-110"
-              style={{ background: '#CC0000', color: '#fff' }}
+            <motion.div
+              variants={fadeUp}
+              initial="hidden"
+              whileInView="show"
+              viewport={VIEWPORT}
             >
-              ORDER NOW →
-            </Link>
+              <p className="font-heading font-black text-xs uppercase tracking-[0.3em] mb-4" style={{ color: '#FF6B00' }}>
+                Fresh every day
+              </p>
+              <h2 className="font-heading font-black text-white uppercase leading-none tracking-tight mb-6"
+                style={{ fontSize: 'clamp(2rem, 6vw, 4rem)' }}>
+                HAND-PRESSED.<br />
+                <span style={{ color: '#CC0000' }}>FLAME HOT.</span>
+              </h2>
+              <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }} className="inline-block">
+                <Link
+                  href="/menu"
+                  className="inline-block font-heading font-black uppercase tracking-widest px-8 py-3 text-sm"
+                  style={{ background: '#CC0000', color: '#fff' }}
+                >
+                  ORDER NOW →
+                </Link>
+              </motion.div>
+            </motion.div>
           </div>
         </div>
       </section>
