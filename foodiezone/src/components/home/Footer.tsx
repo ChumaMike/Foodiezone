@@ -1,6 +1,8 @@
 'use client'
 
 import Link from 'next/link'
+// TODO: replace with real Foodiezone WhatsApp number (FOODIEZONE_WA in src/lib/whatsapp.ts)
+import { FOODIEZONE_WA_URL } from '@/lib/whatsapp'
 
 export default function Footer() {
   return (
@@ -19,7 +21,7 @@ export default function Footer() {
             {/* Social */}
             <div className="flex gap-3">
               <a
-                href="https://wa.me/27000000000"
+                href={FOODIEZONE_WA_URL}
                 className="p-2.5 transition-colors hover:bg-white/10"
                 style={{ border: '1px solid rgba(255,255,255,0.1)' }}
                 aria-label="WhatsApp"
@@ -79,7 +81,7 @@ export default function Footer() {
               <li>Gauteng, South Africa, 1809</li>
               <li>Mon – Sun: 10:00 – 22:00</li>
               <li>
-                <a href="https://wa.me/27000000000" className="hover:text-white transition-colors" style={{ color: '#25D366' }}>
+                <a href={FOODIEZONE_WA_URL} className="hover:text-white transition-colors" style={{ color: '#25D366' }}>
                   WhatsApp us →
                 </a>
               </li>

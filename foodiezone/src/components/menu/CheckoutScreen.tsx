@@ -8,6 +8,7 @@ import { useToast } from '@/context/ToastContext'
 import { useState, useEffect } from 'react'
 import { motion, useAnimationControls, AnimatePresence } from 'framer-motion'
 import { slideUpSheet, backdropVariants, fadeUp, staggerContainer } from '@/lib/motion'
+import { buildWhatsAppCheckoutUrl, type CartLine } from '@/lib/whatsapp'
 
 interface CheckoutScreenProps {
   show: boolean
@@ -68,13 +69,29 @@ export default function CheckoutScreen({ show, onClose }: CheckoutScreenProps) {
     }
   }, [profile?.defaultAddress, address])
 
-  const handlePlaceOrder = async () => {
+  const validateAddress = () => {
     if (!address.trim() || address.trim().length < 6) {
       setAddressError('Please enter your full delivery address')
       addressControls.start({ x: [0, -8, 8, -6, 6, -4, 0], transition: { duration: 0.35 } })
-      return
+      return false
     }
     setAddressError('')
+    return true
+  }
+
+  const buildLines = (): CartLine[] =>
+    items.map((i) => {
+      const variant = i.addons.length ? i.addons.map((a) => a.name).join(', ') : undefined
+      // i.total is the line total for the given quantity, so price-per-unit:
+      const price = i.quantity > 0 ? i.total / i.quantity : i.basePrice
+      return { name: i.name, qty: i.quantity, price, variant }
+    })
+
+  const paymentLabel = () =>
+    PAYMENT_METHODS.find((m) => m.id === paymentMethod)?.label ?? paymentMethod
+
+  const handlePlaceOrder = async () => {
+    if (!validateAddress()) return
     setPlacing(true)
     await new Promise((r) => setTimeout(r, 700))
     placeOrder({
@@ -89,6 +106,40 @@ export default function CheckoutScreen({ show, onClose }: CheckoutScreenProps) {
     incrementRep()
     clearCart()
     showToast('Order placed! Tracking your delivery…')
+    router.push('/tracking')
+  }
+
+  const handleWhatsAppOrder = () => {
+    if (!validateAddress()) return
+    const url = buildWhatsAppCheckoutUrl({
+      // TODO: replace with real Foodiezone WhatsApp number (FOODIEZONE_WA in src/lib/whatsapp.ts)
+      business: 'Foodiezone',
+      mode: 'delivery',
+      lines: buildLines(),
+      deliveryFee: DELIVERY_FEE,
+      paymentMethod: paymentLabel(),
+      customer: {
+        name: profile?.name,
+        phone: profile?.phone,
+        address,
+      },
+    })
+    // Still record the local order so the demo tracking flow works.
+    placeOrder({
+      items,
+      address,
+      paymentMethod,
+      subtotal: total,
+      deliveryFee: DELIVERY_FEE,
+      customerName: profile?.name ?? 'Customer',
+      customerPhone: profile?.phone ?? '',
+    })
+    incrementRep()
+    clearCart()
+    showToast('Opening WhatsApp…')
+    if (typeof window !== 'undefined') {
+      window.open(url, '_blank', 'noopener,noreferrer')
+    }
     router.push('/tracking')
   }
 
@@ -328,6 +379,22 @@ export default function CheckoutScreen({ show, onClose }: CheckoutScreenProps) {
                   ) : (
                     `Place Order — R${total + DELIVERY_FEE}`
                   )}
+                </motion.button>
+
+                {/* WhatsApp send CTA */}
+                <motion.button
+                  whileTap={{ scale: placing || items.length === 0 ? 1 : 0.97 }}
+                  onClick={handleWhatsAppOrder}
+                  disabled={placing || items.length === 0}
+                  className="mt-3 w-full text-white font-heading font-bold py-4 text-[15px] uppercase tracking-wide disabled:opacity-40 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                  style={{ background: '#25D366', transition: 'background 0.2s' }}
+                  aria-label="Send order on WhatsApp"
+                >
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="white" aria-hidden="true">
+                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+                    <path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.558 4.122 1.528 5.856L0 24l6.307-1.507A11.934 11.934 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.79 9.79 0 0 1-4.988-1.364l-.357-.212-3.745.895.938-3.63-.233-.374A9.786 9.786 0 0 1 2.182 12C2.182 6.57 6.57 2.182 12 2.182S21.818 6.57 21.818 12 17.43 21.818 12 21.818z"/>
+                  </svg>
+                  Send Order on WhatsApp
                 </motion.button>
               </div>
             </div>
