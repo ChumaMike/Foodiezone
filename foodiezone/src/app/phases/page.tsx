@@ -2,7 +2,7 @@ import Navbar from '@/components/home/Navbar'
 import Link from 'next/link'
 
 export const metadata = {
-  title: 'Build Phases — Foodie Zone (Internal)',
+  title: 'Build Phases | Foodie Zone (Internal)',
   description: 'Development roadmap and phase tracker for Foodie Zone.',
 }
 

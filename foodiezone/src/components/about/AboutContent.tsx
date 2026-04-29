@@ -48,7 +48,7 @@ export default function AboutContent() {
             className="font-body text-lg leading-relaxed max-w-xl mx-auto"
             style={{ color: 'rgba(255,255,255,0.5)' }}
           >
-            From the streets of Orlando East to your door — Foodie Zone is more than just a takeaway.
+            From the streets of Orlando East to your door. Foodie Zone is more than just a takeaway.
             It&apos;s real food, made with heart, delivered with speed.
           </motion.p>
         </motion.div>
@@ -89,7 +89,7 @@ export default function AboutContent() {
               <p>
                 Foodie Zone started with a simple belief: people in Soweto deserve restaurant-quality food
                 without the restaurant prices. We hand-press every patty, marinate every wing, and build
-                every dagwood fresh — no frozen shortcuts.
+                every dagwood fresh, no frozen shortcuts.
               </p>
               <p>
                 Based in Orlando East, we serve the community we grew up in. Every order is a promise:

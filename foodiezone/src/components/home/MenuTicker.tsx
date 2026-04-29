@@ -1,16 +1,16 @@
 'use client'
 
 const ITEMS = [
-  'Cheesey Smash Burger — R95',
-  'Death by Bacon — R125',
-  '5 Dunked Wings — R55',
-  'Loaded Chips — R45',
-  'Chicken Dagwood — R75',
-  'Prego Roll — R65',
-  'Chicken Wrap + Chips — R65',
-  '10 Wings Combo — R99',
-  'Grilled Chicken Meal — R85',
-  'Double Smash — R115',
+  'Cheesey Smash Burger · R95',
+  'Death by Bacon · R125',
+  '5 Dunked Wings · R55',
+  'Loaded Chips · R45',
+  'Chicken Dagwood · R75',
+  'Prego Roll · R65',
+  'Chicken Wrap + Chips · R65',
+  '10 Wings Combo · R99',
+  'Grilled Chicken Meal · R85',
+  'Double Smash · R115',
 ]
 
 export default function MenuTicker() {

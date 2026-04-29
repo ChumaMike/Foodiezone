@@ -38,7 +38,7 @@ export default function CustomerSetupScreen() {
             <span style={{ color: '#CC0000' }}>YOU?</span>
           </h1>
           <p className="font-body text-[13px] mt-2" style={{ color: '#888' }}>
-            Quick setup — takes 30 seconds.
+            Quick setup. Takes 30 seconds.
           </p>
         </div>
 

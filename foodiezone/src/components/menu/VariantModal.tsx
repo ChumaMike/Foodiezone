@@ -176,7 +176,7 @@ export default function VariantModal({ item, onClose, onAddToCart }: VariantModa
             className="w-full text-white font-heading font-bold py-4 text-[15px] uppercase tracking-wide disabled:opacity-40 disabled:cursor-not-allowed"
             style={{ background: canAdd ? '#CC0000' : '#2a2a2a', transition: 'background 0.2s' }}
           >
-            Add to Cart — R{livePrice}
+            Add to Cart · R{livePrice}
           </motion.button>
         </div>
       </motion.div>

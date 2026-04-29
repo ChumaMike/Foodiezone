@@ -3,7 +3,7 @@ import Footer from '@/components/home/Footer'
 import AboutContent from '@/components/about/AboutContent'
 
 export const metadata = {
-  title: 'About — Foodie Zone',
+  title: 'About | Foodie Zone',
   description: 'The story behind Foodie Zone. Real food from the heart of Soweto.',
 }
 

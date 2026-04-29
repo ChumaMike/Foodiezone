@@ -8,7 +8,7 @@ const STEPS = [
   {
     number: '01',
     title: 'Pick Your Food',
-    desc: 'Browse our menu — burgers, wings, dagwoods, wraps and more. Everything made fresh.',
+    desc: 'Browse our menu: burgers, wings, dagwoods, wraps and more. Everything made fresh.',
     icon: (
       <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
@@ -31,7 +31,7 @@ const STEPS = [
   {
     number: '03',
     title: 'Track & Receive',
-    desc: 'Watch your order live — from our kitchen in Pimville to your door in 25–35 minutes.',
+    desc: 'Watch your order live, from our kitchen in Pimville to your door in 25–35 minutes.',
     icon: (
       <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <circle cx="12" cy="12" r="10"/>

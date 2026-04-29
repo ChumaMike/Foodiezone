@@ -126,7 +126,7 @@ export default function MenuItemCard({ item, onAdd }: MenuItemCardProps) {
             </span>
             {item.hasVariant && item.doublePriceExtra && (
               <span className="font-body text-[10px] ml-1.5" style={{ color: 'rgba(255,255,255,0.2)' }}>
-                — R{item.price + item.doublePriceExtra}
+                · R{item.price + item.doublePriceExtra}
               </span>
             )}
           </div>

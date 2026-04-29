@@ -210,7 +210,7 @@ const MENU_ITEMS: MenuItem[] = [
   {
     id: 'wings-fried-8',
     name: '8 Fried Full Wings',
-    description: 'Double up — 8 crispy golden fried full chicken wings.',
+    description: 'Double up. 8 crispy golden fried full chicken wings.',
     price: 96,
     image: '/images/wings/fried-wings.png',
     category: 'Wingzz',
@@ -254,7 +254,7 @@ const MENU_ITEMS: MenuItem[] = [
   {
     id: 'wings-grilled-8',
     name: '8 Grilled Wings',
-    description: 'Grilled wings — pick your flavour and double the feast.',
+    description: 'Grilled wings, pick your flavour and double the feast.',
     price: 128,
     image: '/images/wings/fried-wings.png',
     category: 'Wingzz',
@@ -264,7 +264,7 @@ const MENU_ITEMS: MenuItem[] = [
   {
     id: 'wings-mix',
     name: '2 Wings & 2 Drumsticks',
-    description: 'Mixed pack — 2 fried full wings and 2 fried drumsticks.',
+    description: 'Mixed pack. 2 fried full wings and 2 fried drumsticks.',
     price: 52,
     image: '/images/wings/fried-wings.png',
     category: 'Wingzz',
@@ -333,7 +333,7 @@ const MENU_ITEMS: MenuItem[] = [
   {
     id: 'chips-steak-all',
     name: 'Steak Cheesy & Bacon Chips',
-    description: 'The full load — chips, steak, cheese and bacon. Legendary.',
+    description: 'The full load: chips, steak, cheese and bacon. Legendary.',
     price: 80,
     image: '/images/loaded/bacon-chips.png',
     category: 'Loaded Chips',
@@ -525,7 +525,7 @@ const PROMO_BANNERS = [
   {
     image: '/images/smash/smash-double.png',
     title: 'SMASHHH BURGERS',
-    sub: 'From R95 — Double up for +R50',
+    sub: 'From R95. Double up for +R50',
   },
   {
     gradient: 'linear-gradient(135deg, #CC0000, #7A0000)',

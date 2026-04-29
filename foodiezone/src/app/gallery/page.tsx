@@ -3,7 +3,7 @@ import Footer from '@/components/home/Footer'
 import GalleryPage from '@/components/gallery/GalleryPage'
 
 export const metadata = {
-  title: 'Gallery — Foodie Zone',
+  title: 'Gallery | Foodie Zone',
   description: 'The food speaks for itself. Browse our full menu gallery.',
 }
 

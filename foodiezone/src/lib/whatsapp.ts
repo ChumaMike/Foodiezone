@@ -38,7 +38,7 @@ export function buildWhatsAppOrderText(opts: {
   const itemLines = lines
     .map((l) => {
       const v = l.variant ? ` (${l.variant})` : ''
-      return `• ${l.qty}× ${l.name}${v} — ${formatZAR(l.qty * l.price)}`
+      return `• ${l.qty}× ${l.name}${v} = ${formatZAR(l.qty * l.price)}`
     })
     .join('\n')
   const subtotal = lines.reduce((s, l) => s + l.qty * l.price, 0)

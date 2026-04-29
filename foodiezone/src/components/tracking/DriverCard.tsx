@@ -55,7 +55,7 @@ export default function DriverCard({ status }: DriverCardProps) {
   const statusSubline =
     status === 'confirmed' ? 'Pending confirmation' :
     status === 'preparing' ? 'Order being prepared' :
-    'Order ready — assigning driver'
+    'Order ready, assigning driver'
 
   return (
     <div style={{ background: '#FFFFFF', border: '1px solid #E5E5E5' }}>

@@ -36,11 +36,11 @@ export const viewport: Viewport = {
 }
 
 export const metadata: Metadata = {
-  title: 'Foodie Zone — Real Food. Real Fast. Soweto',
+  title: 'Foodie Zone | Real Food. Real Fast. Soweto',
   description: 'Premium burgers, wings, dagwoods, grilled chicken & more. Delivered hot and fast in Orlando East, Soweto. Order online now.',
   manifest: '/manifest.json',
   openGraph: {
-    title: 'Foodie Zone — Real Food. Real Fast.',
+    title: 'Foodie Zone | Real Food. Real Fast.',
     description: 'Burgers, Wings, Dagwoods & Grilled Chicken. Delivered fast in Soweto.',
     siteName: 'Foodie Zone',
     locale: 'en_ZA',

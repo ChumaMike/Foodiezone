@@ -37,7 +37,7 @@ export default function TrackingPage() {
             <div>
               <p className="text-[11px] font-body mb-0.5" style={{ color: '#888' }}>Order</p>
               <p className="font-heading font-black text-white text-[13px] tracking-wide uppercase">
-                {activeOrder?.orderNumber ?? '#FZ-—'}
+                {activeOrder?.orderNumber ?? '#FZ-...'}
               </p>
             </div>
             <div
