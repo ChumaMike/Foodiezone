@@ -6,8 +6,8 @@ import { useOrders, KanbanColumn, Order } from '@/context/OrderContext'
 import OrderCard, { KitchenOrder } from './OrderCard'
 
 const COLUMNS: { key: KanbanColumn; label: string; accentColor: string; chipBg: string }[] = [
-  { key: 'pending',    label: 'Incoming',    accentColor: '#CC0000', chipBg: 'rgba(204,0,0,0.08)'   },
-  { key: 'inProgress', label: 'Cooking',     accentColor: '#1D4ED8', chipBg: 'rgba(29,78,216,0.08)' },
+  { key: 'pending',    label: 'Incoming',    accentColor: '#FF7A1A', chipBg: 'rgba(255,122,26,0.08)'   },
+  { key: 'inProgress', label: 'Cooking',     accentColor: '#2A6BFF', chipBg: 'rgba(42,107,255,0.08)' },
   { key: 'completed',  label: 'Ready',       accentColor: '#16A34A', chipBg: 'rgba(22,163,74,0.08)' },
 ]
 
@@ -44,22 +44,22 @@ export default function KitchenPage() {
     <div className="min-h-screen pb-8" style={{ background: '#F5F5F5' }}>
 
       {/* Header */}
-      <header style={{ background: '#0A0A0A', borderBottom: '3px solid #CC0000' }}>
+      <header style={{ background: '#FFF8EC', borderBottom: '3px solid #FF7A1A' }}>
         <div className="max-w-3xl mx-auto px-4 pt-8 pb-4">
           <div className="flex items-center justify-between">
             <div>
               {/* Brand strip */}
               <div className="brand-label mb-2">FOODIE ZONE</div>
-              <h1 className="font-heading font-black text-white text-[26px] uppercase leading-none tracking-tight">
+              <h1 className="font-heading font-black text-[#131312] text-[26px] uppercase leading-none tracking-tight">
                 Kitchen
               </h1>
             </div>
             <div className="text-right flex flex-col items-end gap-2">
-              <p className="font-heading font-black text-white text-[24px] tabular-nums">{time}</p>
+              <p className="font-heading font-black text-[#131312] text-[24px] tabular-nums">{time}</p>
               <button
                 onClick={logout}
                 className="text-[11px] font-body font-semibold uppercase tracking-wide px-3 py-1.5 transition-colors"
-                style={{ background: 'rgba(255,255,255,0.1)', color: '#AAA', border: '1px solid rgba(255,255,255,0.1)' }}
+                style={{ background: 'rgba(19,19,18,0.1)', color: '#AAA', border: '1px solid rgba(19,19,18,0.1)' }}
               >
                 Sign Out
               </button>
@@ -69,8 +69,8 @@ export default function KitchenPage() {
           {/* Stats row */}
           <div className="grid grid-cols-3 gap-2 mt-4">
             {[
-              { label: 'Incoming', value: pendingCount,   bg: 'rgba(204,0,0,0.15)',  color: '#FF6B6B' },
-              { label: 'Cooking',  value: cookingCount,   bg: 'rgba(29,78,216,0.15)', color: '#93BBFD' },
+              { label: 'Incoming', value: pendingCount,   bg: 'rgba(255,122,26,0.15)',  color: '#FF6B6B' },
+              { label: 'Cooking',  value: cookingCount,   bg: 'rgba(42,107,255,0.15)', color: '#93BBFD' },
               { label: 'Ready',    value: completedCount, bg: 'rgba(22,163,74,0.15)', color: '#86EFAC' },
             ].map((s) => (
               <div key={s.label} className="px-3 py-2.5 flex items-center justify-between" style={{ background: s.bg }}>

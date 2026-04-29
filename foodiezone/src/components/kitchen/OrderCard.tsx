@@ -27,21 +27,21 @@ const COLUMN_CONFIG: Record<KanbanColumn, {
   pending:    {
     actionLabel: 'Start Cooking',
     target: 'inProgress',
-    actionBg: '#CC0000',
+    actionBg: '#FF7A1A',
     actionColor: '#fff',
-    accentColor: '#CC0000',
-    chipBg: 'rgba(204,0,0,0.1)',
-    chipText: '#CC0000',
+    accentColor: '#FF7A1A',
+    chipBg: 'rgba(255,122,26,0.1)',
+    chipText: '#FF7A1A',
     chipLabel: 'NEW',
   },
   inProgress: {
     actionLabel: 'Mark Ready',
     target: 'completed',
-    actionBg: '#1D4ED8',
+    actionBg: '#2A6BFF',
     actionColor: '#fff',
-    accentColor: '#1D4ED8',
-    chipBg: 'rgba(29,78,216,0.1)',
-    chipText: '#1D4ED8',
+    accentColor: '#2A6BFF',
+    chipBg: 'rgba(42,107,255,0.1)',
+    chipText: '#2A6BFF',
     chipLabel: 'COOKING',
   },
   completed:  {
@@ -76,7 +76,7 @@ export default function OrderCard({ order, onMove }: OrderCardProps) {
       {/* Header */}
       <div className="px-3 pt-3 pb-2 flex items-start justify-between gap-2">
         <div>
-          <p className="font-heading font-black text-[13px] uppercase tracking-tight" style={{ color: '#0A0A0A' }}>
+          <p className="font-heading font-black text-[13px] uppercase tracking-tight" style={{ color: '#FFF8EC' }}>
             {order.orderNumber}
           </p>
           <p className="text-[11px] font-body mt-0.5" style={{ color: '#888' }}>{order.customer}</p>
@@ -113,7 +113,7 @@ export default function OrderCard({ order, onMove }: OrderCardProps) {
         {cfg.target ? (
           <button
             onClick={() => cfg.target && onMove(order.id, cfg.target)}
-            className="w-full text-white text-[11px] font-heading font-black py-2.5 uppercase tracking-wider active:scale-[0.97] transition-all duration-150"
+            className="w-full text-[#131312] text-[11px] font-heading font-black py-2.5 uppercase tracking-wider active:scale-[0.97] transition-all duration-150"
             style={{ background: cfg.actionBg }}
           >
             {cfg.actionLabel} →

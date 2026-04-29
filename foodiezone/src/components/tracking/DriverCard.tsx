@@ -62,7 +62,7 @@ export default function DriverCard({ status }: DriverCardProps) {
       {/* Status stripe */}
       <div
         className="h-1 transition-all duration-700"
-        style={{ background: isLive ? 'linear-gradient(90deg, #CC0000, #1D4ED8)' : '#E5E5E5' }}
+        style={{ background: isLive ? 'linear-gradient(90deg, #FF7A1A, #2A6BFF)' : '#E5E5E5' }}
       />
 
       <div className="p-4">
@@ -71,7 +71,7 @@ export default function DriverCard({ status }: DriverCardProps) {
           <div className="relative shrink-0">
             <div
               className="w-14 h-14 flex items-center justify-center"
-              style={{ background: isLive ? '#CC0000' : '#0A0A0A' }}
+              style={{ background: isLive ? '#FF7A1A' : '#FFF8EC' }}
             >
               <TruckIcon />
             </div>
@@ -85,7 +85,7 @@ export default function DriverCard({ status }: DriverCardProps) {
 
           {/* Info */}
           <div className="flex-1 min-w-0">
-            <p className="font-heading font-black text-[14px] uppercase tracking-tight" style={{ color: '#0A0A0A' }}>
+            <p className="font-heading font-black text-[14px] uppercase tracking-tight" style={{ color: '#FFF8EC' }}>
               {isLive ? 'Driver En Route' : 'Awaiting Assignment'}
             </p>
             <p className="text-[11px] font-body" style={{ color: '#888' }}>
@@ -94,7 +94,7 @@ export default function DriverCard({ status }: DriverCardProps) {
             {isLive && (
               <div className="flex items-center gap-1 mt-1">
                 {[...Array(5)].map((_, i) => (
-                  <span key={i} className="text-[11px]" style={{ color: '#CC0000' }}>★</span>
+                  <span key={i} className="text-[11px]" style={{ color: '#FF7A1A' }}>★</span>
                 ))}
                 <span className="text-[11px] ml-1" style={{ color: '#888' }}>4.9</span>
               </div>
@@ -107,7 +107,7 @@ export default function DriverCard({ status }: DriverCardProps) {
               <>
                 <p
                   className="font-heading font-black text-[24px] leading-none tabular-nums"
-                  style={{ color: '#CC0000' }}
+                  style={{ color: '#FF7A1A' }}
                 >
                   {mins}:{secs.toString().padStart(2, '0')}
                 </p>
@@ -128,13 +128,13 @@ export default function DriverCard({ status }: DriverCardProps) {
         <div className="flex gap-2 mt-3.5">
           <button
             className="flex-1 flex items-center justify-center gap-1.5 py-2.5 text-[12px] font-heading font-black uppercase tracking-wide transition-all active:scale-95"
-            style={{ background: '#F5F5F5', color: '#0A0A0A', border: '1px solid #E5E5E5' }}
+            style={{ background: '#F5F5F5', color: '#FFF8EC', border: '1px solid #E5E5E5' }}
           >
             <PhoneIcon /> Call
           </button>
           <button
             className="flex-1 flex items-center justify-center gap-1.5 py-2.5 text-[12px] font-heading font-black uppercase tracking-wide transition-all active:scale-95"
-            style={{ background: '#1D4ED8', color: '#fff' }}
+            style={{ background: '#2A6BFF', color: '#131312' }}
           >
             <ChatIcon /> Chat
           </button>

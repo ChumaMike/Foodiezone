@@ -87,8 +87,8 @@ export default function BottomNav() {
     <nav
       className="fixed bottom-0 left-0 right-0 z-40"
       style={{
-        background: '#111111',
-        borderTop: '1px solid rgba(255,255,255,0.08)',
+        background: '#F5E9CC',
+        borderTop: '1px solid rgba(19,19,18,0.08)',
       }}
     >
       <div className="flex items-center h-16 max-w-md mx-auto">
@@ -103,23 +103,23 @@ export default function BottomNav() {
               {active && (
                 <span
                   className="absolute top-0 left-0 right-0 h-0.5"
-                  style={{ background: '#CC0000' }}
+                  style={{ background: '#FF7A1A' }}
                 />
               )}
 
-              <div className="relative" style={{ color: active ? '#CC0000' : 'rgba(255,255,255,0.35)' }}>
+              <div className="relative" style={{ color: active ? '#FF7A1A' : 'rgba(19,19,18,0.35)' }}>
                 {icon}
                 {href === '/menu' && count > 0 && (
                   <span
-                    className="absolute -top-1.5 -right-2 text-white text-[10px] font-heading font-bold min-w-[16px] h-4 flex items-center justify-center px-0.5 animate-badge-pop"
-                    style={{ background: '#CC0000' }}
+                    className="absolute -top-1.5 -right-2 text-[#131312] text-[10px] font-heading font-bold min-w-[16px] h-4 flex items-center justify-center px-0.5 animate-badge-pop"
+                    style={{ background: '#FF7A1A' }}
                   >
                     {count > 9 ? '9+' : count}
                   </span>
                 )}
                 {href === '/profile' && tier && (
                   <span
-                    className="absolute -top-1 -right-2.5 text-white text-[8px] font-heading font-bold px-1 py-0.5 leading-none"
+                    className="absolute -top-1 -right-2.5 text-[#131312] text-[8px] font-heading font-bold px-1 py-0.5 leading-none"
                     style={{ background: tier.color }}
                   >
                     {tier.label.toUpperCase().slice(0, 3)}
@@ -129,7 +129,7 @@ export default function BottomNav() {
 
               <span
                 className="text-[10px] font-heading font-semibold uppercase leading-none"
-                style={{ color: active ? '#CC0000' : 'rgba(255,255,255,0.3)', letterSpacing: '0.1em' }}
+                style={{ color: active ? '#FF7A1A' : 'rgba(19,19,18,0.3)', letterSpacing: '0.1em' }}
               >
                 {label}
               </span>

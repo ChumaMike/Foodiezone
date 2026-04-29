@@ -5,7 +5,7 @@ export default function MenuSkeleton() {
         <div
           key={i}
           className="flex flex-col overflow-hidden animate-pulse"
-          style={{ background: '#1C1C1C', border: '1px solid rgba(255,255,255,0.07)' }}
+          style={{ background: '#1C1C1C', border: '1px solid rgba(19,19,18,0.07)' }}
         >
           {/* Image placeholder */}
           <div className="w-full" style={{ aspectRatio: '4/3', background: '#2a2a2a' }} />

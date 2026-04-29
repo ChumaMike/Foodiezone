@@ -511,14 +511,14 @@ const CATEGORY_LABELS: Record<string, string> = {
 }
 
 const CATEGORY_META: Record<string, { hero: string; accent: string; sub: string }> = {
-  'Burgers':       { hero: '/images/catalogue/burgers/burger-1.png',             accent: '#CC0000', sub: '100% Beef & Chicken' },
-  'Smash Burgers': { hero: '/images/catalogue/smash-burgers/smash-1.png',        accent: '#CC0000', sub: '200g Hand-Pressed Patties' },
-  'Dagwoods':      { hero: '/images/catalogue/dagwoods/dagwood-1.png',           accent: '#1D4ED8', sub: 'Loaded & Toasted' },
-  'Wingzz':        { hero: '/images/catalogue/wings/wings-1.png',                accent: '#FF6B00', sub: 'Fried · Dunked · Grilled' },
-  'Loaded Chips':  { hero: '/images/catalogue/loaded-chips/loaded-1.png',        accent: '#FF6B00', sub: 'Loaded with the Good Stuff' },
-  'Prego Rolls':   { hero: '/images/catalogue/prego-roll/prego-1.png',           accent: '#1D4ED8', sub: 'Soft Rolls, Big Flavour' },
-  'Wraps & Salads':{ hero: '/images/catalogue/wraps/wrap-1.png',                 accent: '#1D4ED8', sub: 'Fresh & Flavourful' },
-  'Chicken':       { hero: '/images/catalogue/grilled-chicken/chicken-1.png',    accent: '#CC0000', sub: 'Pick Your Flavour' },
+  'Burgers':       { hero: '/images/catalogue/burgers/burger-1.png',             accent: '#FF7A1A', sub: '100% Beef & Chicken' },
+  'Smash Burgers': { hero: '/images/catalogue/smash-burgers/smash-1.png',        accent: '#FF7A1A', sub: '200g Hand-Pressed Patties' },
+  'Dagwoods':      { hero: '/images/catalogue/dagwoods/dagwood-1.png',           accent: '#2A6BFF', sub: 'Loaded & Toasted' },
+  'Wingzz':        { hero: '/images/catalogue/wings/wings-1.png',                accent: '#FF3D8C', sub: 'Fried · Dunked · Grilled' },
+  'Loaded Chips':  { hero: '/images/catalogue/loaded-chips/loaded-1.png',        accent: '#FF3D8C', sub: 'Loaded with the Good Stuff' },
+  'Prego Rolls':   { hero: '/images/catalogue/prego-roll/prego-1.png',           accent: '#2A6BFF', sub: 'Soft Rolls, Big Flavour' },
+  'Wraps & Salads':{ hero: '/images/catalogue/wraps/wrap-1.png',                 accent: '#2A6BFF', sub: 'Fresh & Flavourful' },
+  'Chicken':       { hero: '/images/catalogue/grilled-chicken/chicken-1.png',    accent: '#FF7A1A', sub: 'Pick Your Flavour' },
 }
 
 const PROMO_BANNERS = [
@@ -528,7 +528,7 @@ const PROMO_BANNERS = [
     sub: 'From R95. Double up for +R50',
   },
   {
-    gradient: 'linear-gradient(135deg, #CC0000, #7A0000)',
+    gradient: 'linear-gradient(135deg, #FF7A1A, #7A0000)',
     title: 'Free Delivery R100+',
     sub: '3 km radius · Fast & hot',
   },
@@ -592,12 +592,12 @@ export default function MenuPage() {
   const meta = CATEGORY_META[activeCategory]
 
   return (
-    <div className="min-h-screen pb-32" style={{ background: '#111111' }}>
+    <div className="min-h-screen pb-32" style={{ background: '#F5E9CC' }}>
       {/* Customer profile setup overlay */}
       {role === 'customer' && !hasProfile && <CustomerSetupScreen />}
 
       {/* ── Sticky Header ── */}
-      <header className="sticky top-0 z-20" style={{ background: '#0A0A0A', borderBottom: '3px solid #CC0000' }}>
+      <header className="sticky top-0 z-20" style={{ background: '#FFF8EC', borderBottom: '3px solid #FF7A1A' }}>
         <div className="max-w-6xl mx-auto px-4 pt-10 pb-3">
           {/* Location + rating */}
           <div className="flex items-center justify-between mb-2">
@@ -610,10 +610,10 @@ export default function MenuPage() {
             </div>
             <div
               className="flex items-center gap-1 px-2.5 py-1"
-              style={{ background: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.1)' }}
+              style={{ background: 'rgba(19,19,18,0.08)', border: '1px solid rgba(19,19,18,0.1)' }}
             >
               <span className="text-yellow-400 text-xs">★</span>
-              <span className="text-xs font-body font-semibold text-white">4.8</span>
+              <span className="text-xs font-body font-semibold text-[#131312]">4.8</span>
               <span className="text-xs mx-1" style={{ color: '#444' }}>·</span>
               <span className="text-xs font-body" style={{ color: '#888' }}>25–35 min</span>
             </div>
@@ -621,7 +621,7 @@ export default function MenuPage() {
 
           {/* Brand + title */}
           <div className="brand-label mb-1">FOODIE ZONE</div>
-          <h1 className="font-display text-white uppercase leading-none" style={{ fontSize: 34 }}>
+          <h1 className="font-display text-[#131312] uppercase leading-none" style={{ fontSize: 34 }}>
             The Menu
           </h1>
           <p className="font-body text-xs mt-1" style={{ color: '#666', fontWeight: 400 }}>
@@ -641,10 +641,10 @@ export default function MenuPage() {
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search menu…"
-              className="w-full pl-9 pr-4 py-2.5 text-sm font-body text-white focus:outline-none transition-colors"
+              className="w-full pl-9 pr-4 py-2.5 text-sm font-body text-[#131312] focus:outline-none transition-colors"
               style={{
-                background: 'rgba(255,255,255,0.08)',
-                border: '1px solid rgba(255,255,255,0.12)',
+                background: 'rgba(19,19,18,0.08)',
+                border: '1px solid rgba(19,19,18,0.12)',
               }}
             />
           </div>
@@ -655,7 +655,7 @@ export default function MenuPage() {
       {!searchQuery && (
         <div
           className="sticky top-[172px] z-10 py-2.5"
-          style={{ background: '#0A0A0A', borderBottom: '1px solid rgba(255,255,255,0.07)' }}
+          style={{ background: '#FFF8EC', borderBottom: '1px solid rgba(19,19,18,0.07)' }}
         >
           <div className="flex gap-2 overflow-x-auto scrollbar-hide px-4 max-w-6xl mx-auto">
             {ORDERED_CATEGORIES.map((cat) => (
@@ -665,7 +665,7 @@ export default function MenuPage() {
                 onClick={() => handleCategoryChange(cat)}
                 className="relative shrink-0 px-3.5 py-1.5 text-[11px] font-heading font-semibold uppercase"
                 style={{
-                  color: activeCategory === cat ? '#fff' : 'rgba(255,255,255,0.45)',
+                  color: activeCategory === cat ? '#fff' : 'rgba(19,19,18,0.45)',
                   letterSpacing: '0.1em',
                   background: 'transparent',
                   transition: 'color 0.15s',
@@ -675,14 +675,14 @@ export default function MenuPage() {
                   <motion.span
                     layoutId="cat-active-pill"
                     className="absolute inset-0"
-                    style={{ background: '#CC0000' }}
+                    style={{ background: '#FF7A1A' }}
                     transition={{ type: 'spring', stiffness: 380, damping: 30 }}
                   />
                 )}
                 {activeCategory !== cat && (
                   <span
                     className="absolute inset-0"
-                    style={{ background: 'rgba(255,255,255,0.06)' }}
+                    style={{ background: 'rgba(19,19,18,0.06)' }}
                   />
                 )}
                 <span className="relative z-10">{CATEGORY_LABELS[cat]}</span>
@@ -709,7 +709,7 @@ export default function MenuPage() {
                     <path d="m21 21-4.35-4.35"/>
                   </svg>
                 </div>
-                <p className="font-heading font-bold uppercase tracking-wide text-sm" style={{ color: 'rgba(255,255,255,0.6)' }}>Nothing found</p>
+                <p className="font-heading font-bold uppercase tracking-wide text-sm" style={{ color: 'rgba(19,19,18,0.6)' }}>Nothing found</p>
                 <p className="text-xs font-body mt-1" style={{ color: '#666' }}>Try a different search</p>
               </div>
             ) : (
@@ -753,7 +753,7 @@ export default function MenuPage() {
                 {/* Left-to-right gradient overlay */}
                 <div
                   className="absolute inset-0"
-                  style={{ background: 'linear-gradient(to right, rgba(10,10,10,0.92) 0%, rgba(10,10,10,0.5) 50%, transparent 100%)' }}
+                  style={{ background: 'linear-gradient(to right, rgba(255,248,236,0.92) 0%, rgba(255,248,236,0.5) 50%, transparent 100%)' }}
                 />
                 {/* Bottom fade */}
                 <div
@@ -769,10 +769,10 @@ export default function MenuPage() {
                     >
                       {meta.sub}
                     </p>
-                    <h2 className="font-display uppercase leading-none text-white" style={{ fontSize: 'clamp(36px, 8vw, 56px)' }}>
+                    <h2 className="font-display uppercase leading-none text-[#131312]" style={{ fontSize: 'clamp(36px, 8vw, 56px)' }}>
                       {activeCategory}
                     </h2>
-                    <p className="font-heading font-bold text-[11px] uppercase tracking-[0.15em] mt-1" style={{ color: 'rgba(255,255,255,0.4)' }}>
+                    <p className="font-heading font-bold text-[11px] uppercase tracking-[0.15em] mt-1" style={{ color: 'rgba(19,19,18,0.4)' }}>
                       {filtered.length} items
                     </p>
                   </div>
@@ -797,8 +797,8 @@ export default function MenuPage() {
                     )}
                     <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-transparent" />
                     <div className="absolute inset-0 p-3 flex flex-col justify-center">
-                      <p className="font-heading font-bold text-white text-[13px] leading-tight uppercase tracking-tight">{b.title}</p>
-                      <p className="text-[11px] font-body mt-0.5 leading-tight" style={{ color: '#FF6B00' }}>{b.sub}</p>
+                      <p className="font-heading font-bold text-[#131312] text-[13px] leading-tight uppercase tracking-tight">{b.title}</p>
+                      <p className="text-[11px] font-body mt-0.5 leading-tight" style={{ color: '#FF3D8C' }}>{b.sub}</p>
                     </div>
                   </div>
                 ))}
@@ -810,10 +810,10 @@ export default function MenuPage() {
               <div className="mt-5">
                 <h2
                   className="font-heading font-semibold text-[11px] uppercase mb-2.5"
-                  style={{ color: 'rgba(255,255,255,0.5)', letterSpacing: '0.18em' }}
+                  style={{ color: 'rgba(19,19,18,0.5)', letterSpacing: '0.18em' }}
                 >
                   <span className="inline-flex items-center gap-2">
-                    <span className="w-2.5 h-2.5 inline-block" style={{ background: '#CC0000' }} />
+                    <span className="w-2.5 h-2.5 inline-block" style={{ background: '#FF7A1A' }} />
                     Most Ordered
                   </span>
                 </h2>
@@ -823,18 +823,18 @@ export default function MenuPage() {
                       key={item.id}
                       onClick={() => handleItemAdd(item)}
                       className="shrink-0 w-28 overflow-hidden text-left active:scale-95 transition-all duration-150"
-                      style={{ background: '#1A1A1A', border: '1px solid rgba(255,255,255,0.08)', borderTop: '2px solid #CC0000' }}
+                      style={{ background: '#FFF8EC', border: '1px solid rgba(19,19,18,0.08)', borderTop: '2px solid #FF7A1A' }}
                     >
                       <div className="relative h-20">
                         {item.image ? (
                           <Image src={item.image} alt={item.name} fill className="object-cover" />
                         ) : (
-                          <div className="absolute inset-0" style={{ background: 'linear-gradient(145deg, #CC0000, #0A0A0A)' }} />
+                          <div className="absolute inset-0" style={{ background: 'linear-gradient(145deg, #FF7A1A, #FFF8EC)' }} />
                         )}
                       </div>
                       <div className="p-2">
-                        <p className="font-heading font-semibold text-[10px] leading-tight line-clamp-2 uppercase" style={{ color: 'rgba(255,255,255,0.85)', letterSpacing: '0.05em' }}>{item.name}</p>
-                        <p className="font-display text-[13px] mt-1 leading-none" style={{ color: '#FF6B00' }}>R{item.price}</p>
+                        <p className="font-heading font-semibold text-[10px] leading-tight line-clamp-2 uppercase" style={{ color: 'rgba(19,19,18,0.85)', letterSpacing: '0.05em' }}>{item.name}</p>
+                        <p className="font-display text-[13px] mt-1 leading-none" style={{ color: '#FF3D8C' }}>R{item.price}</p>
                       </div>
                     </button>
                   ))}

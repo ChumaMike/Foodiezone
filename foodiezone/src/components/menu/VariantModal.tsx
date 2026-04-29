@@ -53,7 +53,7 @@ export default function VariantModal({ item, onClose, onAddToCart }: VariantModa
         animate="show"
         exit="exit"
         className="relative w-full max-w-md mx-auto overflow-hidden"
-        style={{ background: '#161616', borderTop: '2px solid #CC0000' }}
+        style={{ background: '#161616', borderTop: '2px solid #FF7A1A' }}
         onClick={(e) => e.stopPropagation()}
       >
         {/* Hero */}
@@ -61,20 +61,20 @@ export default function VariantModal({ item, onClose, onAddToCart }: VariantModa
           {item.image ? (
             <Image src={item.image} alt={item.name} fill className="object-cover brightness-75" />
           ) : (
-            <div className="absolute inset-0" style={{ background: 'linear-gradient(135deg, #CC0000, #0A0A0A)' }} />
+            <div className="absolute inset-0" style={{ background: 'linear-gradient(135deg, #FF7A1A, #FFF8EC)' }} />
           )}
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
 
           {/* Name on photo */}
           <div className="absolute bottom-3 left-4 right-12">
-            <p className="font-heading font-bold text-white text-[18px] uppercase leading-tight tracking-tight">{item.name}</p>
+            <p className="font-heading font-bold text-[#131312] text-[18px] uppercase leading-tight tracking-tight">{item.name}</p>
           </div>
 
           {/* Close */}
           <motion.button
             whileTap={{ scale: 0.9 }}
             onClick={onClose}
-            className="absolute top-3 right-3 w-8 h-8 flex items-center justify-center text-white text-sm font-bold"
+            className="absolute top-3 right-3 w-8 h-8 flex items-center justify-center text-[#131312] text-sm font-bold"
             style={{ background: 'rgba(0,0,0,0.6)' }}
           >
             ✕
@@ -86,7 +86,7 @@ export default function VariantModal({ item, onClose, onAddToCart }: VariantModa
           <div className="flex items-center justify-between mb-4">
             <p
               className="text-[11px] font-heading font-bold uppercase tracking-[0.15em]"
-              style={{ color: 'rgba(255,255,255,0.4)' }}
+              style={{ color: 'rgba(19,19,18,0.4)' }}
             >
               Your Price
             </p>
@@ -96,7 +96,7 @@ export default function VariantModal({ item, onClose, onAddToCart }: VariantModa
               animate={{ scale: 1, opacity: 1 }}
               transition={{ type: 'spring', stiffness: 400, damping: 22 }}
               className="font-display text-[28px] leading-none"
-              style={{ color: '#FF6B00' }}
+              style={{ color: '#FF3D8C' }}
             >
               R{livePrice}
             </motion.p>
@@ -105,7 +105,7 @@ export default function VariantModal({ item, onClose, onAddToCart }: VariantModa
           {/* Single / Double selector */}
           {item.hasVariant && (
             <div className="mb-4">
-              <p className="text-[11px] font-heading font-bold uppercase tracking-[0.15em] mb-2" style={{ color: 'rgba(255,255,255,0.4)' }}>
+              <p className="text-[11px] font-heading font-bold uppercase tracking-[0.15em] mb-2" style={{ color: 'rgba(19,19,18,0.4)' }}>
                 Patty Size
               </p>
               <div className="grid grid-cols-2 gap-2">
@@ -114,27 +114,27 @@ export default function VariantModal({ item, onClose, onAddToCart }: VariantModa
                   onClick={() => setIsDouble(false)}
                   className="p-3.5 text-left"
                   style={{
-                    border: `2px solid ${!isDouble ? '#CC0000' : 'rgba(255,255,255,0.1)'}`,
-                    background: !isDouble ? 'rgba(204,0,0,0.12)' : '#252525',
+                    border: `2px solid ${!isDouble ? '#FF7A1A' : 'rgba(19,19,18,0.1)'}`,
+                    background: !isDouble ? 'rgba(255,122,26,0.12)' : '#252525',
                     transition: 'border-color 0.15s, background 0.15s',
                   }}
                 >
-                  <p className="font-heading font-bold text-sm uppercase tracking-tight" style={{ color: 'rgba(255,255,255,0.85)' }}>Single Patty</p>
-                  <p className="font-display text-[13px] mt-0.5" style={{ color: '#FF6B00' }}>R{item.price}</p>
+                  <p className="font-heading font-bold text-sm uppercase tracking-tight" style={{ color: 'rgba(19,19,18,0.85)' }}>Single Patty</p>
+                  <p className="font-display text-[13px] mt-0.5" style={{ color: '#FF3D8C' }}>R{item.price}</p>
                 </motion.button>
                 <motion.button
                   whileTap={{ scale: 0.96 }}
                   onClick={() => setIsDouble(true)}
                   className="p-3.5 text-left"
                   style={{
-                    border: `2px solid ${isDouble ? '#CC0000' : 'rgba(255,255,255,0.1)'}`,
-                    background: isDouble ? 'rgba(204,0,0,0.12)' : '#252525',
+                    border: `2px solid ${isDouble ? '#FF7A1A' : 'rgba(19,19,18,0.1)'}`,
+                    background: isDouble ? 'rgba(255,122,26,0.12)' : '#252525',
                     transition: 'border-color 0.15s, background 0.15s',
                   }}
                 >
-                  <p className="font-heading font-bold text-sm uppercase tracking-tight" style={{ color: 'rgba(255,255,255,0.85)' }}>Double Patty</p>
-                  <p className="font-display text-[13px] mt-0.5" style={{ color: '#FF6B00' }}>R{doublePrice}</p>
-                  <p className="text-[10px] font-body mt-0.5" style={{ color: '#CC0000' }}>+R{extra}</p>
+                  <p className="font-heading font-bold text-sm uppercase tracking-tight" style={{ color: 'rgba(19,19,18,0.85)' }}>Double Patty</p>
+                  <p className="font-display text-[13px] mt-0.5" style={{ color: '#FF3D8C' }}>R{doublePrice}</p>
+                  <p className="text-[10px] font-body mt-0.5" style={{ color: '#FF7A1A' }}>+R{extra}</p>
                 </motion.button>
               </div>
             </div>
@@ -143,8 +143,8 @@ export default function VariantModal({ item, onClose, onAddToCart }: VariantModa
           {/* Flavour selector */}
           {item.hasFlavour && (
             <div className="mb-4">
-              <p className="text-[11px] font-heading font-bold uppercase tracking-[0.15em] mb-2" style={{ color: 'rgba(255,255,255,0.4)' }}>
-                Flavour{!flavour && <span className="ml-1 normal-case" style={{ color: '#CC0000' }}>(choose one)</span>}
+              <p className="text-[11px] font-heading font-bold uppercase tracking-[0.15em] mb-2" style={{ color: 'rgba(19,19,18,0.4)' }}>
+                Flavour{!flavour && <span className="ml-1 normal-case" style={{ color: '#FF7A1A' }}>(choose one)</span>}
               </p>
               <div className="flex flex-wrap gap-2">
                 {FLAVOURS.map((f) => (
@@ -155,9 +155,9 @@ export default function VariantModal({ item, onClose, onAddToCart }: VariantModa
                     onClick={() => setFlavour(f)}
                     className="px-3.5 py-2 text-[12px] font-heading font-bold uppercase tracking-wide"
                     style={{
-                      border: `2px solid ${flavour === f ? '#CC0000' : 'rgba(255,255,255,0.1)'}`,
-                      background: flavour === f ? '#CC0000' : '#252525',
-                      color: flavour === f ? '#fff' : 'rgba(255,255,255,0.6)',
+                      border: `2px solid ${flavour === f ? '#FF7A1A' : 'rgba(19,19,18,0.1)'}`,
+                      background: flavour === f ? '#FF7A1A' : '#252525',
+                      color: flavour === f ? '#fff' : 'rgba(19,19,18,0.6)',
                       transition: 'background 0.12s, border-color 0.12s, color 0.12s',
                     }}
                   >
@@ -173,8 +173,8 @@ export default function VariantModal({ item, onClose, onAddToCart }: VariantModa
             whileTap={{ scale: canAdd ? 0.97 : 1 }}
             onClick={handleAdd}
             disabled={!canAdd}
-            className="w-full text-white font-heading font-bold py-4 text-[15px] uppercase tracking-wide disabled:opacity-40 disabled:cursor-not-allowed"
-            style={{ background: canAdd ? '#CC0000' : '#2a2a2a', transition: 'background 0.2s' }}
+            className="w-full text-[#131312] font-heading font-bold py-4 text-[15px] uppercase tracking-wide disabled:opacity-40 disabled:cursor-not-allowed"
+            style={{ background: canAdd ? '#FF7A1A' : '#2a2a2a', transition: 'background 0.2s' }}
           >
             Add to Cart · R{livePrice}
           </motion.button>

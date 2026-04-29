@@ -29,13 +29,13 @@ export default function CustomerSetupScreen() {
     >
       <div className="w-full max-w-sm">
         {/* Brand */}
-        <div className="mb-8" style={{ borderLeft: '4px solid #CC0000', paddingLeft: '14px' }}>
-          <span className="font-heading font-black uppercase text-[11px] tracking-[0.22em]" style={{ color: '#CC0000' }}>
+        <div className="mb-8" style={{ borderLeft: '4px solid #FF7A1A', paddingLeft: '14px' }}>
+          <span className="font-heading font-black uppercase text-[11px] tracking-[0.22em]" style={{ color: '#FF7A1A' }}>
             FOODIE ZONE
           </span>
-          <h1 className="font-heading font-black uppercase leading-none tracking-tight" style={{ fontSize: '38px', color: '#0A0A0A', marginTop: '2px' }}>
+          <h1 className="font-heading font-black uppercase leading-none tracking-tight" style={{ fontSize: '38px', color: '#FFF8EC', marginTop: '2px' }}>
             WHO ARE<br />
-            <span style={{ color: '#CC0000' }}>YOU?</span>
+            <span style={{ color: '#FF7A1A' }}>YOU?</span>
           </h1>
           <p className="font-body text-[13px] mt-2" style={{ color: '#888' }}>
             Quick setup. Takes 30 seconds.
@@ -46,7 +46,7 @@ export default function CustomerSetupScreen() {
           {/* Name */}
           <div>
             <label className="block text-[11px] font-body font-semibold uppercase tracking-widest mb-1.5" style={{ color: '#888' }}>
-              Your Name <span style={{ color: '#CC0000' }}>*</span>
+              Your Name <span style={{ color: '#FF7A1A' }}>*</span>
             </label>
             <input
               type="text"
@@ -59,7 +59,7 @@ export default function CustomerSetupScreen() {
               className="w-full px-4 py-3.5 font-body text-[14px] text-black focus:outline-none transition-all"
               style={{
                 background: '#F5F5F5',
-                border: `2px solid ${focusedField === 'name' ? '#0A0A0A' : '#E5E5E5'}`,
+                border: `2px solid ${focusedField === 'name' ? '#FFF8EC' : '#E5E5E5'}`,
               }}
             />
           </div>
@@ -67,7 +67,7 @@ export default function CustomerSetupScreen() {
           {/* Phone */}
           <div>
             <label className="block text-[11px] font-body font-semibold uppercase tracking-widest mb-1.5" style={{ color: '#888' }}>
-              Phone Number <span style={{ color: '#CC0000' }}>*</span>
+              Phone Number <span style={{ color: '#FF7A1A' }}>*</span>
             </label>
             <input
               type="tel"
@@ -79,7 +79,7 @@ export default function CustomerSetupScreen() {
               className="w-full px-4 py-3.5 font-body text-[14px] text-black focus:outline-none transition-all"
               style={{
                 background: '#F5F5F5',
-                border: `2px solid ${focusedField === 'phone' ? '#0A0A0A' : '#E5E5E5'}`,
+                border: `2px solid ${focusedField === 'phone' ? '#FFF8EC' : '#E5E5E5'}`,
               }}
             />
           </div>
@@ -99,7 +99,7 @@ export default function CustomerSetupScreen() {
               className="w-full px-4 py-3.5 font-body text-[14px] text-black focus:outline-none transition-all"
               style={{
                 background: '#F5F5F5',
-                border: `2px solid ${focusedField === 'address' ? '#0A0A0A' : '#E5E5E5'}`,
+                border: `2px solid ${focusedField === 'address' ? '#FFF8EC' : '#E5E5E5'}`,
               }}
             />
           </div>
@@ -107,8 +107,8 @@ export default function CustomerSetupScreen() {
           <button
             type="submit"
             disabled={!canSubmit}
-            className="w-full py-4 font-heading font-black text-[15px] uppercase tracking-wide text-white transition-all duration-150 active:scale-[0.98] disabled:opacity-30 disabled:cursor-not-allowed mt-2"
-            style={{ background: '#CC0000', boxShadow: canSubmit ? '0 6px 20px rgba(204,0,0,0.25)' : 'none' }}
+            className="w-full py-4 font-heading font-black text-[15px] uppercase tracking-wide text-[#131312] transition-all duration-150 active:scale-[0.98] disabled:opacity-30 disabled:cursor-not-allowed mt-2"
+            style={{ background: '#FF7A1A', boxShadow: canSubmit ? '0 6px 20px rgba(255,122,26,0.25)' : 'none' }}
           >
             Start Ordering →
           </button>
@@ -118,9 +118,9 @@ export default function CustomerSetupScreen() {
         <div className="mt-8 flex items-center gap-3">
           <div className="h-px flex-1" style={{ background: '#E5E5E5' }} />
           <div className="flex gap-1">
-            <span className="w-3 h-3 rounded-full" style={{ background: '#CC0000' }} />
-            <span className="w-3 h-3 rounded-full" style={{ background: '#0A0A0A' }} />
-            <span className="w-3 h-3 rounded-full" style={{ background: '#1D4ED8' }} />
+            <span className="w-3 h-3 rounded-full" style={{ background: '#FF7A1A' }} />
+            <span className="w-3 h-3 rounded-full" style={{ background: '#FFF8EC' }} />
+            <span className="w-3 h-3 rounded-full" style={{ background: '#2A6BFF' }} />
           </div>
           <div className="h-px flex-1" style={{ background: '#E5E5E5' }} />
         </div>

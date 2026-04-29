@@ -9,7 +9,7 @@ export const metadata = {
 
 export default function Gallery() {
   return (
-    <main style={{ background: '#0A0A0A' }}>
+    <main style={{ background: '#FFF8EC' }}>
       <Navbar />
       <GalleryPage />
       <Footer />

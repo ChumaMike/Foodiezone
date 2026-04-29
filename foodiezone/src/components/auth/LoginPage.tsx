@@ -94,7 +94,7 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="min-h-screen flex" style={{ background: '#0A0A0A' }}>
+    <div className="min-h-screen flex" style={{ background: '#FFF8EC' }}>
 
       {/* ── LEFT — Video / Brand panel ── */}
       <div className="hidden md:flex relative flex-1 flex-col justify-end p-12 overflow-hidden">
@@ -112,14 +112,14 @@ export default function LoginPage() {
 
         <div
           className="absolute inset-0"
-          style={{ background: 'linear-gradient(to top, rgba(10,10,10,0.95) 0%, rgba(10,10,10,0.1) 60%, transparent 100%)' }}
+          style={{ background: 'linear-gradient(to top, rgba(255,248,236,0.95) 0%, rgba(255,248,236,0.1) 60%, transparent 100%)' }}
         />
 
         <div className="relative z-10">
-          <div className="font-display text-white mb-4 leading-none" style={{ fontSize: 64 }}>
-            FOODIE<span style={{ color: '#CC0000' }}>ZONE</span>
+          <div className="font-display text-[#131312] mb-4 leading-none" style={{ fontSize: 64 }}>
+            FOODIE<span style={{ color: '#FF7A1A' }}>ZONE</span>
           </div>
-          <p className="font-body text-base mb-10" style={{ color: 'rgba(255,255,255,0.4)', fontWeight: 400 }}>
+          <p className="font-body text-base mb-10" style={{ color: 'rgba(19,19,18,0.4)', fontWeight: 400 }}>
             Orlando East, Soweto
           </p>
 
@@ -130,10 +130,10 @@ export default function LoginPage() {
               { val: 'R100+', label: 'Free delivery' },
             ].map((s) => (
               <div key={s.label}>
-                <div className="font-display text-white text-2xl leading-none">{s.val}</div>
+                <div className="font-display text-[#131312] text-2xl leading-none">{s.val}</div>
                 <div
                   className="font-heading font-semibold text-xs uppercase mt-1"
-                  style={{ color: 'rgba(255,255,255,0.3)', letterSpacing: '0.14em' }}
+                  style={{ color: 'rgba(19,19,18,0.3)', letterSpacing: '0.14em' }}
                 >
                   {s.label}
                 </div>
@@ -146,14 +146,14 @@ export default function LoginPage() {
       {/* ── RIGHT — Form panel ── */}
       <div
         className="w-full md:w-[460px] flex flex-col justify-center px-8 py-16 md:px-12"
-        style={{ background: '#111111', borderLeft: '1px solid rgba(255,255,255,0.06)' }}
+        style={{ background: '#F5E9CC', borderLeft: '1px solid rgba(19,19,18,0.06)' }}
       >
         {/* Mobile logo */}
         <div className="md:hidden mb-10">
-          <div className="font-display text-white leading-none" style={{ fontSize: 40 }}>
-            FOODIE<span style={{ color: '#CC0000' }}>ZONE</span>
+          <div className="font-display text-[#131312] leading-none" style={{ fontSize: 40 }}>
+            FOODIE<span style={{ color: '#FF7A1A' }}>ZONE</span>
           </div>
-          <p className="font-body text-sm mt-2" style={{ color: 'rgba(255,255,255,0.35)', fontWeight: 400 }}>
+          <p className="font-body text-sm mt-2" style={{ color: 'rgba(19,19,18,0.35)', fontWeight: 400 }}>
             Orlando East, Soweto
           </p>
         </div>
@@ -162,11 +162,11 @@ export default function LoginPage() {
         <div className="mb-10">
           <p
             className="font-heading font-semibold text-xs uppercase mb-3"
-            style={{ color: '#CC0000', letterSpacing: '0.2em' }}
+            style={{ color: '#FF7A1A', letterSpacing: '0.2em' }}
           >
             Welcome back
           </p>
-          <h1 className="font-display text-white leading-none" style={{ fontSize: 52 }}>
+          <h1 className="font-display text-[#131312] leading-none" style={{ fontSize: 52 }}>
             SIGN IN
           </h1>
         </div>
@@ -181,26 +181,26 @@ export default function LoginPage() {
                 onClick={() => handleRoleChange(role.id)}
                 className="flex items-center gap-4 p-4 text-left transition-all duration-150"
                 style={{
-                  background: isActive ? 'rgba(204,0,0,0.08)' : 'rgba(255,255,255,0.03)',
-                  border: `1.5px solid ${isActive ? '#CC0000' : 'rgba(255,255,255,0.08)'}`,
+                  background: isActive ? 'rgba(255,122,26,0.08)' : 'rgba(19,19,18,0.03)',
+                  border: `1.5px solid ${isActive ? '#FF7A1A' : 'rgba(19,19,18,0.08)'}`,
                 }}
               >
-                <div style={{ color: isActive ? '#CC0000' : 'rgba(255,255,255,0.3)' }}>
+                <div style={{ color: isActive ? '#FF7A1A' : 'rgba(19,19,18,0.3)' }}>
                   {role.icon}
                 </div>
                 <div className="flex-1 text-left">
                   <p
                     className="font-heading font-semibold text-sm uppercase"
-                    style={{ color: isActive ? '#fff' : 'rgba(255,255,255,0.45)', letterSpacing: '0.1em' }}
+                    style={{ color: isActive ? '#fff' : 'rgba(19,19,18,0.45)', letterSpacing: '0.1em' }}
                   >
                     {role.label}
                   </p>
-                  <p className="font-body text-xs mt-0.5" style={{ color: 'rgba(255,255,255,0.25)', fontWeight: 400 }}>
+                  <p className="font-body text-xs mt-0.5" style={{ color: 'rgba(19,19,18,0.25)', fontWeight: 400 }}>
                     {role.desc}
                   </p>
                 </div>
                 {isActive && (
-                  <div className="w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ background: '#CC0000' }} />
+                  <div className="w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ background: '#FF7A1A' }} />
                 )}
               </button>
             )
@@ -211,8 +211,8 @@ export default function LoginPage() {
         {!current.needsPassword ? (
           <button
             onClick={handleCustomerGo}
-            className="w-full py-4 font-heading font-bold text-sm uppercase text-white transition-all hover:brightness-110 active:scale-[0.98]"
-            style={{ background: '#CC0000', letterSpacing: '0.15em' }}
+            className="w-full py-4 font-heading font-bold text-sm uppercase text-[#131312] transition-all hover:brightness-110 active:scale-[0.98]"
+            style={{ background: '#FF7A1A', letterSpacing: '0.15em' }}
           >
             Browse Menu →
           </button>
@@ -221,7 +221,7 @@ export default function LoginPage() {
             <div>
               <label
                 className="block font-heading font-semibold text-xs uppercase mb-2"
-                style={{ color: 'rgba(255,255,255,0.35)', letterSpacing: '0.16em' }}
+                style={{ color: 'rgba(19,19,18,0.35)', letterSpacing: '0.16em' }}
               >
                 Password
               </label>
@@ -231,15 +231,15 @@ export default function LoginPage() {
                 onChange={(e) => { setPassword(e.target.value); setError('') }}
                 placeholder="Enter password"
                 autoFocus
-                className="w-full px-4 py-3.5 font-body text-sm text-white placeholder-white/20 focus:outline-none transition-all"
+                className="w-full px-4 py-3.5 font-body text-sm text-[#131312] placeholder-white/20 focus:outline-none transition-all"
                 style={{
-                  background: 'rgba(255,255,255,0.04)',
-                  border: `1.5px solid ${error ? '#CC0000' : 'rgba(255,255,255,0.1)'}`,
+                  background: 'rgba(19,19,18,0.04)',
+                  border: `1.5px solid ${error ? '#FF7A1A' : 'rgba(19,19,18,0.1)'}`,
                   fontWeight: 400,
                 }}
               />
               {error && (
-                <p className="font-body text-xs mt-2" style={{ color: '#CC0000', fontWeight: 400 }}>
+                <p className="font-body text-xs mt-2" style={{ color: '#FF7A1A', fontWeight: 400 }}>
                   {error}
                 </p>
               )}
@@ -248,8 +248,8 @@ export default function LoginPage() {
             <button
               type="submit"
               disabled={!password || loading}
-              className="w-full py-4 font-heading font-bold text-sm uppercase text-white transition-all hover:bg-white hover:text-black active:scale-[0.98] disabled:opacity-30"
-              style={{ border: '1.5px solid rgba(255,255,255,0.2)', letterSpacing: '0.15em' }}
+              className="w-full py-4 font-heading font-bold text-sm uppercase text-[#131312] transition-all hover:bg-white hover:text-black active:scale-[0.98] disabled:opacity-30"
+              style={{ border: '1.5px solid rgba(19,19,18,0.2)', letterSpacing: '0.15em' }}
             >
               {loading ? (
                 <span className="flex items-center justify-center gap-2.5">
@@ -264,15 +264,15 @@ export default function LoginPage() {
         )}
 
         {/* Footer */}
-        <div className="mt-12 pt-8" style={{ borderTop: '1px solid rgba(255,255,255,0.05)' }}>
+        <div className="mt-12 pt-8" style={{ borderTop: '1px solid rgba(19,19,18,0.05)' }}>
           <a
             href="https://skhokholabs.xyz"
             target="_blank"
             rel="noopener noreferrer"
             className="font-heading font-semibold text-xs uppercase transition-colors"
-            style={{ color: 'rgba(255,255,255,0.18)', letterSpacing: '0.16em' }}
-            onMouseEnter={e => (e.currentTarget.style.color = '#CC0000')}
-            onMouseLeave={e => (e.currentTarget.style.color = 'rgba(255,255,255,0.18)')}
+            style={{ color: 'rgba(19,19,18,0.18)', letterSpacing: '0.16em' }}
+            onMouseEnter={e => (e.currentTarget.style.color = '#FF7A1A')}
+            onMouseLeave={e => (e.currentTarget.style.color = 'rgba(19,19,18,0.18)')}
           >
             Built by skhokholabs.xyz
           </a>

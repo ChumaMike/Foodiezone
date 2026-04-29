@@ -24,22 +24,22 @@ interface MenuItemCardProps {
 }
 
 const CATEGORY_GRADIENT: Record<string, string> = {
-  'Burgers':       'linear-gradient(145deg,#7A0000,#CC0000)',
+  'Burgers':       'linear-gradient(145deg,#7A0000,#FF7A1A)',
   'Smash Burgers': 'linear-gradient(145deg,#3D0000,#880000)',
-  'Dagwoods':      'linear-gradient(145deg,#0f2460,#1D4ED8)',
-  'Wingzz':        'linear-gradient(145deg,#7A3300,#FF6B00)',
-  'Loaded Chips':  'linear-gradient(145deg,#7A3300,#FF6B00)',
-  'Prego Rolls':   'linear-gradient(145deg,#0f2460,#1D4ED8)',
-  'Wraps & Salads':'linear-gradient(145deg,#0f2460,#1D4ED8)',
-  'Chicken':       'linear-gradient(145deg,#7A0000,#CC0000)',
+  'Dagwoods':      'linear-gradient(145deg,#0f2460,#2A6BFF)',
+  'Wingzz':        'linear-gradient(145deg,#7A3300,#FF3D8C)',
+  'Loaded Chips':  'linear-gradient(145deg,#7A3300,#FF3D8C)',
+  'Prego Rolls':   'linear-gradient(145deg,#0f2460,#2A6BFF)',
+  'Wraps & Salads':'linear-gradient(145deg,#0f2460,#2A6BFF)',
+  'Chicken':       'linear-gradient(145deg,#7A0000,#FF7A1A)',
 }
 
 const BADGE_STYLES: Record<string, { bg: string; color: string }> = {
-  'Popular':     { bg: '#CC0000', color: '#fff' },
-  'Best Seller': { bg: '#fff',    color: '#0A0A0A' },
-  'Best Value':  { bg: '#1D4ED8', color: '#fff' },
-  'New':         { bg: '#1D4ED8', color: '#fff' },
-  'Spicy 🌶️':  { bg: 'rgba(204,0,0,0.15)', color: '#FF6B00' },
+  'Popular':     { bg: '#FF7A1A', color: '#131312' },
+  'Best Seller': { bg: '#fff',    color: '#FFF8EC' },
+  'Best Value':  { bg: '#2A6BFF', color: '#131312' },
+  'New':         { bg: '#2A6BFF', color: '#131312' },
+  'Spicy 🌶️':  { bg: 'rgba(255,122,26,0.15)', color: '#FF3D8C' },
 }
 
 export default function MenuItemCard({ item, onAdd }: MenuItemCardProps) {
@@ -63,7 +63,7 @@ export default function MenuItemCard({ item, onAdd }: MenuItemCardProps) {
       whileTap={{ scale: 0.97 }}
       transition={{ type: 'spring', stiffness: 400, damping: 25 }}
       className="group flex flex-col overflow-hidden cursor-pointer"
-      style={{ background: '#1C1C1C', border: '1px solid rgba(255,255,255,0.07)' }}
+      style={{ background: '#1C1C1C', border: '1px solid rgba(19,19,18,0.07)' }}
       onClick={() => onAdd(item)}
     >
       {/* Image area */}
@@ -97,7 +97,7 @@ export default function MenuItemCard({ item, onAdd }: MenuItemCardProps) {
         {isSpecial && (
           <span
             className="absolute top-2.5 right-2.5 text-[9px] font-heading font-semibold px-2 py-1 uppercase"
-            style={{ background: 'rgba(29,78,216,0.9)', color: '#fff', letterSpacing: '0.08em' }}
+            style={{ background: 'rgba(42,107,255,0.9)', color: '#131312', letterSpacing: '0.08em' }}
           >
             Customise
           </span>
@@ -108,24 +108,24 @@ export default function MenuItemCard({ item, onAdd }: MenuItemCardProps) {
       <div className="flex flex-col flex-1 p-3.5">
         <h3
           className="font-heading font-semibold text-sm uppercase leading-snug mb-1"
-          style={{ color: 'rgba(255,255,255,0.92)', letterSpacing: '0.05em' }}
+          style={{ color: 'rgba(19,19,18,0.92)', letterSpacing: '0.05em' }}
         >
           {item.name}
         </h3>
         <p
           className="font-body text-xs leading-relaxed line-clamp-2 flex-1"
-          style={{ color: 'rgba(255,255,255,0.35)', fontWeight: 400 }}
+          style={{ color: 'rgba(19,19,18,0.35)', fontWeight: 400 }}
         >
           {item.description}
         </p>
 
         <div className="flex items-center justify-between mt-3">
           <div>
-            <span className="font-display text-lg leading-none" style={{ color: '#FF6B00' }}>
+            <span className="font-display text-lg leading-none" style={{ color: '#FF3D8C' }}>
               R{item.price}
             </span>
             {item.hasVariant && item.doublePriceExtra && (
-              <span className="font-body text-[10px] ml-1.5" style={{ color: 'rgba(255,255,255,0.2)' }}>
+              <span className="font-body text-[10px] ml-1.5" style={{ color: 'rgba(19,19,18,0.2)' }}>
                 · R{item.price + item.doublePriceExtra}
               </span>
             )}
@@ -135,10 +135,10 @@ export default function MenuItemCard({ item, onAdd }: MenuItemCardProps) {
             onClick={handleAdd}
             className="font-heading font-semibold text-[11px] uppercase px-3.5 py-2"
             animate={{
-              background: added ? '#15803d' : isSpecial ? '#1D4ED8' : '#CC0000',
+              background: added ? '#15803d' : isSpecial ? '#2A6BFF' : '#FF7A1A',
             }}
             transition={{ duration: 0.15 }}
-            style={{ color: '#fff', letterSpacing: '0.1em' }}
+            style={{ color: '#131312', letterSpacing: '0.1em' }}
           >
             {added ? '✓ Added' : isSpecial ? 'Build →' : '+ Add'}
           </motion.button>

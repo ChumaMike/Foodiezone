@@ -23,8 +23,8 @@ export default function CartBar({ onViewCart }: CartBarProps) {
         <motion.button
           whileTap={{ scale: 0.97 }}
           onClick={onViewCart}
-          className="w-full flex items-center justify-between text-white px-4 py-3.5"
-          style={{ background: '#CC0000', boxShadow: '0 4px 20px rgba(204,0,0,0.35)' }}
+          className="w-full flex items-center justify-between text-[#131312] px-4 py-3.5"
+          style={{ background: '#FF7A1A', boxShadow: '0 4px 20px rgba(255,122,26,0.35)' }}
         >
           {/* Left: count + label */}
           <div className="flex items-center gap-2.5">
@@ -34,7 +34,7 @@ export default function CartBar({ onViewCart }: CartBarProps) {
               initial="hidden"
               animate="show"
               className="text-[11px] font-heading font-bold min-w-[22px] h-[22px] flex items-center justify-center px-1"
-              style={{ background: 'rgba(0,0,0,0.3)', color: '#fff' }}
+              style={{ background: 'rgba(0,0,0,0.3)', color: '#131312' }}
             >
               {count}
             </motion.span>
@@ -52,7 +52,7 @@ export default function CartBar({ onViewCart }: CartBarProps) {
             >
               R{total}
             </motion.span>
-            <span className="text-white/70 text-sm font-bold">›</span>
+            <span className="text-[#131312]/70 text-sm font-bold">›</span>
           </div>
         </motion.button>
       </div>

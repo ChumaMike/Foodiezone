@@ -24,9 +24,9 @@ const REP_PER_ORDER = 10
 
 export const TIERS = [
   { label: 'Newcomer', min: 0,   max: 99,  color: '#888',    next: 100 },
-  { label: 'Regular',  min: 100, max: 299,  color: '#FF6B00', next: 300 },
-  { label: 'VIP',      min: 300, max: 699,  color: '#1D4ED8', next: 700 },
-  { label: 'Legend',   min: 700, max: Infinity, color: '#CC0000', next: null },
+  { label: 'Regular',  min: 100, max: 299,  color: '#FF3D8C', next: 300 },
+  { label: 'VIP',      min: 300, max: 699,  color: '#2A6BFF', next: 700 },
+  { label: 'Legend',   min: 700, max: Infinity, color: '#FF7A1A', next: null },
 ]
 
 export function getTier(score: number) {

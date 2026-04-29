@@ -20,7 +20,7 @@ function EditProfileForm({ profile, onSave, onCancel }: {
     <form
       onSubmit={(e) => { e.preventDefault(); onSave({ name: name.trim(), phone: phone.trim(), defaultAddress: address.trim() }) }}
       className="space-y-3 px-4 py-4"
-      style={{ background: '#F5F5F5', borderTop: '2px solid #0A0A0A' }}
+      style={{ background: '#F5F5F5', borderTop: '2px solid #FFF8EC' }}
     >
       <p className="font-heading font-black text-[11px] uppercase tracking-widest" style={{ color: '#888' }}>Edit Profile</p>
       {[
@@ -40,7 +40,7 @@ function EditProfileForm({ profile, onSave, onCancel }: {
             onBlur={() => setFocused(null)}
             placeholder={f.placeholder}
             className="w-full px-3 py-2.5 font-body text-[13px] text-black focus:outline-none"
-            style={{ background: '#FFFFFF', border: `2px solid ${focused === f.key ? '#0A0A0A' : '#E5E5E5'}` }}
+            style={{ background: '#FFFFFF', border: `2px solid ${focused === f.key ? '#FFF8EC' : '#E5E5E5'}` }}
           />
         </div>
       ))}
@@ -56,8 +56,8 @@ function EditProfileForm({ profile, onSave, onCancel }: {
         <button
           type="submit"
           disabled={!name.trim() || !phone.trim()}
-          className="flex-1 py-2.5 text-[12px] font-heading font-black uppercase tracking-wide text-white transition-all active:scale-[0.97] disabled:opacity-40"
-          style={{ background: '#0A0A0A' }}
+          className="flex-1 py-2.5 text-[12px] font-heading font-black uppercase tracking-wide text-[#131312] transition-all active:scale-[0.97] disabled:opacity-40"
+          style={{ background: '#FFF8EC' }}
         >
           Save →
         </button>
@@ -89,9 +89,9 @@ export default function ProfilePage() {
 
   const STATUS_COLORS: Record<string, { color: string; bg: string; label: string }> = {
     confirmed:  { color: '#888',    bg: 'rgba(0,0,0,0.07)',       label: 'Confirmed'  },
-    preparing:  { color: '#1D4ED8', bg: 'rgba(29,78,216,0.1)',    label: 'Preparing'  },
+    preparing:  { color: '#2A6BFF', bg: 'rgba(42,107,255,0.1)',    label: 'Preparing'  },
     ready:      { color: '#16A34A', bg: 'rgba(22,163,74,0.1)',    label: 'Ready'      },
-    delivering: { color: '#CC0000', bg: 'rgba(204,0,0,0.1)',      label: 'Delivering' },
+    delivering: { color: '#FF7A1A', bg: 'rgba(255,122,26,0.1)',      label: 'Delivering' },
     delivered:  { color: '#16A34A', bg: 'rgba(22,163,74,0.1)',    label: 'Delivered'  },
   }
 
@@ -99,12 +99,12 @@ export default function ProfilePage() {
     <div className="min-h-screen pb-24" style={{ background: '#F5F5F5' }}>
 
       {/* Header */}
-      <header style={{ background: '#0A0A0A', borderBottom: '3px solid #CC0000' }}>
+      <header style={{ background: '#FFF8EC', borderBottom: '3px solid #FF7A1A' }}>
         <div className="max-w-md mx-auto px-4 pt-10 pb-5">
           <div className="flex items-start justify-between">
             <div>
               <div className="brand-label mb-2">FOODIE ZONE</div>
-              <h1 className="font-heading font-black text-white text-[28px] uppercase leading-none tracking-tight">
+              <h1 className="font-heading font-black text-[#131312] text-[28px] uppercase leading-none tracking-tight">
                 My Profile
               </h1>
               <p className="text-[12px] font-body mt-1" style={{ color: '#888' }}>
@@ -114,7 +114,7 @@ export default function ProfilePage() {
             <button
               onClick={logout}
               className="mt-1 text-[11px] font-body font-semibold uppercase tracking-wide px-3 py-1.5 transition-all active:opacity-70"
-              style={{ background: 'rgba(255,255,255,0.08)', color: '#AAA', border: '1px solid rgba(255,255,255,0.1)' }}
+              style={{ background: 'rgba(19,19,18,0.08)', color: '#AAA', border: '1px solid rgba(19,19,18,0.1)' }}
             >
               Sign Out
             </button>
@@ -137,7 +137,7 @@ export default function ProfilePage() {
               <div className="text-right">
                 <span
                   className="font-heading font-black text-[11px] uppercase tracking-widest px-3 py-1.5 block"
-                  style={{ background: tier.color, color: '#fff' }}
+                  style={{ background: tier.color, color: '#131312' }}
                 >
                   {tier.label}
                 </span>
@@ -189,7 +189,7 @@ export default function ProfilePage() {
             { label: 'Points', value: `${profile.repScore}` },
           ].map((s) => (
             <div key={s.label} className="py-3 text-center" style={{ background: '#FFFFFF', border: '1px solid #E5E5E5' }}>
-              <p className="font-heading font-black text-[18px]" style={{ color: '#0A0A0A' }}>{s.value}</p>
+              <p className="font-heading font-black text-[18px]" style={{ color: '#FFF8EC' }}>{s.value}</p>
               <p className="text-[10px] font-body uppercase tracking-wide mt-0.5" style={{ color: '#888' }}>{s.label}</p>
             </div>
           ))}
@@ -228,7 +228,7 @@ export default function ProfilePage() {
                   style={{ borderBottom: i < arr.length - 1 ? '1px solid #F5F5F5' : 'none' }}
                 >
                   <span className="text-[11px] font-body uppercase tracking-wide" style={{ color: '#AAA' }}>{row.label}</span>
-                  <span className="text-[13px] font-body font-semibold" style={{ color: row.value === 'Not set' ? '#CCC' : '#0A0A0A' }}>
+                  <span className="text-[13px] font-body font-semibold" style={{ color: row.value === 'Not set' ? '#CCC' : '#FFF8EC' }}>
                     {row.value}
                   </span>
                 </div>
@@ -253,7 +253,7 @@ export default function ProfilePage() {
                   >
                     <div className="flex items-center justify-between px-4 py-3">
                       <div>
-                        <p className="font-heading font-black text-[13px] uppercase tracking-tight" style={{ color: '#0A0A0A' }}>
+                        <p className="font-heading font-black text-[13px] uppercase tracking-tight" style={{ color: '#FFF8EC' }}>
                           {order.orderNumber}
                         </p>
                         <p className="text-[11px] font-body mt-0.5" style={{ color: '#888' }}>
@@ -267,7 +267,7 @@ export default function ProfilePage() {
                         >
                           {sc.label}
                         </span>
-                        <span className="font-heading font-black text-[13px]" style={{ color: '#FF6B00' }}>
+                        <span className="font-heading font-black text-[13px]" style={{ color: '#FF3D8C' }}>
                           R{order.total}
                         </span>
                       </div>

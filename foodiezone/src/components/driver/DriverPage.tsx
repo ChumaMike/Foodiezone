@@ -42,7 +42,7 @@ function DriverOrderCard({ order, action, accentColor }: DriverOrderCardProps) {
     >
       <div className="px-3 pt-3 pb-2 flex items-start justify-between">
         <div>
-          <p className="font-heading font-black text-[13px] uppercase tracking-tight" style={{ color: '#0A0A0A' }}>
+          <p className="font-heading font-black text-[13px] uppercase tracking-tight" style={{ color: '#FFF8EC' }}>
             {order.orderNumber}
           </p>
           <p className="text-[11px] font-body mt-0.5" style={{ color: '#888' }}>{order.customerName}</p>
@@ -81,7 +81,7 @@ function DriverOrderCard({ order, action, accentColor }: DriverOrderCardProps) {
       {/* Total + action */}
       <div className="px-3 py-2.5 flex items-center justify-between gap-2">
         <div>
-          <span className="font-heading font-black text-[14px]" style={{ color: '#FF6B00' }}>
+          <span className="font-heading font-black text-[14px]" style={{ color: '#FF3D8C' }}>
             R{order.total}
           </span>
           <span className="text-[10px] font-body ml-1.5" style={{ color: '#CCC' }}>
@@ -90,7 +90,7 @@ function DriverOrderCard({ order, action, accentColor }: DriverOrderCardProps) {
         </div>
         <button
           onClick={action.onPress}
-          className="text-white text-[11px] font-heading font-black px-4 py-2.5 uppercase tracking-wider active:scale-[0.97] transition-all duration-150"
+          className="text-[#131312] text-[11px] font-heading font-black px-4 py-2.5 uppercase tracking-wider active:scale-[0.97] transition-all duration-150"
           style={{ background: accentColor }}
         >
           {action.label} →
@@ -114,12 +114,12 @@ export default function DriverDashboard() {
     <div className="min-h-screen pb-24" style={{ background: '#F5F5F5' }}>
 
       {/* Header */}
-      <header style={{ background: '#0A0A0A', borderBottom: '3px solid #CC0000' }}>
+      <header style={{ background: '#FFF8EC', borderBottom: '3px solid #FF7A1A' }}>
         <div className="max-w-md mx-auto px-4 pt-10 pb-4">
           <div className="flex items-start justify-between">
             <div>
               <div className="brand-label mb-2">FOODIE ZONE</div>
-              <h1 className="font-heading font-black text-white text-[28px] uppercase leading-none tracking-tight">
+              <h1 className="font-heading font-black text-[#131312] text-[28px] uppercase leading-none tracking-tight">
                 Deliveries
               </h1>
               <p className="text-[11px] font-body mt-0.5" style={{ color: '#666' }}>
@@ -130,7 +130,7 @@ export default function DriverDashboard() {
               <div className="flex gap-2">
                 <div
                   className="px-3 py-2 text-center"
-                  style={{ background: 'rgba(204,0,0,0.15)' }}
+                  style={{ background: 'rgba(255,122,26,0.15)' }}
                 >
                   <p className="font-heading font-black text-[20px] leading-none" style={{ color: '#FF6B6B' }}>
                     {readyOrders.length}
@@ -141,7 +141,7 @@ export default function DriverDashboard() {
                 </div>
                 <div
                   className="px-3 py-2 text-center"
-                  style={{ background: 'rgba(29,78,216,0.15)' }}
+                  style={{ background: 'rgba(42,107,255,0.15)' }}
                 >
                   <p className="font-heading font-black text-[20px] leading-none" style={{ color: '#93BBFD' }}>
                     {deliveringOrders.length}
@@ -155,9 +155,9 @@ export default function DriverDashboard() {
                 onClick={logout}
                 className="text-[11px] font-body font-semibold uppercase tracking-wide px-3 py-1.5 transition-all active:opacity-70"
                 style={{
-                  background: 'rgba(255,255,255,0.08)',
+                  background: 'rgba(19,19,18,0.08)',
                   color: '#AAA',
-                  border: '1px solid rgba(255,255,255,0.1)',
+                  border: '1px solid rgba(19,19,18,0.1)',
                 }}
               >
                 Sign Out
@@ -174,7 +174,7 @@ export default function DriverDashboard() {
           <section>
             <h2
               className="font-heading font-black text-[11px] uppercase tracking-[0.15em] mb-2.5"
-              style={{ color: '#CC0000' }}
+              style={{ color: '#FF7A1A' }}
             >
               Ready for Pickup
             </h2>
@@ -184,7 +184,7 @@ export default function DriverDashboard() {
                   key={order.id}
                   order={order}
                   action={{ label: 'Pick Up', onPress: () => updateOrderStatus(order.id, 'delivering') }}
-                  accentColor="#CC0000"
+                  accentColor="#FF7A1A"
                 />
               ))}
             </div>
@@ -196,7 +196,7 @@ export default function DriverDashboard() {
           <section>
             <h2
               className="font-heading font-black text-[11px] uppercase tracking-[0.15em] mb-2.5"
-              style={{ color: '#1D4ED8' }}
+              style={{ color: '#2A6BFF' }}
             >
               En Route
             </h2>
@@ -206,7 +206,7 @@ export default function DriverDashboard() {
                   key={order.id}
                   order={order}
                   action={{ label: 'Mark Delivered', onPress: () => updateOrderStatus(order.id, 'delivered') }}
-                  accentColor="#1D4ED8"
+                  accentColor="#2A6BFF"
                 />
               ))}
             </div>

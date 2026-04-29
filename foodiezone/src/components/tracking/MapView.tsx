@@ -33,7 +33,7 @@ export default function MapView() {
       className: '',
       html: `<div style="filter:drop-shadow(0 2px 4px rgba(0,0,0,0.35))">
         <svg width="28" height="36" viewBox="0 0 28 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M14 0C6.27 0 0 6.27 0 14c0 10.5 14 22 14 22s14-11.5 14-22C28 6.27 21.73 0 14 0z" fill="#CC0000"/>
+          <path d="M14 0C6.27 0 0 6.27 0 14c0 10.5 14 22 14 22s14-11.5 14-22C28 6.27 21.73 0 14 0z" fill="#FF7A1A"/>
           <circle cx="14" cy="14" r="5" fill="white"/>
         </svg>
       </div>`,
@@ -48,7 +48,7 @@ export default function MapView() {
     // Driver marker — dark square with truck icon
     const driverIcon = L.divIcon({
       className: '',
-      html: `<div style="width:32px;height:32px;background:#0A0A0A;display:flex;align-items:center;justify-content:center;filter:drop-shadow(0 2px 6px rgba(0,0,0,0.4))">
+      html: `<div style="width:32px;height:32px;background:#FFF8EC;display:flex;align-items:center;justify-content:center;filter:drop-shadow(0 2px 6px rgba(0,0,0,0.4))">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M5 17H3a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v3"/>
           <rect x="9" y="11" width="14" height="10" rx="2"/>

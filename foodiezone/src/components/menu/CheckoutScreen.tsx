@@ -167,22 +167,22 @@ export default function CheckoutScreen({ show, onClose }: CheckoutScreenProps) {
           >
             <div
               className="rounded-t-[24px] max-h-[92vh] overflow-y-auto max-w-md mx-auto"
-              style={{ background: '#161616', borderTop: '2px solid #CC0000' }}
+              style={{ background: '#161616', borderTop: '2px solid #FF7A1A' }}
             >
               {/* Drag handle */}
               <div className="flex justify-center pt-3 pb-1">
-                <div className="w-10 h-1 rounded-full" style={{ background: 'rgba(255,255,255,0.15)' }} />
+                <div className="w-10 h-1 rounded-full" style={{ background: 'rgba(19,19,18,0.15)' }} />
               </div>
 
               <div className="px-5 pb-8 pt-2">
                 {/* Header */}
                 <div className="flex items-center justify-between mb-5">
                   <div>
-                    <h2 className="font-display text-[20px] uppercase tracking-tight text-white">
+                    <h2 className="font-display text-[20px] uppercase tracking-tight text-[#131312]">
                       Your Order
                     </h2>
                     {profile && (
-                      <p className="text-[12px] font-body mt-0.5" style={{ color: 'rgba(255,255,255,0.4)' }}>
+                      <p className="text-[12px] font-body mt-0.5" style={{ color: 'rgba(19,19,18,0.4)' }}>
                         {profile.name} · {profile.phone}
                       </p>
                     )}
@@ -191,7 +191,7 @@ export default function CheckoutScreen({ show, onClose }: CheckoutScreenProps) {
                     whileTap={{ scale: 0.9 }}
                     onClick={onClose}
                     className="w-8 h-8 flex items-center justify-center text-sm font-bold"
-                    style={{ background: '#2a2a2a', color: 'rgba(255,255,255,0.5)' }}
+                    style={{ background: '#2a2a2a', color: 'rgba(19,19,18,0.5)' }}
                   >
                     ✕
                   </motion.button>
@@ -214,22 +214,22 @@ export default function CheckoutScreen({ show, onClose }: CheckoutScreenProps) {
                           exit={{ opacity: 0, x: -20, height: 0, marginBottom: 0 }}
                           transition={{ duration: 0.2 }}
                           className="flex items-start justify-between gap-3 p-3"
-                          style={{ background: '#222222', borderLeft: '3px solid #CC0000' }}
+                          style={{ background: '#222222', borderLeft: '3px solid #FF7A1A' }}
                         >
                           <div className="flex-1 min-w-0">
-                            <p className="font-body text-[13px] font-semibold" style={{ color: 'rgba(255,255,255,0.9)' }}>
+                            <p className="font-body text-[13px] font-semibold" style={{ color: 'rgba(19,19,18,0.9)' }}>
                               {item.quantity}× {item.name}
                             </p>
                           </div>
                           <div className="flex items-center gap-2 shrink-0">
-                            <span className="font-heading font-bold text-[13px]" style={{ color: '#FF6B00' }}>
+                            <span className="font-heading font-bold text-[13px]" style={{ color: '#FF3D8C' }}>
                               R{item.total}
                             </span>
                             <motion.button
                               whileTap={{ scale: 0.85 }}
                               onClick={() => removeItem(item.id)}
                               className="w-6 h-6 flex items-center justify-center text-[11px] font-bold"
-                              style={{ background: '#333', color: 'rgba(255,255,255,0.4)' }}
+                              style={{ background: '#333', color: 'rgba(19,19,18,0.4)' }}
                             >
                               ✕
                             </motion.button>
@@ -247,35 +247,35 @@ export default function CheckoutScreen({ show, onClose }: CheckoutScreenProps) {
                         <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
                       </svg>
                     </div>
-                    <p className="text-sm font-body" style={{ color: 'rgba(255,255,255,0.4)' }}>Your cart is empty</p>
+                    <p className="text-sm font-body" style={{ color: 'rgba(19,19,18,0.4)' }}>Your cart is empty</p>
                   </div>
                 )}
 
                 {/* Totals */}
-                <div className="mb-4" style={{ border: '1px solid rgba(255,255,255,0.08)' }}>
-                  <div className="flex justify-between px-4 py-2.5 text-[13px] font-body" style={{ borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
-                    <span style={{ color: 'rgba(255,255,255,0.45)' }}>Subtotal</span>
-                    <span style={{ color: 'rgba(255,255,255,0.85)', fontWeight: 600 }}>R{total}</span>
+                <div className="mb-4" style={{ border: '1px solid rgba(19,19,18,0.08)' }}>
+                  <div className="flex justify-between px-4 py-2.5 text-[13px] font-body" style={{ borderBottom: '1px solid rgba(19,19,18,0.08)' }}>
+                    <span style={{ color: 'rgba(19,19,18,0.45)' }}>Subtotal</span>
+                    <span style={{ color: 'rgba(19,19,18,0.85)', fontWeight: 600 }}>R{total}</span>
                   </div>
-                  <div className="flex justify-between px-4 py-2.5 text-[13px] font-body" style={{ borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
-                    <span style={{ color: 'rgba(255,255,255,0.45)' }}>Delivery fee</span>
-                    <span style={{ color: 'rgba(255,255,255,0.85)', fontWeight: 600 }}>R{DELIVERY_FEE}</span>
+                  <div className="flex justify-between px-4 py-2.5 text-[13px] font-body" style={{ borderBottom: '1px solid rgba(19,19,18,0.08)' }}>
+                    <span style={{ color: 'rgba(19,19,18,0.45)' }}>Delivery fee</span>
+                    <span style={{ color: 'rgba(19,19,18,0.85)', fontWeight: 600 }}>R{DELIVERY_FEE}</span>
                   </div>
                   {profile && (
-                    <div className="flex justify-between px-4 py-2 text-[12px] font-body" style={{ borderBottom: '1px solid rgba(255,255,255,0.08)', background: 'rgba(204,0,0,0.06)' }}>
-                      <span style={{ color: '#CC0000' }}>Rep earned this order</span>
-                      <span className="font-heading font-bold" style={{ color: '#CC0000' }}>+10 pts</span>
+                    <div className="flex justify-between px-4 py-2 text-[12px] font-body" style={{ borderBottom: '1px solid rgba(19,19,18,0.08)', background: 'rgba(255,122,26,0.06)' }}>
+                      <span style={{ color: '#FF7A1A' }}>Rep earned this order</span>
+                      <span className="font-heading font-bold" style={{ color: '#FF7A1A' }}>+10 pts</span>
                     </div>
                   )}
-                  <div className="flex justify-between px-4 py-3" style={{ background: '#0A0A0A' }}>
-                    <span className="font-heading font-bold text-white text-[14px] uppercase tracking-wide">Total</span>
+                  <div className="flex justify-between px-4 py-3" style={{ background: '#FFF8EC' }}>
+                    <span className="font-heading font-bold text-[#131312] text-[14px] uppercase tracking-wide">Total</span>
                     <motion.span
                       key={total}
                       initial={{ scale: 0.9, opacity: 0.6 }}
                       animate={{ scale: 1, opacity: 1 }}
                       transition={{ type: 'spring', stiffness: 400, damping: 20 }}
                       className="font-heading font-bold text-[14px]"
-                      style={{ color: '#FF6B00' }}
+                      style={{ color: '#FF3D8C' }}
                     >
                       R{total + DELIVERY_FEE}
                     </motion.span>
@@ -284,7 +284,7 @@ export default function CheckoutScreen({ show, onClose }: CheckoutScreenProps) {
 
                 {/* Address */}
                 <div className="mb-4">
-                  <label className="block text-[11px] font-body font-semibold uppercase tracking-widest mb-1.5" style={{ color: 'rgba(255,255,255,0.4)' }}>
+                  <label className="block text-[11px] font-body font-semibold uppercase tracking-widest mb-1.5" style={{ color: 'rgba(19,19,18,0.4)' }}>
                     Delivery Address
                   </label>
                   <motion.div animate={addressControls}>
@@ -295,10 +295,10 @@ export default function CheckoutScreen({ show, onClose }: CheckoutScreenProps) {
                       onFocus={() => setAddressFocused(true)}
                       onBlur={() => setAddressFocused(false)}
                       placeholder="e.g. 12 Vilakazi Street, Orlando West"
-                      className="w-full px-4 py-3 text-[13px] font-body text-white focus:outline-none"
+                      className="w-full px-4 py-3 text-[13px] font-body text-[#131312] focus:outline-none"
                       style={{
                         background: '#1E1E1E',
-                        border: `2px solid ${addressError ? '#CC0000' : addressFocused ? 'rgba(204,0,0,0.7)' : 'rgba(255,255,255,0.1)'}`,
+                        border: `2px solid ${addressError ? '#FF7A1A' : addressFocused ? 'rgba(255,122,26,0.7)' : 'rgba(19,19,18,0.1)'}`,
                         transition: 'border-color 0.15s',
                       }}
                     />
@@ -310,7 +310,7 @@ export default function CheckoutScreen({ show, onClose }: CheckoutScreenProps) {
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0 }}
                         className="text-[11px] font-body mt-1"
-                        style={{ color: '#CC0000' }}
+                        style={{ color: '#FF7A1A' }}
                       >
                         {addressError}
                       </motion.p>
@@ -320,7 +320,7 @@ export default function CheckoutScreen({ show, onClose }: CheckoutScreenProps) {
 
                 {/* Payment */}
                 <div className="mb-6">
-                  <label className="block text-[11px] font-body font-semibold uppercase tracking-widest mb-2" style={{ color: 'rgba(255,255,255,0.4)' }}>
+                  <label className="block text-[11px] font-body font-semibold uppercase tracking-widest mb-2" style={{ color: 'rgba(19,19,18,0.4)' }}>
                     Payment Method
                   </label>
                   <div className="space-y-2">
@@ -330,26 +330,26 @@ export default function CheckoutScreen({ show, onClose }: CheckoutScreenProps) {
                         whileTap={{ scale: 0.99 }}
                         className="flex items-center gap-3 px-4 py-3 cursor-pointer"
                         style={{
-                          background: paymentMethod === m.id ? 'rgba(204,0,0,0.08)' : '#1E1E1E',
-                          border: `2px solid ${paymentMethod === m.id ? '#CC0000' : 'rgba(255,255,255,0.1)'}`,
+                          background: paymentMethod === m.id ? 'rgba(255,122,26,0.08)' : '#1E1E1E',
+                          border: `2px solid ${paymentMethod === m.id ? '#FF7A1A' : 'rgba(19,19,18,0.1)'}`,
                           transition: 'background 0.15s, border-color 0.15s',
                         }}
                       >
-                        <span style={{ color: paymentMethod === m.id ? '#CC0000' : 'rgba(255,255,255,0.35)' }}>{m.icon}</span>
+                        <span style={{ color: paymentMethod === m.id ? '#FF7A1A' : 'rgba(19,19,18,0.35)' }}>{m.icon}</span>
                         <div className="flex-1">
-                          <p className="text-[13px] font-body font-semibold" style={{ color: 'rgba(255,255,255,0.9)' }}>{m.label}</p>
-                          <p className="text-[11px] font-body" style={{ color: 'rgba(255,255,255,0.4)' }}>{m.desc}</p>
+                          <p className="text-[13px] font-body font-semibold" style={{ color: 'rgba(19,19,18,0.9)' }}>{m.label}</p>
+                          <p className="text-[11px] font-body" style={{ color: 'rgba(19,19,18,0.4)' }}>{m.desc}</p>
                         </div>
                         <div
                           className="w-5 h-5 flex items-center justify-center shrink-0"
                           style={{
-                            border: `2px solid ${paymentMethod === m.id ? '#CC0000' : 'rgba(255,255,255,0.2)'}`,
-                            background: paymentMethod === m.id ? '#CC0000' : 'transparent',
+                            border: `2px solid ${paymentMethod === m.id ? '#FF7A1A' : 'rgba(19,19,18,0.2)'}`,
+                            background: paymentMethod === m.id ? '#FF7A1A' : 'transparent',
                             borderRadius: '50%',
                             transition: 'background 0.15s, border-color 0.15s',
                           }}
                         >
-                          {paymentMethod === m.id && <span className="text-white text-[10px] font-black">✓</span>}
+                          {paymentMethod === m.id && <span className="text-[#131312] text-[10px] font-black">✓</span>}
                         </div>
                         <input
                           type="radio"
@@ -369,8 +369,8 @@ export default function CheckoutScreen({ show, onClose }: CheckoutScreenProps) {
                   whileTap={{ scale: placing || items.length === 0 ? 1 : 0.97 }}
                   onClick={handlePlaceOrder}
                   disabled={placing || items.length === 0}
-                  className="w-full text-white font-heading font-bold py-4 text-[15px] uppercase tracking-wide disabled:opacity-40 disabled:cursor-not-allowed"
-                  style={{ background: placing ? '#555' : '#CC0000', transition: 'background 0.2s' }}
+                  className="w-full text-[#131312] font-heading font-bold py-4 text-[15px] uppercase tracking-wide disabled:opacity-40 disabled:cursor-not-allowed"
+                  style={{ background: placing ? '#555' : '#FF7A1A', transition: 'background 0.2s' }}
                 >
                   {placing ? (
                     <span className="flex items-center justify-center gap-2">
@@ -386,7 +386,7 @@ export default function CheckoutScreen({ show, onClose }: CheckoutScreenProps) {
                   whileTap={{ scale: placing || items.length === 0 ? 1 : 0.97 }}
                   onClick={handleWhatsAppOrder}
                   disabled={placing || items.length === 0}
-                  className="mt-3 w-full text-white font-heading font-bold py-4 text-[15px] uppercase tracking-wide disabled:opacity-40 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                  className="mt-3 w-full text-[#131312] font-heading font-bold py-4 text-[15px] uppercase tracking-wide disabled:opacity-40 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                   style={{ background: '#25D366', transition: 'background 0.2s' }}
                   aria-label="Send order on WhatsApp"
                 >

@@ -33,8 +33,8 @@ function ToastItem({ toast, onRemove }: { toast: ToastMessage; onRemove: (id: st
       animate={{ opacity: 1, y: 0, scale: 1 }}
       exit={{ opacity: 0, y: -8, scale: 0.95, transition: { duration: 0.2 } }}
       transition={{ type: 'spring', stiffness: 380, damping: 30 }}
-      style={{ background: bg, border: '1px solid rgba(255,255,255,0.12)' }}
-      className="flex items-center gap-3 px-4 py-3 rounded-lg shadow-xl text-white text-sm font-body max-w-xs cursor-pointer"
+      style={{ background: bg, border: '1px solid rgba(19,19,18,0.12)' }}
+      className="flex items-center gap-3 px-4 py-3 rounded-lg shadow-xl text-[#131312] text-sm font-body max-w-xs cursor-pointer"
       onClick={() => onRemove(toast.id)}
     >
       <span className="text-base leading-none">{icon}</span>

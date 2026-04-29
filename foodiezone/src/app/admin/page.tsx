@@ -67,8 +67,8 @@ function isLowStock(current: number, max: number) {
 
 const statusColors: Record<string, { color: string; bg: string; border: string }> = {
   Delivered: { color: '#22c55e', bg: 'rgba(34,197,94,0.10)',   border: 'rgba(34,197,94,0.25)'  },
-  Ready:     { color: '#FF6B00', bg: 'rgba(255,107,0,0.10)',   border: 'rgba(255,107,0,0.25)'  },
-  Preparing: { color: '#1D4ED8', bg: 'rgba(29,78,216,0.12)',   border: 'rgba(29,78,216,0.30)'  },
+  Ready:     { color: '#FF3D8C', bg: 'rgba(255,61,140,0.10)',   border: 'rgba(255,61,140,0.25)'  },
+  Preparing: { color: '#2A6BFF', bg: 'rgba(42,107,255,0.12)',   border: 'rgba(42,107,255,0.30)'  },
 }
 
 // ─── Sub-components ───────────────────────────────────────────────────────────
@@ -76,7 +76,7 @@ const statusColors: Record<string, { color: string; bg: string; border: string }
 function SectionLabel({ children }: { children: React.ReactNode }) {
   return (
     <p className="font-heading font-black text-xs uppercase tracking-[0.25em] mb-6"
-       style={{ color: 'rgba(255,255,255,0.25)' }}>
+       style={{ color: 'rgba(19,19,18,0.25)' }}>
       {children}
     </p>
   )
@@ -86,7 +86,7 @@ function Card({ children, className = '', style = {} }: { children: React.ReactN
   return (
     <div
       className={`p-6 ${className}`}
-      style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.07)', ...style }}
+      style={{ background: 'rgba(19,19,18,0.02)', border: '1px solid rgba(19,19,18,0.07)', ...style }}
     >
       {children}
     </div>
@@ -102,8 +102,8 @@ function Toggle({ on, onToggle }: { on: boolean; onToggle: () => void }) {
         width: 42,
         height: 24,
         borderRadius: 12,
-        background: on ? '#CC0000' : 'rgba(255,255,255,0.1)',
-        border: `1px solid ${on ? 'rgba(204,0,0,0.5)' : 'rgba(255,255,255,0.15)'}`,
+        background: on ? '#FF7A1A' : 'rgba(19,19,18,0.1)',
+        border: `1px solid ${on ? 'rgba(255,122,26,0.5)' : 'rgba(19,19,18,0.15)'}`,
       }}
       aria-label="Toggle availability"
     >
@@ -144,32 +144,32 @@ function AdminLogin({ onUnlock }: { onUnlock: () => void }) {
   return (
     <main
       className="min-h-screen flex items-center justify-center px-5"
-      style={{ background: '#0A0A0A' }}
+      style={{ background: '#FFF8EC' }}
     >
       <div
         className="w-full max-w-sm p-10"
         style={{
-          border: '1px solid rgba(255,255,255,0.07)',
-          background: 'rgba(255,255,255,0.02)',
+          border: '1px solid rgba(19,19,18,0.07)',
+          background: 'rgba(19,19,18,0.02)',
           animation: shake ? 'shake 0.4s ease' : 'none',
         }}
       >
         {/* Logo mark */}
         <div className="mb-8">
-          <p className="font-heading font-black text-xs uppercase tracking-[0.3em] mb-2" style={{ color: '#CC0000' }}>
+          <p className="font-heading font-black text-xs uppercase tracking-[0.3em] mb-2" style={{ color: '#FF7A1A' }}>
             Foodie Zone
           </p>
-          <h1 className="font-display text-white uppercase leading-none" style={{ fontSize: '2.5rem' }}>
+          <h1 className="font-display text-[#131312] uppercase leading-none" style={{ fontSize: '2.5rem' }}>
             ADMIN
           </h1>
-          <p className="font-body text-xs mt-2" style={{ color: 'rgba(255,255,255,0.3)' }}>
+          <p className="font-body text-xs mt-2" style={{ color: 'rgba(19,19,18,0.3)' }}>
             Owner access only
           </p>
         </div>
 
         <div className="space-y-4">
           <div>
-            <label className="font-heading font-black text-xs uppercase tracking-widest block mb-2" style={{ color: 'rgba(255,255,255,0.3)' }}>
+            <label className="font-heading font-black text-xs uppercase tracking-widest block mb-2" style={{ color: 'rgba(19,19,18,0.3)' }}>
               Password
             </label>
             <input
@@ -178,16 +178,16 @@ function AdminLogin({ onUnlock }: { onUnlock: () => void }) {
               onChange={(e) => { setPw(e.target.value); setError(false) }}
               onKeyDown={(e) => e.key === 'Enter' && attempt()}
               placeholder="Enter admin password"
-              className="w-full font-body text-sm text-white outline-none px-4 py-3 transition-all"
+              className="w-full font-body text-sm text-[#131312] outline-none px-4 py-3 transition-all"
               style={{
-                background: 'rgba(255,255,255,0.04)',
-                border: `1px solid ${error ? '#CC0000' : 'rgba(255,255,255,0.1)'}`,
-                color: '#fff',
+                background: 'rgba(19,19,18,0.04)',
+                border: `1px solid ${error ? '#FF7A1A' : 'rgba(19,19,18,0.1)'}`,
+                color: '#131312',
               }}
               autoFocus
             />
             {error && (
-              <p className="font-body text-xs mt-2" style={{ color: '#CC0000' }}>
+              <p className="font-body text-xs mt-2" style={{ color: '#FF7A1A' }}>
                 Incorrect password.
               </p>
             )}
@@ -196,7 +196,7 @@ function AdminLogin({ onUnlock }: { onUnlock: () => void }) {
           <button
             onClick={attempt}
             className="w-full font-heading font-black text-sm uppercase tracking-widest py-3.5 transition-all hover:brightness-110 active:scale-95"
-            style={{ background: '#CC0000', color: '#fff' }}
+            style={{ background: '#FF7A1A', color: '#131312' }}
           >
             Unlock Dashboard →
           </button>
@@ -228,32 +228,32 @@ function Dashboard({ onLock }: { onLock: () => void }) {
   const today = new Date().toLocaleDateString('en-ZA', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' })
 
   return (
-    <main style={{ background: '#0A0A0A', minHeight: '100vh' }}>
+    <main style={{ background: '#FFF8EC', minHeight: '100vh' }}>
 
       {/* ── Top bar ── */}
       <header
         className="sticky top-0 z-40 px-6 py-4 flex items-center justify-between"
-        style={{ background: 'rgba(10,10,10,0.97)', borderBottom: '1px solid rgba(255,255,255,0.07)', backdropFilter: 'blur(12px)' }}
+        style={{ background: 'rgba(255,248,236,0.97)', borderBottom: '1px solid rgba(19,19,18,0.07)', backdropFilter: 'blur(12px)' }}
       >
         <div className="flex items-center gap-4">
           <span
             className="font-heading font-black text-xs uppercase tracking-[0.25em] px-3 py-1"
-            style={{ background: '#CC0000', color: '#fff' }}
+            style={{ background: '#FF7A1A', color: '#131312' }}
           >
             Admin
           </span>
-          <Link href="/" className="font-display text-white uppercase leading-none" style={{ fontSize: 22, letterSpacing: 1 }}>
-            FOODIE<span style={{ color: '#CC0000' }}>ZONE</span>
+          <Link href="/" className="font-display text-[#131312] uppercase leading-none" style={{ fontSize: 22, letterSpacing: 1 }}>
+            FOODIE<span style={{ color: '#FF7A1A' }}>ZONE</span>
           </Link>
         </div>
         <div className="flex items-center gap-5">
-          <span className="font-body text-xs hidden sm:block" style={{ color: 'rgba(255,255,255,0.3)' }}>
+          <span className="font-body text-xs hidden sm:block" style={{ color: 'rgba(19,19,18,0.3)' }}>
             {today}
           </span>
           <button
             onClick={onLock}
             className="font-heading font-black text-xs uppercase tracking-widest px-4 py-2 transition-all hover:brightness-110"
-            style={{ border: '1px solid rgba(255,255,255,0.15)', color: 'rgba(255,255,255,0.5)' }}
+            style={{ border: '1px solid rgba(19,19,18,0.15)', color: 'rgba(19,19,18,0.5)' }}
           >
             Lock
           </button>
@@ -265,19 +265,19 @@ function Dashboard({ onLock }: { onLock: () => void }) {
         {/* ── KPI Cards ── */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
           {[
-            { label: "Today's Revenue",  value: 'R 2,840', sub: '+12% vs yesterday', accent: '#CC0000'  },
-            { label: 'Orders Today',     value: '34',       sub: '6 in the last hour', accent: '#FF6B00' },
-            { label: 'Items Sold',       value: '127',      sub: 'across 8 categories', accent: '#1D4ED8' },
-            { label: 'Low Stock Alerts', value: '3',        sub: 'items need restocking', accent: '#CC0000', urgent: true },
+            { label: "Today's Revenue",  value: 'R 2,840', sub: '+12% vs yesterday', accent: '#FF7A1A'  },
+            { label: 'Orders Today',     value: '34',       sub: '6 in the last hour', accent: '#FF3D8C' },
+            { label: 'Items Sold',       value: '127',      sub: 'across 8 categories', accent: '#2A6BFF' },
+            { label: 'Low Stock Alerts', value: '3',        sub: 'items need restocking', accent: '#FF7A1A', urgent: true },
           ].map((kpi) => (
-            <Card key={kpi.label} style={kpi.urgent ? { border: '1px solid rgba(204,0,0,0.3)', background: 'rgba(204,0,0,0.04)' } : {}}>
-              <div className="font-display text-white uppercase leading-none mb-1" style={{ fontSize: 'clamp(1.8rem,4vw,2.5rem)', color: kpi.accent }}>
+            <Card key={kpi.label} style={kpi.urgent ? { border: '1px solid rgba(255,122,26,0.3)', background: 'rgba(255,122,26,0.04)' } : {}}>
+              <div className="font-display text-[#131312] uppercase leading-none mb-1" style={{ fontSize: 'clamp(1.8rem,4vw,2.5rem)', color: kpi.accent }}>
                 {kpi.value}
               </div>
-              <div className="font-heading font-black text-xs uppercase tracking-widest mt-2 mb-1" style={{ color: 'rgba(255,255,255,0.5)' }}>
+              <div className="font-heading font-black text-xs uppercase tracking-widest mt-2 mb-1" style={{ color: 'rgba(19,19,18,0.5)' }}>
                 {kpi.label}
               </div>
-              <div className="font-body text-xs" style={{ color: 'rgba(255,255,255,0.25)' }}>
+              <div className="font-body text-xs" style={{ color: 'rgba(19,19,18,0.25)' }}>
                 {kpi.sub}
               </div>
             </Card>
@@ -302,15 +302,15 @@ function Dashboard({ onLock }: { onLock: () => void }) {
                         style={{
                           height: `${pct}%`,
                           background: isToday
-                            ? 'linear-gradient(180deg, #FF6B00, rgba(255,107,0,0.5))'
-                            : 'linear-gradient(180deg, #CC0000, rgba(204,0,0,0.4))',
-                          boxShadow: isToday ? '0 0 12px rgba(255,107,0,0.4)' : 'none',
+                            ? 'linear-gradient(180deg, #FF3D8C, rgba(255,61,140,0.5))'
+                            : 'linear-gradient(180deg, #FF7A1A, rgba(255,122,26,0.4))',
+                          boxShadow: isToday ? '0 0 12px rgba(255,61,140,0.4)' : 'none',
                         }}
                       />
                     </div>
                     <span
                       className="font-heading font-black text-xs"
-                      style={{ color: isToday ? '#FF6B00' : 'rgba(255,255,255,0.25)', letterSpacing: '0.08em' }}
+                      style={{ color: isToday ? '#FF3D8C' : 'rgba(19,19,18,0.25)', letterSpacing: '0.08em' }}
                     >
                       {d.day}
                     </span>
@@ -318,11 +318,11 @@ function Dashboard({ onLock }: { onLock: () => void }) {
                 )
               })}
             </div>
-            <div className="flex justify-between mt-4 pt-4" style={{ borderTop: '1px solid rgba(255,255,255,0.06)' }}>
-              <span className="font-body text-xs" style={{ color: 'rgba(255,255,255,0.25)' }}>
-                Week total: <span className="font-heading font-black text-white">R {SALES_WEEK.reduce((s, d) => s + d.value, 0).toLocaleString()}</span>
+            <div className="flex justify-between mt-4 pt-4" style={{ borderTop: '1px solid rgba(19,19,18,0.06)' }}>
+              <span className="font-body text-xs" style={{ color: 'rgba(19,19,18,0.25)' }}>
+                Week total: <span className="font-heading font-black text-[#131312]">R {SALES_WEEK.reduce((s, d) => s + d.value, 0).toLocaleString()}</span>
               </span>
-              <span className="font-body text-xs" style={{ color: '#FF6B00' }}>
+              <span className="font-body text-xs" style={{ color: '#FF3D8C' }}>
                 ↑ Today highlighted
               </span>
             </div>
@@ -336,25 +336,25 @@ function Dashboard({ onLock }: { onLock: () => void }) {
                 <div
                   key={item.name}
                   className="flex items-center justify-between py-3"
-                  style={{ borderBottom: i < BEST_SELLERS.length - 1 ? '1px solid rgba(255,255,255,0.05)' : 'none' }}
+                  style={{ borderBottom: i < BEST_SELLERS.length - 1 ? '1px solid rgba(19,19,18,0.05)' : 'none' }}
                 >
                   <div className="flex items-center gap-3">
                     <span
                       className="font-display text-sm w-6 shrink-0"
-                      style={{ color: i === 0 ? '#FF6B00' : 'rgba(255,255,255,0.2)' }}
+                      style={{ color: i === 0 ? '#FF3D8C' : 'rgba(19,19,18,0.2)' }}
                     >
                       {String(i + 1).padStart(2, '0')}
                     </span>
                     <div>
-                      <div className="font-heading font-black text-sm text-white">{item.name}</div>
-                      <div className="font-body text-xs" style={{ color: 'rgba(255,255,255,0.3)' }}>{item.category}</div>
+                      <div className="font-heading font-black text-sm text-[#131312]">{item.name}</div>
+                      <div className="font-body text-xs" style={{ color: 'rgba(19,19,18,0.3)' }}>{item.category}</div>
                     </div>
                   </div>
                   <div className="text-right">
                     <div className="font-heading font-black text-sm" style={{ color: '#22c55e' }}>
                       R {item.revenue.toLocaleString()}
                     </div>
-                    <div className="font-body text-xs" style={{ color: 'rgba(255,255,255,0.3)' }}>
+                    <div className="font-body text-xs" style={{ color: 'rgba(19,19,18,0.3)' }}>
                       {item.sold} sold
                     </div>
                   </div>
@@ -376,40 +376,40 @@ function Dashboard({ onLock }: { onLock: () => void }) {
                   key={item.name}
                   className="p-4"
                   style={{
-                    background: low ? 'rgba(204,0,0,0.04)' : 'rgba(255,255,255,0.02)',
-                    border: `1px solid ${low ? 'rgba(204,0,0,0.25)' : 'rgba(255,255,255,0.06)'}`,
+                    background: low ? 'rgba(255,122,26,0.04)' : 'rgba(19,19,18,0.02)',
+                    border: `1px solid ${low ? 'rgba(255,122,26,0.25)' : 'rgba(19,19,18,0.06)'}`,
                   }}
                 >
                   <div className="flex items-center justify-between mb-3">
-                    <span className="font-heading font-black text-sm text-white">{item.name}</span>
+                    <span className="font-heading font-black text-sm text-[#131312]">{item.name}</span>
                     {low && (
                       <span
                         className="font-heading font-black text-xs uppercase px-2 py-0.5"
-                        style={{ background: 'rgba(204,0,0,0.15)', color: '#CC0000', border: '1px solid rgba(204,0,0,0.3)' }}
+                        style={{ background: 'rgba(255,122,26,0.15)', color: '#FF7A1A', border: '1px solid rgba(255,122,26,0.3)' }}
                       >
                         Low
                       </span>
                     )}
                   </div>
                   {/* Bar */}
-                  <div className="h-1.5 w-full mb-2" style={{ background: 'rgba(255,255,255,0.08)' }}>
+                  <div className="h-1.5 w-full mb-2" style={{ background: 'rgba(19,19,18,0.08)' }}>
                     <div
                       className="h-full transition-all"
                       style={{
                         width: `${pct}%`,
                         background: low
-                          ? 'linear-gradient(90deg, #CC0000, #FF6B00)'
-                          : 'linear-gradient(90deg, #1D4ED8, rgba(29,78,216,0.6))',
+                          ? 'linear-gradient(90deg, #FF7A1A, #FF3D8C)'
+                          : 'linear-gradient(90deg, #2A6BFF, rgba(42,107,255,0.6))',
                       }}
                     />
                   </div>
                   <div className="flex justify-between">
-                    <span className="font-body text-xs" style={{ color: 'rgba(255,255,255,0.3)' }}>
+                    <span className="font-body text-xs" style={{ color: 'rgba(19,19,18,0.3)' }}>
                       {item.current} / {item.max} units
                     </span>
                     <span
                       className="font-heading font-black text-xs"
-                      style={{ color: low ? '#CC0000' : 'rgba(255,255,255,0.4)' }}
+                      style={{ color: low ? '#FF7A1A' : 'rgba(19,19,18,0.4)' }}
                     >
                       {pct}%
                     </span>
@@ -433,13 +433,13 @@ function Dashboard({ onLock }: { onLock: () => void }) {
                   <div
                     key={order.id}
                     className="flex items-start justify-between py-3.5"
-                    style={{ borderBottom: i < RECENT_ORDERS.length - 1 ? '1px solid rgba(255,255,255,0.05)' : 'none' }}
+                    style={{ borderBottom: i < RECENT_ORDERS.length - 1 ? '1px solid rgba(19,19,18,0.05)' : 'none' }}
                   >
                     <div className="flex-1 min-w-0 pr-4">
                       <div className="flex items-center gap-2 mb-1">
-                        <span className="font-heading font-black text-sm text-white">{order.id}</span>
+                        <span className="font-heading font-black text-sm text-[#131312]">{order.id}</span>
                       </div>
-                      <p className="font-body text-xs truncate" style={{ color: 'rgba(255,255,255,0.35)' }}>
+                      <p className="font-body text-xs truncate" style={{ color: 'rgba(19,19,18,0.35)' }}>
                         {order.items}
                       </p>
                     </div>
@@ -468,18 +468,18 @@ function Dashboard({ onLock }: { onLock: () => void }) {
                 <div
                   key={item.id}
                   className="flex items-center justify-between py-3"
-                  style={{ borderBottom: i < menuItems.length - 1 ? '1px solid rgba(255,255,255,0.05)' : 'none' }}
+                  style={{ borderBottom: i < menuItems.length - 1 ? '1px solid rgba(19,19,18,0.05)' : 'none' }}
                 >
                   <div>
                     <span
                       className="font-heading font-black text-sm"
-                      style={{ color: item.available ? '#fff' : 'rgba(255,255,255,0.3)' }}
+                      style={{ color: item.available ? '#fff' : 'rgba(19,19,18,0.3)' }}
                     >
                       {item.name}
                     </span>
                     <span
                       className="font-body text-xs ml-2"
-                      style={{ color: item.available ? 'rgba(34,197,94,0.7)' : 'rgba(255,255,255,0.2)' }}
+                      style={{ color: item.available ? 'rgba(34,197,94,0.7)' : 'rgba(19,19,18,0.2)' }}
                     >
                       {item.available ? 'Available' : 'Unavailable'}
                     </span>
@@ -494,11 +494,11 @@ function Dashboard({ onLock }: { onLock: () => void }) {
       </div>
 
       {/* Footer */}
-      <div className="text-center py-6 px-5" style={{ borderTop: '1px solid rgba(255,255,255,0.04)' }}>
-        <p className="font-body text-xs" style={{ color: 'rgba(255,255,255,0.15)' }}>
+      <div className="text-center py-6 px-5" style={{ borderTop: '1px solid rgba(19,19,18,0.04)' }}>
+        <p className="font-body text-xs" style={{ color: 'rgba(19,19,18,0.15)' }}>
           Foodie Zone Admin · Built by{' '}
           <a href="https://skhokholabs.xyz" target="_blank" rel="noopener noreferrer"
-             className="hover:text-white transition-colors" style={{ color: '#CC0000' }}>
+             className="hover:text-[#131312] transition-colors" style={{ color: '#FF7A1A' }}>
             skhokholabs.xyz
           </a>
         </p>

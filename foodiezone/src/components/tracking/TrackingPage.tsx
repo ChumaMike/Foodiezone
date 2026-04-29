@@ -9,10 +9,10 @@ import BottomNav from '@/components/BottomNav'
 const MapView = dynamic(() => import('./MapView'), { ssr: false })
 
 const STATUS_META: Record<string, { label: string; color: string; bg: string }> = {
-  confirmed:  { label: 'Order Confirmed',  color: '#0A0A0A',  bg: 'rgba(0,0,0,0.07)'           },
-  preparing:  { label: 'Being Prepared',   color: '#1D4ED8',  bg: 'rgba(29,78,216,0.1)'        },
+  confirmed:  { label: 'Order Confirmed',  color: '#FFF8EC',  bg: 'rgba(0,0,0,0.07)'           },
+  preparing:  { label: 'Being Prepared',   color: '#2A6BFF',  bg: 'rgba(42,107,255,0.1)'        },
   ready:      { label: 'Ready for Pickup', color: '#16A34A',  bg: 'rgba(22,163,74,0.1)'        },
-  delivering: { label: 'On the Way',       color: '#CC0000',  bg: 'rgba(204,0,0,0.1)'          },
+  delivering: { label: 'On the Way',       color: '#FF7A1A',  bg: 'rgba(255,122,26,0.1)'          },
   delivered:  { label: 'Delivered',        color: '#16A34A',  bg: 'rgba(22,163,74,0.1)'        },
 }
 
@@ -31,12 +31,12 @@ export default function TrackingPage() {
     <div className="min-h-screen pb-24" style={{ background: '#FFFFFF' }}>
 
       {/* Header */}
-      <header style={{ background: '#0A0A0A', borderBottom: '3px solid #CC0000' }}>
+      <header style={{ background: '#FFF8EC', borderBottom: '3px solid #FF7A1A' }}>
         <div className="max-w-md mx-auto px-4 pt-10 pb-5">
           <div className="flex items-center justify-between mb-3">
             <div>
               <p className="text-[11px] font-body mb-0.5" style={{ color: '#888' }}>Order</p>
-              <p className="font-heading font-black text-white text-[13px] tracking-wide uppercase">
+              <p className="font-heading font-black text-[#131312] text-[13px] tracking-wide uppercase">
                 {activeOrder?.orderNumber ?? '#FZ-...'}
               </p>
             </div>
@@ -48,7 +48,7 @@ export default function TrackingPage() {
             </div>
           </div>
           <div className="brand-label">FOODIE ZONE</div>
-          <h1 className="font-heading font-black text-white text-[28px] uppercase leading-none tracking-tight mt-1">
+          <h1 className="font-heading font-black text-[#131312] text-[28px] uppercase leading-none tracking-tight mt-1">
             Tracking
           </h1>
         </div>
@@ -67,8 +67,8 @@ export default function TrackingPage() {
         {/* Order summary */}
         {activeOrder ? (
           <div style={{ border: '1px solid #E5E5E5' }}>
-            <div className="px-4 py-3" style={{ background: '#0A0A0A' }}>
-              <h3 className="font-heading font-black text-white text-[12px] uppercase tracking-widest">Order Summary</h3>
+            <div className="px-4 py-3" style={{ background: '#FFF8EC' }}>
+              <h3 className="font-heading font-black text-[#131312] text-[12px] uppercase tracking-widest">Order Summary</h3>
             </div>
             <div className="divide-y" style={{ borderColor: '#F0F0F0' }}>
               {activeOrder.items.map((item) => (
@@ -76,17 +76,17 @@ export default function TrackingPage() {
                   <span className="text-[13px] font-body" style={{ color: '#555' }}>
                     {item.quantity}× {item.name}
                   </span>
-                  <span className="text-[13px] font-semibold" style={{ color: '#0A0A0A' }}>R{item.total}</span>
+                  <span className="text-[13px] font-semibold" style={{ color: '#FFF8EC' }}>R{item.total}</span>
                 </div>
               ))}
               <div className="flex justify-between px-4 py-2.5">
                 <span className="text-[13px] font-body" style={{ color: '#555' }}>Delivery fee</span>
-                <span className="text-[13px] font-semibold" style={{ color: '#0A0A0A' }}>R{activeOrder.deliveryFee}</span>
+                <span className="text-[13px] font-semibold" style={{ color: '#FFF8EC' }}>R{activeOrder.deliveryFee}</span>
               </div>
             </div>
-            <div className="flex justify-between px-4 py-3" style={{ background: '#F5F5F5', borderTop: '2px solid #0A0A0A' }}>
-              <span className="font-heading font-black text-[14px] uppercase tracking-wide" style={{ color: '#0A0A0A' }}>Total paid</span>
-              <span className="font-heading font-black text-[14px]" style={{ color: '#FF6B00' }}>R{activeOrder.total}</span>
+            <div className="flex justify-between px-4 py-3" style={{ background: '#F5F5F5', borderTop: '2px solid #FFF8EC' }}>
+              <span className="font-heading font-black text-[14px] uppercase tracking-wide" style={{ color: '#FFF8EC' }}>Total paid</span>
+              <span className="font-heading font-black text-[14px]" style={{ color: '#FF3D8C' }}>R{activeOrder.total}</span>
             </div>
           </div>
         ) : (

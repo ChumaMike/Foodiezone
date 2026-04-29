@@ -88,7 +88,7 @@ export default function GalleryPage() {
   }, [lightbox, navigate])
 
   return (
-    <div className="min-h-screen pt-24 pb-20 px-5" style={{ background: '#0A0A0A' }}>
+    <div className="min-h-screen pt-24 pb-20 px-5" style={{ background: '#FFF8EC' }}>
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <motion.div
@@ -98,12 +98,12 @@ export default function GalleryPage() {
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          <p className="font-heading font-black text-xs uppercase tracking-[0.3em] mb-3" style={{ color: '#CC0000' }}>
+          <p className="font-heading font-black text-xs uppercase tracking-[0.3em] mb-3" style={{ color: '#FF7A1A' }}>
             Foodie Zone
           </p>
-          <h1 className="font-heading font-black text-white uppercase text-5xl md:text-7xl leading-none tracking-tight">
+          <h1 className="font-heading font-black text-[#131312] uppercase text-5xl md:text-7xl leading-none tracking-tight">
             THE FOOD<br />
-            <span style={{ color: '#CC0000' }}>SPEAKS FOR ITSELF</span>
+            <span style={{ color: '#FF7A1A' }}>SPEAKS FOR ITSELF</span>
           </h1>
         </motion.div>
 
@@ -116,7 +116,7 @@ export default function GalleryPage() {
               onClick={() => setActive(f)}
               className="relative text-[11px] font-heading font-black uppercase tracking-widest px-4 py-2"
               style={{
-                color: active === f ? '#fff' : 'rgba(255,255,255,0.5)',
+                color: active === f ? '#fff' : 'rgba(19,19,18,0.5)',
                 transition: 'color 0.15s',
               }}
             >
@@ -124,12 +124,12 @@ export default function GalleryPage() {
                 <motion.span
                   layoutId="gallery-filter-pill"
                   className="absolute inset-0"
-                  style={{ background: '#CC0000' }}
+                  style={{ background: '#FF7A1A' }}
                   transition={{ type: 'spring', stiffness: 380, damping: 30 }}
                 />
               )}
               {active !== f && (
-                <span className="absolute inset-0" style={{ border: '1px solid rgba(255,255,255,0.15)' }} />
+                <span className="absolute inset-0" style={{ border: '1px solid rgba(19,19,18,0.15)' }} />
               )}
               <span className="relative z-10">{f}</span>
             </motion.button>
@@ -149,7 +149,7 @@ export default function GalleryPage() {
                 exit={{ opacity: 0, scale: 0.9, transition: { duration: 0.18 } }}
                 className="break-inside-avoid relative overflow-hidden cursor-pointer group"
                 onClick={() => setLightbox(img.src)}
-                style={{ background: '#1A1A1A' }}
+                style={{ background: '#FFF8EC' }}
               >
                 <Image
                   src={img.src}
@@ -159,14 +159,14 @@ export default function GalleryPage() {
                   className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500"
                 />
                 <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center"
-                  style={{ background: 'rgba(10,10,10,0.5)' }}>
+                  style={{ background: 'rgba(255,248,236,0.5)' }}>
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round">
                     <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/>
                   </svg>
                 </div>
                 <div className="absolute bottom-0 left-0 right-0 px-3 py-2 translate-y-full group-hover:translate-y-0 transition-transform duration-300"
-                  style={{ background: 'rgba(10,10,10,0.8)' }}>
-                  <p className="text-[10px] font-heading font-black uppercase tracking-widest" style={{ color: '#CC0000' }}>
+                  style={{ background: 'rgba(255,248,236,0.8)' }}>
+                  <p className="text-[10px] font-heading font-black uppercase tracking-widest" style={{ color: '#FF7A1A' }}>
                     {img.category}
                   </p>
                 </div>
@@ -192,7 +192,7 @@ export default function GalleryPage() {
             {/* Close */}
             <motion.button
               whileTap={{ scale: 0.9 }}
-              className="absolute top-5 right-5 p-2 text-white/60 hover:text-white"
+              className="absolute top-5 right-5 p-2 text-[#131312]/60 hover:text-[#131312]"
               onClick={() => setLightbox(null)}
             >
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
@@ -204,9 +204,9 @@ export default function GalleryPage() {
             <motion.button
               whileTap={{ scale: 0.9 }}
               whileHover={{ scale: 1.1 }}
-              className="absolute left-4 top-1/2 -translate-y-1/2 p-3 text-white/50 hover:text-white z-10"
+              className="absolute left-4 top-1/2 -translate-y-1/2 p-3 text-[#131312]/50 hover:text-[#131312] z-10"
               onClick={(e) => { e.stopPropagation(); navigate(-1) }}
-              style={{ background: 'rgba(255,255,255,0.08)' }}
+              style={{ background: 'rgba(19,19,18,0.08)' }}
             >
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
                 <path d="m15 18-6-6 6-6"/>
@@ -217,9 +217,9 @@ export default function GalleryPage() {
             <motion.button
               whileTap={{ scale: 0.9 }}
               whileHover={{ scale: 1.1 }}
-              className="absolute right-4 top-1/2 -translate-y-1/2 p-3 text-white/50 hover:text-white z-10"
+              className="absolute right-4 top-1/2 -translate-y-1/2 p-3 text-[#131312]/50 hover:text-[#131312] z-10"
               onClick={(e) => { e.stopPropagation(); navigate(1) }}
-              style={{ background: 'rgba(255,255,255,0.08)' }}
+              style={{ background: 'rgba(19,19,18,0.08)' }}
             >
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
                 <path d="m9 18 6-6-6-6"/>

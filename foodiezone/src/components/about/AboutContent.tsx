@@ -33,20 +33,20 @@ export default function AboutContent() {
           animate="show"
           className="relative z-10 max-w-4xl mx-auto text-center"
         >
-          <motion.p variants={fadeUp} className="font-heading font-black text-xs uppercase tracking-[0.3em] mb-4" style={{ color: '#CC0000' }}>
+          <motion.p variants={fadeUp} className="font-heading font-black text-xs uppercase tracking-[0.3em] mb-4" style={{ color: '#FF7A1A' }}>
             Our story
           </motion.p>
           <motion.h1
             variants={fadeUp}
-            className="font-heading font-black text-white uppercase leading-none tracking-tight mb-6"
+            className="font-heading font-black text-[#131312] uppercase leading-none tracking-tight mb-6"
             style={{ fontSize: 'clamp(3rem, 8vw, 6rem)' }}
           >
-            BORN IN<br /><span style={{ color: '#CC0000' }}>SOWETO</span>
+            BORN IN<br /><span style={{ color: '#FF7A1A' }}>SOWETO</span>
           </motion.h1>
           <motion.p
             variants={fadeUp}
             className="font-body text-lg leading-relaxed max-w-xl mx-auto"
-            style={{ color: 'rgba(255,255,255,0.5)' }}
+            style={{ color: 'rgba(19,19,18,0.5)' }}
           >
             From the streets of Orlando East to your door. Foodie Zone is more than just a takeaway.
             It&apos;s real food, made with heart, delivered with speed.
@@ -55,7 +55,7 @@ export default function AboutContent() {
       </section>
 
       {/* Story */}
-      <section className="py-20 px-5" style={{ borderTop: '1px solid rgba(255,255,255,0.06)' }}>
+      <section className="py-20 px-5" style={{ borderTop: '1px solid rgba(19,19,18,0.06)' }}>
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
           <motion.div
             initial={{ opacity: 0, x: -40 }}
@@ -79,13 +79,13 @@ export default function AboutContent() {
             viewport={VIEWPORT}
             transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94], delay: 0.1 }}
           >
-            <p className="font-heading font-black text-xs uppercase tracking-[0.3em] mb-4" style={{ color: '#CC0000' }}>
+            <p className="font-heading font-black text-xs uppercase tracking-[0.3em] mb-4" style={{ color: '#FF7A1A' }}>
               Who we are
             </p>
-            <h2 className="font-heading font-black text-white uppercase text-4xl leading-none tracking-tight mb-6">
+            <h2 className="font-heading font-black text-[#131312] uppercase text-4xl leading-none tracking-tight mb-6">
               NO SHORTCUTS.<br />JUST REAL FOOD.
             </h2>
-            <div className="space-y-4 font-body text-base leading-relaxed" style={{ color: 'rgba(255,255,255,0.5)' }}>
+            <div className="space-y-4 font-body text-base leading-relaxed" style={{ color: 'rgba(19,19,18,0.5)' }}>
               <p>
                 Foodie Zone started with a simple belief: people in Soweto deserve restaurant-quality food
                 without the restaurant prices. We hand-press every patty, marinate every wing, and build
@@ -109,10 +109,10 @@ export default function AboutContent() {
                   key={s.label}
                   variants={popIn}
                   className="text-center p-4"
-                  style={{ border: '1px solid rgba(255,255,255,0.08)' }}
+                  style={{ border: '1px solid rgba(19,19,18,0.08)' }}
                 >
-                  <div className="font-heading font-black text-white text-2xl">{s.value}</div>
-                  <div className="font-body text-xs mt-1 uppercase tracking-widest" style={{ color: 'rgba(255,255,255,0.3)' }}>{s.label}</div>
+                  <div className="font-heading font-black text-[#131312] text-2xl">{s.value}</div>
+                  <div className="font-body text-xs mt-1 uppercase tracking-widest" style={{ color: 'rgba(19,19,18,0.3)' }}>{s.label}</div>
                 </motion.div>
               ))}
             </motion.div>
@@ -127,16 +127,16 @@ export default function AboutContent() {
         whileInView="show"
         viewport={VIEWPORT}
         className="py-20 px-5 text-center"
-        style={{ background: '#111111', borderTop: '1px solid rgba(255,255,255,0.06)' }}
+        style={{ background: '#F5E9CC', borderTop: '1px solid rgba(19,19,18,0.06)' }}
       >
-        <h2 className="font-heading font-black text-white uppercase text-4xl md:text-5xl leading-none tracking-tight mb-6">
-          HUNGRY?<br /><span style={{ color: '#CC0000' }}>ORDER NOW.</span>
+        <h2 className="font-heading font-black text-[#131312] uppercase text-4xl md:text-5xl leading-none tracking-tight mb-6">
+          HUNGRY?<br /><span style={{ color: '#FF7A1A' }}>ORDER NOW.</span>
         </h2>
         <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }} className="inline-block">
           <Link
             href="/menu"
             className="inline-block font-heading font-black uppercase tracking-widest px-10 py-4 text-base"
-            style={{ background: '#CC0000', color: '#fff' }}
+            style={{ background: '#FF7A1A', color: '#131312' }}
           >
             SEE THE MENU →
           </Link>
@@ -144,15 +144,15 @@ export default function AboutContent() {
       </motion.section>
 
       {/* Built by */}
-      <div className="text-center py-6" style={{ borderTop: '1px solid rgba(255,255,255,0.04)' }}>
+      <div className="text-center py-6" style={{ borderTop: '1px solid rgba(19,19,18,0.04)' }}>
         <a
           href="https://skhokholabs.xyz"
           target="_blank"
           rel="noopener noreferrer"
-          className="font-heading font-black text-xs uppercase tracking-widest transition-colors hover:text-white"
-          style={{ color: 'rgba(255,255,255,0.2)' }}
+          className="font-heading font-black text-xs uppercase tracking-widest transition-colors hover:text-[#131312]"
+          style={{ color: 'rgba(19,19,18,0.2)' }}
         >
-          Built by <span style={{ color: '#CC0000' }}>skhokholabs.xyz</span>
+          Built by <span style={{ color: '#FF7A1A' }}>skhokholabs.xyz</span>
         </a>
       </div>
     </>

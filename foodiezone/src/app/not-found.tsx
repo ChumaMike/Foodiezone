@@ -7,7 +7,7 @@ export default function NotFound() {
   return (
     <main
       className="min-h-screen flex items-center justify-center px-6"
-      style={{ background: '#0A0A0A' }}
+      style={{ background: '#FFF8EC' }}
     >
       <motion.div
         initial={{ opacity: 0, y: 30 }}
@@ -16,25 +16,25 @@ export default function NotFound() {
         className="text-center"
       >
         <div
-          className="font-display text-white select-none leading-none"
-          style={{ fontSize: 'clamp(8rem, 30vw, 18rem)', color: 'rgba(204,0,0,0.08)' }}
+          className="font-display text-[#131312] select-none leading-none"
+          style={{ fontSize: 'clamp(8rem, 30vw, 18rem)', color: 'rgba(255,122,26,0.08)' }}
         >
           404
         </div>
         <h1
-          className="font-display text-white uppercase leading-none -mt-8 md:-mt-16 mb-4"
+          className="font-display text-[#131312] uppercase leading-none -mt-8 md:-mt-16 mb-4"
           style={{ fontSize: 'clamp(3rem, 10vw, 6rem)' }}
         >
           LOST?
         </h1>
-        <p className="font-body mb-8 text-lg" style={{ color: 'rgba(255,255,255,0.35)' }}>
+        <p className="font-body mb-8 text-lg" style={{ color: 'rgba(19,19,18,0.35)' }}>
           This page doesn&apos;t exist. But the food does.
         </p>
         <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }} className="inline-block">
           <Link
             href="/menu"
             className="inline-block font-heading font-black uppercase tracking-widest px-10 py-4 text-sm"
-            style={{ background: '#CC0000', color: '#fff', letterSpacing: '0.15em' }}
+            style={{ background: '#FF7A1A', color: '#131312', letterSpacing: '0.15em' }}
           >
             Back to Menu →
           </Link>

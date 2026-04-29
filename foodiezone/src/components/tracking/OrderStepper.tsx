@@ -23,7 +23,7 @@ export default function OrderStepper({ step }: OrderStepperProps) {
   return (
     <div style={{ background: '#FFFFFF', border: '1px solid #E5E5E5' }}>
       {/* Top accent */}
-      <div className="h-1" style={{ background: '#CC0000' }} />
+      <div className="h-1" style={{ background: '#FF7A1A' }} />
 
       <div className="p-4">
         <p className="font-heading font-black text-[11px] uppercase tracking-[0.15em] mb-4" style={{ color: '#888' }}>
@@ -37,7 +37,7 @@ export default function OrderStepper({ step }: OrderStepperProps) {
           {/* Filled track */}
           <div
             className="absolute top-5 left-5 h-0.5 transition-all duration-700 ease-in-out"
-            style={{ width: `calc(${(step / (STEPS.length - 1)) * 100}% - 10px)`, background: '#CC0000' }}
+            style={{ width: `calc(${(step / (STEPS.length - 1)) * 100}% - 10px)`, background: '#FF7A1A' }}
           />
 
           {STEPS.map((s, idx) => {
@@ -49,8 +49,8 @@ export default function OrderStepper({ step }: OrderStepperProps) {
                 <div
                   className={`w-10 h-10 flex items-center justify-center transition-all duration-500 ${active ? 'scale-110' : ''}`}
                   style={{
-                    background: done ? '#CC0000' : '#F5F5F5',
-                    boxShadow: active ? '0 0 0 4px rgba(204,0,0,0.15)' : 'none',
+                    background: done ? '#FF7A1A' : '#F5F5F5',
+                    boxShadow: active ? '0 0 0 4px rgba(255,122,26,0.15)' : 'none',
                     border: done ? 'none' : '1px solid #E5E5E5',
                   }}
                 >
@@ -66,7 +66,7 @@ export default function OrderStepper({ step }: OrderStepperProps) {
                 </div>
                 <p
                   className="text-[10px] font-heading font-black uppercase tracking-wide text-center leading-tight transition-colors"
-                  style={{ color: active ? '#CC0000' : done ? '#0A0A0A' : '#CCC' }}
+                  style={{ color: active ? '#FF7A1A' : done ? '#FFF8EC' : '#CCC' }}
                 >
                   {s.label}
                 </p>
