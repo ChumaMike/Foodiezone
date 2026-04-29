@@ -32,7 +32,7 @@ export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
   maximumScale: 1,
-  themeColor: '#0A0A0A',
+  themeColor: '#FF7A1A',
 }
 
 export const metadata: Metadata = {
@@ -48,7 +48,7 @@ export const metadata: Metadata = {
   },
   appleWebApp: {
     capable: true,
-    statusBarStyle: 'black-translucent',
+    statusBarStyle: 'default',
     title: 'Foodie Zone',
   },
 }
@@ -58,7 +58,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en-ZA" className={`${anton.variable} ${barlow.variable} ${nunitoSans.variable}`}>
       <head>
         <link rel="manifest" href="/manifest.json" />
-        <meta name="theme-color" content="#0A0A0A" />
+        <meta name="theme-color" content="#FF7A1A" />
         <link rel="apple-touch-icon" href="/icons/icon-192.png" />
         <script
           type="application/ld+json"
@@ -96,7 +96,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           }}
         />
       </head>
-      <body className="font-body min-h-screen" style={{ background: '#0A0A0A', color: '#FFFFFF' }}>
+      <body className="font-body min-h-screen" style={{ background: '#FFF8EC', color: '#131312' }}>
         <AuthProvider>
           <ProfileProvider>
             <OrderProvider>

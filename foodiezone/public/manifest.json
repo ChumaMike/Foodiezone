@@ -4,8 +4,8 @@
   "description": "Hyper-local food delivery for Soweto",
   "start_url": "/menu",
   "display": "standalone",
-  "background_color": "#FAFAFA",
-  "theme_color": "#8B0000",
+  "background_color": "#FFF8EC",
+  "theme_color": "#FF7A1A",
   "orientation": "portrait",
   "icons": [
     {
