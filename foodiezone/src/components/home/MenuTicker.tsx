@@ -19,7 +19,11 @@ export default function MenuTicker() {
   return (
     <div
       className="overflow-hidden py-4 select-none"
-      style={{ background: '#CC0000', borderTop: '1px solid rgba(255,255,255,0.1)', borderBottom: '1px solid rgba(0,0,0,0.2)' }}
+      style={{
+        background: '#131312',
+        borderTop: '3px solid #131312',
+        borderBottom: '3px solid #131312',
+      }}
     >
       <div
         className="flex gap-0 whitespace-nowrap"
@@ -28,11 +32,11 @@ export default function MenuTicker() {
         {doubled.map((item, i) => (
           <span
             key={i}
-            className="font-heading font-black text-white uppercase text-sm tracking-widest flex-shrink-0 px-10"
-            style={{ letterSpacing: '0.14em' }}
+            className="font-heading font-extrabold uppercase text-sm flex-shrink-0 px-10"
+            style={{ color: '#FFF8EC', letterSpacing: '0.14em' }}
           >
             {item}
-            <span className="mx-10 opacity-40">✦</span>
+            <span className="mx-10" style={{ color: '#FF7A1A' }}>✦</span>
           </span>
         ))}
       </div>

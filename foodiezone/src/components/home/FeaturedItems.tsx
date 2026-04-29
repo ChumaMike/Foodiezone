@@ -12,7 +12,7 @@ const FEATURED = [
     price: 95,
     badge: 'Best Seller',
     image: '/images/smash/smash-double.png',
-    badgeColor: '#CC0000',
+    badgeColor: '#FF3D8C',
   },
   {
     name: '5 Dunked Wings',
@@ -20,15 +20,15 @@ const FEATURED = [
     price: 55,
     badge: 'Popular',
     image: '/images/wings/dunked-wings.png',
-    badgeColor: '#FF6B00',
+    badgeColor: '#FFD43B',
   },
   {
     name: 'Death by Bacon',
     desc: '200g smash patty, cheddar, triple bacon. Go big or go home.',
     price: 125,
-    badge: 'Fan Favourite',
+    badge: 'Fan Fave',
     image: '/images/smash/smash-double.png',
-    badgeColor: '#0A0A0A',
+    badgeColor: '#11A66A',
   },
   {
     name: 'Chicken Wrap + Chips',
@@ -36,7 +36,7 @@ const FEATURED = [
     price: 65,
     badge: 'Popular',
     image: '/images/wraps/chicken-wrap.png',
-    badgeColor: '#1D4ED8',
+    badgeColor: '#2A6BFF',
   },
 ]
 
@@ -44,7 +44,7 @@ const VIEWPORT = { once: true, margin: '-80px' }
 
 export default function FeaturedItems() {
   return (
-    <section className="py-20 px-5" style={{ background: '#111111' }}>
+    <section className="py-20 px-6" style={{ background: '#F5E9CC' }}>
       <div className="max-w-container mx-auto">
         {/* Header */}
         <motion.div
@@ -52,20 +52,30 @@ export default function FeaturedItems() {
           initial="hidden"
           whileInView="show"
           viewport={VIEWPORT}
-          className="flex items-end justify-between mb-10"
+          className="flex items-end justify-between mb-10 flex-wrap gap-4"
         >
           <div>
-            <p className="font-heading font-bold text-xs uppercase tracking-[0.3em] mb-2" style={{ color: '#FF6B00' }}>
+            <span className="kasi-pill" style={{ background: '#FF7A1A' }}>
               Most ordered
-            </p>
-            <h2 className="font-heading font-bold text-white uppercase text-4xl md:text-5xl leading-none tracking-tight">
-              FAN FAVES
+            </span>
+            <h2
+              className="font-display mt-4 leading-none"
+              style={{ color: '#131312', fontSize: 'clamp(2.5rem, 6vw, 4.5rem)' }}
+            >
+              FAN <span style={{ color: '#FF3D8C' }}>FAVES</span>
             </h2>
           </div>
           <Link
             href="/menu"
-            className="hidden sm:block text-sm font-heading font-bold uppercase tracking-widest px-5 py-2.5 transition-all hover:brightness-110"
-            style={{ border: '1px solid rgba(255,255,255,0.2)', color: 'rgba(255,255,255,0.7)' }}
+            className="hidden sm:inline-block font-heading font-extrabold text-sm uppercase px-5 py-2.5 transition-all"
+            style={{
+              border: '2px solid #131312',
+              color: '#131312',
+              borderRadius: 999,
+              letterSpacing: '0.14em',
+            }}
+            onMouseEnter={e => { e.currentTarget.style.background = '#131312'; e.currentTarget.style.color = '#FFF8EC' }}
+            onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = '#131312' }}
           >
             Full Menu →
           </Link>
@@ -77,22 +87,26 @@ export default function FeaturedItems() {
           initial="hidden"
           whileInView="show"
           viewport={VIEWPORT}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5"
         >
           {FEATURED.map((item) => (
             <motion.div
               key={item.name}
               variants={fadeUp}
-              whileHover={{ y: -6, boxShadow: '0 12px 32px rgba(204,0,0,0.15)' }}
+              whileHover={{ y: -6 }}
               transition={{ type: 'spring', stiffness: 300, damping: 25 }}
             >
               <Link
                 href="/menu"
                 className="group flex flex-col overflow-hidden h-full"
-                style={{ background: '#1A1A1A', border: '1px solid rgba(255,255,255,0.06)' }}
+                style={{
+                  background: '#FFF8EC',
+                  border: '2.5px solid #131312',
+                  borderRadius: 18,
+                }}
               >
                 {/* Image */}
-                <div className="relative overflow-hidden" style={{ height: 200 }}>
+                <div className="relative overflow-hidden" style={{ height: 200, borderBottom: '2.5px solid #131312' }}>
                   <Image
                     src={item.image}
                     alt={item.name}
@@ -100,10 +114,15 @@ export default function FeaturedItems() {
                     className="object-cover transition-transform duration-500 group-hover:scale-105"
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                   />
-                  <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(26,26,26,0.6) 0%, transparent 60%)' }} />
                   <span
-                    className="absolute top-3 left-3 text-[10px] font-heading font-bold uppercase tracking-wide px-2.5 py-1"
-                    style={{ background: item.badgeColor, color: '#fff' }}
+                    className="absolute top-3 left-3 text-[10px] font-heading font-extrabold uppercase tracking-wide px-2.5 py-1"
+                    style={{
+                      background: item.badgeColor,
+                      color: '#131312',
+                      border: '2px solid #131312',
+                      borderRadius: 999,
+                      letterSpacing: '0.12em',
+                    }}
                   >
                     {item.badge}
                   </span>
@@ -111,19 +130,31 @@ export default function FeaturedItems() {
 
                 {/* Info */}
                 <div className="p-4 flex flex-col flex-1">
-                  <h3 className="font-heading font-bold text-white uppercase text-sm leading-snug tracking-tight mb-1">
+                  <h3
+                    className="font-heading font-extrabold uppercase text-sm leading-snug tracking-tight mb-1"
+                    style={{ color: '#131312' }}
+                  >
                     {item.name}
                   </h3>
-                  <p className="font-body text-xs leading-relaxed flex-1" style={{ color: 'rgba(255,255,255,0.4)' }}>
+                  <p className="font-body text-xs leading-relaxed flex-1" style={{ color: '#2A2A2A' }}>
                     {item.desc}
                   </p>
                   <div className="flex items-center justify-between mt-4">
-                    <span className="font-heading font-bold text-lg" style={{ color: '#FF6B00' }}>
+                    <span
+                      className="font-display"
+                      style={{ color: '#FF7A1A', fontSize: 24, lineHeight: 1 }}
+                    >
                       R{item.price}
                     </span>
                     <span
-                      className="text-xs font-heading font-bold uppercase tracking-widest px-3 py-1.5"
-                      style={{ background: '#CC0000', color: '#fff' }}
+                      className="text-xs font-heading font-extrabold uppercase px-3 py-1.5"
+                      style={{
+                        background: '#FF7A1A',
+                        color: '#131312',
+                        border: '2px solid #131312',
+                        borderRadius: 999,
+                        letterSpacing: '0.12em',
+                      }}
                     >
                       + Add
                     </span>
@@ -144,8 +175,13 @@ export default function FeaturedItems() {
         >
           <Link
             href="/menu"
-            className="inline-block text-sm font-heading font-bold uppercase tracking-widest px-8 py-3"
-            style={{ border: '1px solid rgba(255,255,255,0.2)', color: 'rgba(255,255,255,0.7)' }}
+            className="inline-block font-heading font-extrabold text-sm uppercase px-8 py-3"
+            style={{
+              border: '2px solid #131312',
+              color: '#131312',
+              borderRadius: 999,
+              letterSpacing: '0.14em',
+            }}
           >
             Full Menu →
           </Link>
