@@ -132,14 +132,11 @@ export default function AboutContent() {
             transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
             className="grid grid-cols-2 gap-2"
           >
-            <div className="relative col-span-2 overflow-hidden" style={{ height: 300 }}>
-              <Image src="/images/outside/outside-2.webp" alt="Foodie Zone outside" fill className="object-cover" />
+            <div className="relative overflow-hidden" style={{ height: 500 }}>
+              <Image src="/images/outside/outside-1.webp" alt="Foodie Zone outside" fill className="object-cover" />
             </div>
-            <div className="relative overflow-hidden" style={{ height: 200 }}>
-              <Image src="/images/outside/outside-1.webp" alt="Foodie Zone" fill className="object-cover" />
-            </div>
-            <div className="relative overflow-hidden" style={{ height: 200 }}>
-              <Image src="/images/outside/outside-3.png" alt="Foodie Zone" fill className="object-cover" />
+            <div className="relative overflow-hidden" style={{ height: 500 }}>
+              <Image src="/images/outside/outside-3.png" alt="Foodie Zone outside" fill className="object-cover" />
             </div>
           </motion.div>
 
