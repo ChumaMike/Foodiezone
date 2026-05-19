@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import Link from 'next/link'
 import { FOODIEZONE_WA_URL } from '@/lib/whatsapp'
 
@@ -85,6 +86,14 @@ export default function Footer() {
             <h4 className="font-heading font-extrabold text-xs uppercase tracking-[0.2em] mb-5" style={{ color: '#FFD43B' }}>
               Find Us
             </h4>
+            {/* Location photos */}
+            <div className="grid grid-cols-3 gap-1.5 mb-4">
+              {['/images/outside/outside-1.webp', '/images/outside/outside-2.webp', '/images/outside/outside-3.png'].map((src, i) => (
+                <div key={i} className="relative overflow-hidden" style={{ aspectRatio: '1/1' }}>
+                  <Image src={src} alt="Foodie Zone location" fill className="object-cover" sizes="80px" />
+                </div>
+              ))}
+            </div>
             <ul className="space-y-3 font-body text-sm" style={{ color: '#F5E9CC' }}>
               <li>10681 Bhele St, Pimville</li>
               <li>Gauteng, South Africa, 1809</li>
